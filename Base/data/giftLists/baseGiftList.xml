@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+
+	<import-items>
+		<add-item item-descriptor="gift-list" id="baseWishList">
+		  <set-property name="giftlistItems"><![CDATA[gi10001]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/2/2013 16:41:46]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="gift-item" id="gi10001">
+		  <set-property name="description"><![CDATA[Italian leather Oxford]]></set-property>
+		  <set-property name="quantityPurchased"><![CDATA[0]]></set-property>
+		  <set-property name="displayName"><![CDATA[Leather Oxford]]></set-property>
+		  <set-property name="siteId"><![CDATA[storeSiteUS]]></set-property>
+		  <set-property name="quantityDesired"><![CDATA[1]]></set-property>
+		  <set-property name="catalogRefId"><![CDATA[xsku1243]]></set-property>
+		  <set-property name="productId"><![CDATA[xprod1047]]></set-property>
+		  <!-- rdonly   <set-property name="quantityRemaining"><![CDATA[1]]></set-property>  -->
+		</add-item>
+	</import-items>
+			
+</gsa-template>	

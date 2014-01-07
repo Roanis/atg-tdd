@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+
+	<import-items>
+
+		<add-item item-descriptor="siteConfiguration" id="baseSite">		  
+		  <set-property name="description"><![CDATA[Roanis TDD Base Site]]></set-property>		  		  
+		  <set-property name="sitePriority"><![CDATA[1]]></set-property>		  
+		  <!-- rdonly  derived   <set-property name="rightNowUrl"><![CDATA[http://oracleatg.rightnowdemo.com]]></set-property>  -->
+		  <set-property name="contextRoot"><![CDATA[/rshop]]></set-property>		  		  
+		  <set-property name="productionURL"><![CDATA[/rshop/basesite]]></set-property>		  		  		  
+		  <set-property name="creationTime"><![CDATA[10/1/2013 22:17:47]]></set-property>		  
+		  <set-property name="enabled"><![CDATA[true]]></set-property>
+		  <set-property name="siteTypes"><![CDATA[commerce]]></set-property>		  		  
+		  <set-property name="siteIcon"><![CDATA[/rshop/static/images/basesite_logo_small.png]]></set-property>		  
+		  <set-property name="defaultListPriceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="modificationTime"><![CDATA[10/1/2013 22:33:07]]></set-property>		  
+		  <set-property name="defaultCatalog"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="defaultSalePriceList"><![CDATA[baseSalePrices]]></set-property>		  		  
+		  <set-property name="name"><![CDATA[Base Test Site]]></set-property>
+		  <set-property name="favicon"><![CDATA[/rshop/static/images/favicon.png]]></set-property>
+		  
+		  <!-- These can be added if running on top of CRS.
+		  <set-property name="changePasswordFromAddress"><![CDATA[Roanis Service <service@example.roanis.com>]]></set-property>
+		  <set-property name="orderShippedFromAddress"><![CDATA[Roanis Service <service@example.roanis.com>]]></set-property>
+		  <set-property name="defaultCountry"><![CDATA[US]]></set-property>
+		  <set-property name="newProductThresholdDays"><![CDATA[15]]></set-property>
+		  <set-property name="resourceBundle"><![CDATA[atg.projects.store.web.WebAppResources]]></set-property>
+		  <set-property name="languages"><![CDATA[en,es]]></set-property>
+		  <set-property name="billableCountries"><![CDATA[US,CA,MX,DE]]></set-property>
+		  <set-property name="promotionEmailAddress"><![CDATA[Roanis Service service@example.roanis.com>]]></set-property>
+		  <set-property name="registeredUserFromAddress"><![CDATA[Roanis Service <service@example.roanis.com>]]></set-property>
+		  <set-property name="defaultLanguage"><![CDATA[en]]></set-property>
+		  <set-property name="newPasswordFromAddress"><![CDATA[Roanis Service <service@example.roanis.com>]]></set-property>
+		  <set-property name="priceSliderMaximumValue"><![CDATA[2500]]></set-property>
+		  <set-property name="emailAFriendEnabled"><![CDATA[true]]></set-property>
+		  <set-property name="backInStockFromAddress"><![CDATA[Roanis Service <service@example.roanis.com>]]></set-property>
+		  <set-property name="largeSiteIcon"><![CDATA[/rshop/static/images/basesite_logo_large.png]]></set-property>
+		  <set-property name="shippableCountries"><![CDATA[US,CA,MX,DE]]></set-property>
+		  <set-property name="priceSliderMinimumValue"><![CDATA[0]]></set-property>
+		  <set-property name="orderConfirmationFromAddress"><![CDATA[Roanis Service <service@example.roanis.com>]]></set-property>
+		  <set-property name="defaultPageSize"><![CDATA[12]]></set-property>
+		  
+		  <set-property name="translations"><![CDATA[es=es_xlaterightnow10001]]></set-property>
+		  <set-property name="rightNowUrlDefault"><![CDATA[http://oracleatg.rightnowdemo.com]]></set-property>
+		  -->		  
+		</add-item>
+		
+	</import-items>
+			
+</gsa-template>	

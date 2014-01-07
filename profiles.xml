@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+
+	<import-items>
+		<add-item item-descriptor="user" id="Very_US_User">
+		  <!-- rdonly  derived   <set-property name="derivedBrandName"><![CDATA[Very]]></set-property>  -->
+		  <set-property name="optOutOfPost"><![CDATA[false]]></set-property>
+		  <!-- rdonly  derived   <set-property name="derivedStartDate"><![CDATA[2/27/2013 00:00:00]]></set-property>  -->
+		  <set-property name="optOutOfThirdPartyEmail"><![CDATA[true]]></set-property>
+		  <set-property name="gender"><![CDATA[Male]]></set-property>
+		  <set-property name="optOutOfEmail"><![CDATA[false]]></set-property>
+		  <set-property name="catalog"><![CDATA[veryCatalog]]></set-property>
+		  <set-property name="priceList"><![CDATA[testPriceList1]]></set-property>
+		  <!-- rdonly   <set-property name="locked"><![CDATA[false]]></set-property>  -->
+		  <set-property name="emailStatus"><![CDATA[valid]]></set-property>
+		  <set-property name="optOutOfPaperStatements"><![CDATA[Opted in]]></set-property>
+		  <set-property name="siteId"><![CDATA[Site1]]></set-property>
+		  <set-property name="email"><![CDATA[rory@whatever.com]]></set-property>
+		  <set-property name="optOutOfSMS"><![CDATA[false]]></set-property>
+		  <set-property name="password"><![CDATA[319f4d26e3c536b5dd871bb2c52e3178]]></set-property>
+		  <set-property name="isEligibleForBnpl"><![CDATA[false]]></set-property>
+		  <set-property name="isNew"><![CDATA[true]]></set-property>
+		  <!-- rdonly   <set-property name="isChangeHomeAddressAllowed"><![CDATA[false]]></set-property>  -->
+		  <set-property name="salePriceList"><![CDATA[testPriceList1]]></set-property>
+		  <set-property name="startDate"><![CDATA[2/27/2013 00:00:00]]></set-property>
+		  <set-property name="accountNumber"><![CDATA[176823]]></set-property>
+		  <set-property name="lastName"><![CDATA[Curtis]]></set-property>
+		  <set-property name="member"><![CDATA[true]]></set-property>
+		  <set-property name="accountType"><![CDATA[Credit]]></set-property>
+		  <set-property name="dateOfBirth"><![CDATA[4/1/1973 00:00:00]]></set-property>
+		  <!-- rdonly  derived   <set-property name="age"><![CDATA[40]]></set-property>  -->
+		  <!-- rdonly   <set-property name="hasAccount"><![CDATA[true]]></set-property>  -->
+		  <set-property name="registrationDate"><![CDATA[2/27/2013 14:07:19]]></set-property>
+		  <!-- rdonly   <set-property name="siteName"><![CDATA[Very]]></set-property>  -->
+		  <set-property name="optOutOfCatalogue"><![CDATA[false]]></set-property>
+		  <set-property name="forgotPasswordTimestamp"><![CDATA[9/25/2013 03:34:24]]></set-property>
+		  <!-- <set-property name="wishlist"><![CDATA[gl8360348]]></set-property>  -->
+		  <set-property name="ageTargeting"><![CDATA[40]]></set-property>
+		  <set-property name="lastEmailed"><![CDATA[8/23/2013 10:35:57]]></set-property>
+		  <set-property name="isRegistered"><![CDATA[true]]></set-property>
+		  <set-property name="lastActivity"><![CDATA[9/26/2013 02:02:57]]></set-property>
+		  <set-property name="optOutOfPhone"><![CDATA[false]]></set-property>
+		  <set-property name="homeAddress"><![CDATA[3140028]]></set-property>
+		  <!-- rdonly   <set-property name="mailings"><![CDATA[12520049,13210037,14460036,14000034,12170042,13160036,14410036,12800028,11900038,12960026,12930032,12520030,14500037,13460029,13710019,12330042,14210033,12030036,14760047,14650036,11850040,13270032]]></set-property>  -->
+		  <set-property name="firstName"><![CDATA[Rory]]></set-property>
+		  <set-property name="lastPasswordUpdate"><![CDATA[2/27/2013 14:07:19]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="contactInfo" id="3140028">
+		  <set-property name="postalCode"><![CDATA[BA13HN]]></set-property>
+		  <set-property name="prefix"><![CDATA[Mr]]></set-property>
+		  <set-property name="mobilePhoneNumber"><![CDATA[0723456789]]></set-property>
+		  <set-property name="addressId"><![CDATA[ptcabs]]></set-property>
+		  <set-property name="phoneNumber"><![CDATA[0123456789]]></set-property>
+		  <set-property name="addressLine4"><![CDATA[Liverpool]]></set-property>
+		  <set-property name="addressLine3"><![CDATA[adl2]]></set-property>
+		  <set-property name="addressLine2"><![CDATA[default street]]></set-property>
+		  <set-property name="addressLine1"><![CDATA[1]]></set-property>
+		</add-item>
+	</import-items>
+</gsa-template>	

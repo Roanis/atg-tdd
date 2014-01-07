@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: Roanis TDD Base
+Implementation-Version: 1.0
+ATG-Config-Path: config
+ATG-Required: DCS
+ATG-Client-Class-Path: libs/base-1.0.jar
+ATG-Class-Path: libs/base-1.0.jar
+

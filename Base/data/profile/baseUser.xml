@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+
+	<import-items>
+		<add-item item-descriptor="user" id="baseUser">
+			<set-property name="gender"><![CDATA[male]]></set-property>
+			<!-- rdonly  derived   <set-property name="allCreditCards"><![CDATA[Defaukt Visa=usercc30001]]></set-property>  -->
+			<set-property name="defaultCarrier"><![CDATA[Two Day]]></set-property>
+			<!-- derived   <set-property name="derivedDefaultCreditCard"><![CDATA[usercc30001]]></set-property>  -->
+			<!-- derived   <set-property name="derivedBillingAddress"><![CDATA[170003]]></set-property>  -->
+			<set-property name="email"><![CDATA[test.user@roanis.com]]></set-property>
+			<!-- password is "password"  -->
+			<set-property name="password"><![CDATA[d4cdac551839bd4528bf79dfbca8cb8067a8edebcb499220dba8a23cb091b67b]]></set-property>
+			<!-- rdonly  derived   <set-property name="abandonedOrderCount"><![CDATA[0]]></set-property>  -->
+			<set-property name="billingAddress"><![CDATA[170003]]></set-property>
+			<set-property name="shippingAddress"><![CDATA[170001]]></set-property>
+			<set-property name="locale"><![CDATA[en_GB]]></set-property>
+			<set-property name="defaultCreditCard"><![CDATA[usercc30001]]></set-property>
+			<set-property name="securityStatus"><![CDATA[EXPLICIT-SIGNIN]]></set-property>
+			<set-property name="lastName"><![CDATA[User]]></set-property>
+			<set-property name="member"><![CDATA[true]]></set-property>
+			<set-property name="secondaryAddresses"><![CDATA[Home=170001]]></set-property>
+			<!-- rdonly  derived   <set-property name="allSecondaryAddresses"><![CDATA[Home=170001]]></set-property>  -->
+			<set-property name="registrationDate"><![CDATA[10/2/2013 16:41:22]]></set-property>
+			<!-- derived   <set-property name="derivedShippingAddress"><![CDATA[170001]]></set-property>  -->
+			<set-property name="creditCards"><![CDATA[Default Visa=usercc30001]]></set-property>
+			<set-property name="wishlist"><![CDATA[baseWishList]]></set-property>
+			<set-property name="login"><![CDATA[test.user@roanis.com]]></set-property>
+			<set-property name="lastActivity"><![CDATA[11/29/2013 12:54:25]]></set-property>
+			<set-property name="homeAddress"><![CDATA[170000]]></set-property>
+			<set-property name="passwordSalt"><![CDATA[1fe8bed4b6fd63c7]]></set-property>
+			<set-property name="firstName"><![CDATA[Test]]></set-property>
+			<set-property name="lastPasswordUpdate"><![CDATA[10/2/2013 16:41:46]]></set-property>
+			<!-- rdonly   <set-property name="ThirtySomethings"><![CDATA[false]]></set-property>  -->
+			<!-- rdonly   <set-property name="MenOnly"><![CDATA[false]]></set-property>  -->
+			<!-- rdonly   <set-property name="Fashionista"><![CDATA[false]]></set-property>  -->
+			<!-- rdonly   <set-property name="Young"><![CDATA[false]]></set-property>  -->
+			<!-- rdonly   <set-property name="WomenOnly"><![CDATA[false]]></set-property>  -->
+		</add-item>	
+		
+		<!-- Home Addreess  -->
+		<add-item item-descriptor="contactInfo" id="170000">
+		  <set-property name="postalCode"><![CDATA[L70!AB]]></set-property>
+		  <set-property name="city"><![CDATA[Liverpool]]></set-property>
+		  <set-property name="country"><![CDATA[US]]></set-property>
+		  <set-property name="phoneNumber"><![CDATA[07653276154]]></set-property>
+		  <set-property name="lastName"><![CDATA[User]]></set-property>
+		  <set-property name="state"><![CDATA[AK]]></set-property>
+		  <set-property name="address2"><![CDATA[]]></set-property>
+		  <set-property name="address1"><![CDATA[23 some st]]></set-property>
+		  <set-property name="ownerId"><![CDATA[180000]]></set-property>
+		  <set-property name="firstName"><![CDATA[Test]]></set-property>
+		</add-item>
+		
+		<!-- Shipping Address - same as Home Addreess  -->
+		<add-item item-descriptor="contactInfo" id="170001">
+		  <set-property name="postalCode"><![CDATA[L70!AB]]></set-property>
+		  <set-property name="city"><![CDATA[Liverpool]]></set-property>
+		  <set-property name="country"><![CDATA[US]]></set-property>
+		  <set-property name="phoneNumber"><![CDATA[07653276154]]></set-property>
+		  <set-property name="lastName"><![CDATA[User]]></set-property>
+		  <set-property name="state"><![CDATA[AK]]></set-property>
+		  <set-property name="address2"><![CDATA[]]></set-property>
+		  <set-property name="address1"><![CDATA[23 some st]]></set-property>
+		  <set-property name="ownerId"><![CDATA[180000]]></set-property>
+		  <set-property name="firstName"><![CDATA[Test]]></set-property>
+		</add-item>
+		
+		<!-- Billing Address - same as Home Addreess  -->
+		<add-item item-descriptor="contactInfo" id="170003">
+		  <set-property name="postalCode"><![CDATA[L70!AB]]></set-property>
+		  <set-property name="city"><![CDATA[Liverpool]]></set-property>
+		  <set-property name="country"><![CDATA[US]]></set-property>
+		  <set-property name="phoneNumber"><![CDATA[07653276154]]></set-property>
+		  <set-property name="lastName"><![CDATA[User]]></set-property>
+		  <set-property name="state"><![CDATA[AK]]></set-property>
+		  <set-property name="address2"><![CDATA[]]></set-property>
+		  <set-property name="address1"><![CDATA[23 some st]]></set-property>
+		  <set-property name="ownerId"><![CDATA[180000]]></set-property>
+		  <set-property name="firstName"><![CDATA[Test]]></set-property>
+		</add-item>
+		
+		<!-- Credit Card  -->
+		<add-item item-descriptor="credit-card" id="usercc30001">
+		  <set-property name="expirationMonth"><![CDATA[2]]></set-property>
+		  <set-property name="creditCardNumber"><![CDATA[4111111111111111]]></set-property>
+		  <set-property name="billingAddress"><![CDATA[170003]]></set-property>
+		  <set-property name="expirationYear"><![CDATA[2099]]></set-property>
+		  <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+		</add-item>
+	</import-items>
+			
+</gsa-template>	

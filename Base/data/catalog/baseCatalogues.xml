@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+
+	<import-items>
+
+		<!-- CATALOGUE -->
+		<add-item item-descriptor="catalog" id="baseCatalog">
+		  <!-- rdonly   <set-property name="parentFolders"><![CDATA[BaseCatalogFolder]]></set-property>  -->
+		  <set-property name="rootCategories"><![CDATA[tddRootCategory]]></set-property>
+		  <!-- rdonly   <set-property name="rootCategoryIds"><![CDATA[tddRootCategory]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[TDD Master Catalog]]></set-property>
+		  <set-property name="directAncestorCatalogsAndSelf"><![CDATA[baseCatalog]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="allRootCategories"><![CDATA[tddRootCategory]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="allRootCategoryIds"><![CDATA[tddRootCategory]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="ancestorCatalogsAndSelf"><![CDATA[baseCatalog]]></set-property>  -->
+		  <set-property name="lastModifiedDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="rootNavigationCategory"><![CDATA[rootCategory]]></set-property>
+		    -->
+		</add-item>
+		
+		<!-- CATEGORIES -->
+		
+		<!-- Root Category -->
+		<add-item item-descriptor="category" id="tddRootCategory">
+		  <!-- rdonly  derived   <set-property name="parentCatalog"><![CDATA[baseCatalog]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[TDD Root Category]]></set-property> 
+		  <set-property name="fixedChildCategories"><![CDATA[catClothing,catElectricals]]></set-property>
+		  <!-- rdonly   <set-property name="childCategories"><![CDATA[cat50056,cat50001,catMen,cat50097,cat10016]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicRelatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="description"><![CDATA[TDD Root Category]]></set-property>
+		  <set-property name="longDescription"><![CDATA[TDD Root Category]]></set-property>
+		  <!-- rdonly   <set-property name="parentCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- rdonly   <set-property name="relatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicChildProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <!-- rdonly   <set-property name="childProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly  derived   <set-property name="catalog"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>		  
+		  <!-- rdonly   <set-property name="dynamicChildCategories"><![CDATA[__NULL__]]></set-property>  -->		  		  
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="longDescriptionDefault"><![CDATA[TDD Root Category]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[TDD Root Category]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlaterootCategory,es=es_xlaterootCategory]]></set-property>
+		    -->
+		    
+		</add-item>				
+		
+		<!-- Clothing Categroy -->
+		<add-item item-descriptor="category" id="catClothing">
+		  <!-- rdonly   <set-property name="fixedParentCategories"><![CDATA[tddRootCategory]]></set-property>  -->
+		  <set-property name="ancestorCategories"><![CDATA[tddRootCategory]]></set-property>		  
+		  <!-- rdonly   <set-property name="ancestorCategoryIds"><![CDATA[tddRootCategory]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Clothing]]></set-property>		  
+		  <set-property name="fixedChildCategories"><![CDATA[catMensClothing,catWomensClothing]]></set-property>
+		  <!-- export is false   <set-property name="generatedAncestorsMap"><![CDATA[baseCatalog=tddRootCategory]]></set-property>  -->
+		  <!-- rdonly   <set-property name="childCategories"><![CDATA[catMensClothing,catWomensClothing]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicRelatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="longDescription"><![CDATA[Looking for the perfect outfit? TDD Shop has everything you need in our Clothing collection. ]]></set-property>
+		  <!-- rdonly   <set-property name="relatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicChildProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- <set-property name="relatedProducts"><![CDATA[prodMensBelt,xprod1002,xprod1007,xprod1008]]></set-property> -->
+		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="keywords"><![CDATA[mens,womens,belts,jackets,shirts,dresses,him,her,TDD Shop.com]]></set-property>
+		  <!-- rdonly   <set-property name="childProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="parentCategoriesForCatalog"><![CDATA[baseCatalog=tddRootCategory]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- export is false   <set-property name="isAncestorsGeneratedMap"><![CDATA[baseCatalog=true]]></set-property>  -->
+		  
+		  <!-- rdonly  derived   <set-property name="catalog"><![CDATA[masterCatalog]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  		  
+		  <!-- rdonly   <set-property name="dynamicChildCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="displayNameDefault"><![CDATA[Gift Shop]]></set-property>
+		  <set-property name="longDescriptionDefault"><![CDATA[Looking for the perfect outfit? TDD Shop has everything you need in our Clothing collection. ]]></set-property>		  
+		  <set-property name="translations"><![CDATA[de=xlatecat50056,es=es_xlatecat50056]]></set-property>
+		  <set-property name="feature"><![CDATA[bannerClothing]]></set-property>
+		  <set-property name="myFeature"><![CDATA[bannerClothing]></set-property>
+		  <set-property name="keywordsDefault"><![CDATA[mens,womens,belts,jackets,shirts,dresses,him,her,TDD Shop.com]]></set-property>
+		  <set-property name="heroImage"><![CDATA[xmClothingHeroImage]]></set-property>
+		    -->
+		</add-item>
+		
+		<!-- Mens Clothing Category -->
+		<add-item item-descriptor="category" id="catMensClothing">
+		  <!-- rdonly   <set-property name="fixedParentCategories"><![CDATA[catClothing]]></set-property>  -->
+		  <set-property name="description"><![CDATA[Clothes for him]]></set-property>
+		  <set-property name="ancestorCategories"><![CDATA[tddRootCategory,catClothing]]></set-property>		  
+		  <!-- rdonly   <set-property name="ancestorCategoryIds"><![CDATA[tddRootCategory,catClothing]]></set-property>  -->
+		  <set-property name="fixedRelatedCategories"><![CDATA[catWomensClothing]]></set-property>
+		  <set-property name="displayName"><![CDATA[Mens Clothes]]></set-property>		  		  
+		  <!-- rdonly   <set-property name="childCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicRelatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="longDescription"><![CDATA[Mens clothes including jackets, boots, belts, shoes and many other accessories]]></set-property>
+		  <!-- rdonly   <set-property name="relatedCategories"><![CDATA[catWomensClothing]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicChildProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="fixedChildProducts"><![CDATA[prodMensBelt,prodMensJacket,prodMensJeans,prodMensShoes]]></set-property>		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="keywords"><![CDATA[clothes for him,clothes,him,TDD Shop.com]]></set-property>
+		  <!-- rdonly   <set-property name="childProducts"><![CDATA[xprod1001,xprod1002,xprod1003,xprod1004,xprod1005,xprod1006,xprod1014]]></set-property>  -->
+		  <set-property name="parentCategoriesForCatalog"><![CDATA[baseCatalog=catClothing]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>		  
+		  <!-- rdonly  derived   <set-property name="catalog"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>		  
+		  <!-- rdonly   <set-property name="dynamicChildCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="displayNameDefault"><![CDATA[Mens Clothes]]></set-property>		  
+		  <set-property name="longDescriptionDefault"><![CDATA[Mens clothes including jackets, boots, belts, shoes and many other accessories]]></set-property>
+		  <set-property name="translations"><![CDATA[de=xlateAccessories-Mens,es=es_xlatecat50067]]></set-property>		  		  
+		  <set-property name="keywordsDefault"><![CDATA[clothes for him,clothes,him,ATG Store.com]]></set-property>		  
+		    -->
+		</add-item>
+		
+		<!-- Womens Clothing Category -->
+		<add-item item-descriptor="category" id="catWomensClothing">
+		  <!-- rdonly   <set-property name="fixedParentCategories"><![CDATA[catClothing]]></set-property>  -->
+		  <set-property name="description"><![CDATA[Clothes for her]]></set-property>
+		  <set-property name="ancestorCategories"><![CDATA[tddRootCategory,catClothing]]></set-property>		  
+		  <!-- rdonly   <set-property name="ancestorCategoryIds"><![CDATA[tddRootCategory,catClothing]]></set-property>  -->
+		  <set-property name="fixedRelatedCategories"><![CDATA[catMensClothing]]></set-property>
+		  <set-property name="displayName"><![CDATA[Womens Clothes]]></set-property>		  		  
+		  <!-- rdonly   <set-property name="childCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicRelatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="longDescription"><![CDATA[Womens clothes including dresses, jackets, boots, belts, shoes and many other accessories]]></set-property>
+		  <!-- rdonly   <set-property name="relatedCategories"><![CDATA[catWomensClothing]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicChildProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="fixedChildProducts"><![CDATA[prodWomensDress1,prodWomensJacket1,prodWomensBoots1,prodWomensShoes1,prodWomensBoots1]]></set-property>		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="keywords"><![CDATA[clothes for her,clothes,her,TDD Shop.com]]></set-property>
+		  <!-- rdonly   <set-property name="childProducts"><![CDATA[xprod1001,xprod1002,xprod1003,xprod1004,xprod1005,xprod1006,xprod1014]]></set-property>  -->
+		  <set-property name="parentCategoriesForCatalog"><![CDATA[baseCatalog=catClothing]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>		  
+		  <!-- rdonly  derived   <set-property name="catalog"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>		  
+		  <!-- rdonly   <set-property name="dynamicChildCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="displayNameDefault"><![CDATA[Mens Clothes]]></set-property>		  
+		  <set-property name="longDescriptionDefault"><![CDATA[Mens clothes including jackets, boots, belts, shoes and many other accessories]]></set-property>
+		  <set-property name="translations"><![CDATA[de=xlateAccessories-Mens,es=es_xlatecat50067]]></set-property>		  		  
+		  <set-property name="keywordsDefault"><![CDATA[clothes for him,clothes,him,ATG Store.com]]></set-property>		  
+		    -->
+		</add-item>
+		
+		<!-- Electricals Category -->
+		<add-item item-descriptor="category" id="catElectricals">
+		  <!-- rdonly   <set-property name="fixedParentCategories"><![CDATA[tddRootCategory]]></set-property>  -->
+		  <set-property name="ancestorCategories"><![CDATA[tddRootCategory]]></set-property>		  
+		  <!-- rdonly   <set-property name="ancestorCategoryIds"><![CDATA[tddRootCategory]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Electricals]]></set-property>		  
+		  <set-property name="fixedChildCategories"><![CDATA[catPhones,catTelevisions]]></set-property>
+		  <!-- export is false   <set-property name="generatedAncestorsMap"><![CDATA[baseCatalog=tddRootCategory]]></set-property>  -->
+		  <!-- rdonly   <set-property name="childCategories"><![CDATA[catPhones,catTelevisions]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicRelatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="longDescription"><![CDATA[Keep up to date with the latest Electrical goods at TDD Shop. ]]></set-property>
+		  <!-- rdonly   <set-property name="relatedCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- rdonly   <set-property name="dynamicChildProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- <set-property name="relatedProducts"><![CDATA[xprod1001,xprod1002,xprod1007,xprod1008]]></set-property> -->
+		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="keywords"><![CDATA[mobile,phone,television,tv,TDD Shop.com]]></set-property>
+		  <!-- rdonly   <set-property name="childProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <set-property name="parentCategoriesForCatalog"><![CDATA[baseCatalog=tddRootCategory]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- export is false   <set-property name="isAncestorsGeneratedMap"><![CDATA[baseCatalog=true]]></set-property>  -->
+		  
+		  <!-- rdonly  derived   <set-property name="catalog"><![CDATA[masterCatalog]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  		  
+		  <!-- rdonly   <set-property name="dynamicChildCategories"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="displayNameDefault"><![CDATA[Electricals]]></set-property>
+		  <set-property name="longDescriptionDefault"><![CDATA[Keep up to date with the latest Electrical goods at TDD Shop. ]]></set-property>		  
+		  <set-property name="translations"><![CDATA[de=xlatecat50056,es=es_xlatecat50056]]></set-property>
+		  <set-property name="feature"><![CDATA[bannerElectricals]]></set-property>
+		  <set-property name="myFeature"><![CDATA[bannerElectricals]></set-property>
+		  <set-property name="keywordsDefault"><![CDATA[mobile,phone,television,tv,TDD Shop.com]]></set-property>
+		  <set-property name="heroImage"><![CDATA[xmElectricalsHeroImage]]></set-property>
+		    -->
+		</add-item>
+		
+		<!-- Phone Category -->
+		
+		<!-- Televisions Category -->
+		
+		<!-- PRODUCTS -->
+		
+		<!-- Mens Clothing -->
+		
+		<!--Mens Belts -->		
+		<add-item item-descriptor="product" id="prodMensBelt">
+		  <!-- rdonly  derived   <set-property name="daysAvailable"><![CDATA[2206]]></set-property>  -->
+		  <set-property name="childSKUs"><![CDATA[skuCasualBeltBrownSmall,skuCasualBeltBrownMedium,skuCasualBeltBrownLarge,skuCasualBeltBlackSmall,skuCasualBeltBlackMedium,skuCasualBeltBlackLarge]]></set-property>
+		  <!-- rdonly  derived   <set-property name="description"><![CDATA[Formal repp ties in a variety of colors]]></set-property>  -->		  
+		  <set-property name="ancestorCategories"><![CDATA[tddRootCategory,catMensClothing,catClothing]]></set-property>		  
+		  <!-- rdonly   <set-property name="ancestorCategoryIds"><![CDATA[tddRootCategory,catMensClothing,catClothing]]></set-property>  -->
+		  <set-property name="brand"><![CDATA[TDD Test Shop]]></set-property>		  		  
+		  <set-property name="displayName"><![CDATA[Test Mens Belt]]></set-property>
+		  <!-- rdonly   <set-property name="dynamicRelatedProducts"><![CDATA[__NULL__]]></set-property>  -->		  		  
+		  <!-- rdonly   <set-property name="dynamicUpsellProducts"><![CDATA[__NULL__]]></set-property>  -->		  		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->		  
+		  <set-property name="longDescription"><![CDATA[A casual belt to suit all mens jeans.]]></set-property>		  		  
+		  <!-- rdonly   <set-property name="relatedProducts"><![CDATA[xprod1047,xprod2138]]></set-property>  -->
+		  <set-property name="fixedRelatedProducts"><![CDATA[xprod1047,xprod2138]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="keywords"><![CDATA[belt,brown,black,elegant,buckle,casual,mens]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <set-property name="parentCategoriesForCatalog"><![CDATA[baseCatalog=catMensClothing]]></set-property>		  
+		  
+		  <!-- derived   <set-property name="catalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- rdonly   <set-property name="parentCategories"><![CDATA[catMensClothing]]></set-property>  -->
+		  <set-property name="relatedProductGroup"><![CDATA[]]></set-property>
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <!-- rdonly  derived   <set-property name="dateAvailable"><![CDATA[10/21/2008 12:14:50]]></set-property>  -->		  		  
+		  <!-- rdonly   <set-property name="upsellProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="displayNameDefault"><![CDATA[Electricals]]></set-property>
+		  <set-property name="descriptionDefault"><![CDATA[TDD Test Belt]]></set-property>
+		  <set-property name="longDescriptionDefault"><![CDATA[A casual belt to suit all jeans.]]></set-property>
+		  <set-property name="briefDescriptionDefault"><![CDATA[TDD Test Belt 1]]></set-property>		  
+		  <set-property name="translations"><![CDATA[de=xlatexprod1001,es=es_xlatexprod1001]]></set-property>
+		  <set-property name="features"><![CDATA[leather]]></set-property>
+		  <set-property name="keywordsDefault"><![CDATA[belt,brown,black,elegant,buckle,leather,mens]]></set-property>
+		  <set-property name="template"><![CDATA[xm1004]]></set-property>
+		  <set-property name="new"><![CDATA[false]]></set-property>
+		  <set-property name="briefDescription"><![CDATA[Mens Belt 1]]></set-property>
+		    -->
+		</add-item>
+		
+		<!--Mens Jackets -->
+		<add-item item-descriptor="product" id="prodMensJacket">
+		  <!-- rdonly  derived   <set-property name="daysAvailable"><![CDATA[2206]]></set-property>  -->
+		  <set-property name="childSKUs"><![CDATA[skuMensJacketSmall,skuMensJacketMedium,skuMensJacketLarge]]></set-property>
+		  <set-property name="description"><![CDATA[Denim Jacket with Fleece Lining]]></set-property>
+		  <set-property name="ancestorCategories"><![CDATA[tddRootCategory,catMensClothing,catClothing]]></set-property>		  
+		  <!-- rdonly   <set-property name="ancestorCategoryIds"><![CDATA[tddRootCategory,catMensClothing,catClothing]]></set-property>  -->
+		  <set-property name="brand"><![CDATA[TDD Test Shop]]></set-property>		  		  
+		  <set-property name="displayName"><![CDATA[Test Mens Jacket]]></set-property>
+		  <!-- rdonly   <set-property name="dynamicRelatedProducts"><![CDATA[__NULL__]]></set-property>  -->		  		  
+		  <!-- rdonly   <set-property name="dynamicUpsellProducts"><![CDATA[__NULL__]]></set-property>  -->		  		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->		  
+		  <set-property name="longDescription"><![CDATA[Denim Jacket with Fleece Lining and Collar.]]></set-property>		  		  
+		  <!-- rdonly   <set-property name="relatedProducts"><![CDATA[xprod1047,xprod2138]]></set-property>  -->
+		  <set-property name="fixedRelatedProducts"><![CDATA[xprod1047,xprod2138]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="keywords"><![CDATA[jacket,denim,fleece,collar,casual,mens]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <set-property name="parentCategoriesForCatalog"><![CDATA[baseCatalog=catMensClothing]]></set-property>		  
+		  
+		  <!-- derived   <set-property name="catalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- rdonly   <set-property name="parentCategories"><![CDATA[catMensClothing]]></set-property>  -->
+		  <set-property name="relatedProductGroup"><![CDATA[]]></set-property>
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <!-- rdonly  derived   <set-property name="dateAvailable"><![CDATA[10/21/2008 12:14:50]]></set-property>  -->		  		  
+		  <!-- rdonly   <set-property name="upsellProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="displayNameDefault"><![CDATA[Electricals]]></set-property>
+		  <set-property name="descriptionDefault"><![CDATA[TDD Test Belt]]></set-property>
+		  <set-property name="longDescriptionDefault"><![CDATA[A casual belt to suit all jeans.]]></set-property>
+		  <set-property name="briefDescriptionDefault"><![CDATA[TDD Test Belt 1]]></set-property>		  
+		  <set-property name="translations"><![CDATA[de=xlatexprod1001,es=es_xlatexprod1001]]></set-property>
+		  <set-property name="features"><![CDATA[leather]]></set-property>
+		  <set-property name="keywordsDefault"><![CDATA[belt,brown,black,elegant,buckle,leather,mens]]></set-property>
+		  <set-property name="template"><![CDATA[xm1004]]></set-property>
+		  <set-property name="new"><![CDATA[false]]></set-property>
+		  <set-property name="briefDescription"><![CDATA[Mens Belt 1]]></set-property>
+		    -->
+		</add-item>
+		
+		<!-- WOMENS CLOTHING -->	
+		
+		<!-- SKUS -->
+
+		<!-- Mens Belts -->
+		<add-item item-descriptor="sku" id="skuCasualBeltBrownSmall">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensBelt]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="color"><![CDATA[Brown]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Casual Jeans Brown Belt Small]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Casual Jeans Brown Belt Small]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Brown]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Casual Jeans Brown Belt Small]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>	
+		
+		<add-item item-descriptor="sku" id="skuCasualBeltBrownMedium">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensBelt]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="color"><![CDATA[Brown]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Casual Jeans Brown Belt Medium]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Casual Jeans Brown Belt Medium]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Brown]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Casual Jeans Brown Belt Medium]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>	
+		
+		<add-item item-descriptor="sku" id="skuCasualBeltBrownLarge">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensBelt]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="color"><![CDATA[Brown]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Casual Jeans Brown Belt Large]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Casual Jeans Brown Belt Large]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Brown]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Casual Jeans Brown Belt Large]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>			
+		
+		<add-item item-descriptor="sku" id="skuCasualBeltBlackSmall">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensBelt]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="color"><![CDATA[Brown]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Casual Jeans Black Belt Small]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Casual Jeans Brown Black Small]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Brown]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Casual Jeans Black Belt Small]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>	
+		
+		<add-item item-descriptor="sku" id="skuCasualBeltBlackMedium">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensBelt]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="color"><![CDATA[Brown]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Casual Jeans Black Belt Medium]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Casual Jeans Black Belt Medium]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Brown]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Casual Jeans Black Belt Medium]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>	
+		
+		<add-item item-descriptor="sku" id="skuCasualBeltBlackLarge">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensBelt]]></set-property>  -->
+		  <!-- rdonly  derived   <set-property name="color"><![CDATA[Brown]]></set-property>  -->
+		  <set-property name="displayName"><![CDATA[Casual Jeans Black Belt Large]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Casual Jeans Black Belt Large]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Blue]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Casual Jeans Black Belt Large]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>		
+		
+		<!-- Mens Jackets -->	
+		<add-item item-descriptor="sku" id="skuMensJacketSmall">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensJacket]]></set-property>  -->		  
+		  <set-property name="displayName"><![CDATA[Mens Denim Jacket Small]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Mens Denim Jacket Small]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Blue]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Mens Denim Jacket Small]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		    -->		
+		</add-item>	
+		
+		<add-item item-descriptor="sku" id="skuMensJacketMedium">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensJacket]]></set-property>  -->		  
+		  <set-property name="displayName"><![CDATA[Mens Denim Jacket Medium]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Mens Denim Jacket Medium]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Blue]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Mens Denim Jacket Medium]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		  <set-property name="color"><![CDATA[Blue]]></set-property>
+		    -->		
+		</add-item>	
+		
+		<add-item item-descriptor="sku" id="skuMensJacketLarge">		  
+		  	  
+		  <!-- rdonly   <set-property name="parentProducts"><![CDATA[prodMensJacket]]></set-property>  -->		  
+		  <set-property name="displayName"><![CDATA[Mens Denim Jacket Large]]></set-property>
+		  
+		  <!-- rdonly  derived   <set-property name="derivedCatalogs"><![CDATA[baseCatalog]]></set-property>  -->
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  		  
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="siteIds"><![CDATA[baseSite]]></set-property>
+		  <!-- rdonly   <set-property name="replacementProducts"><![CDATA[__NULL__]]></set-property>  -->
+		  <!-- derived   <set-property name="catalogs"><![CDATA[masterCatalog]]></set-property>  -->
+		  <set-property name="computedCatalogs"><![CDATA[baseCatalog]]></set-property>
+		  <set-property name="description"><![CDATA[Mens Denim Jacket Large]]></set-property>
+		  <set-property name="type"><![CDATA[sku]]></set-property>
+		  
+		  <!-- These can be added for CRS
+		  <set-property name="colorDefault"><![CDATA[Brown]]></set-property>
+		  <set-property name="size"><![CDATA[30]]></set-property>
+		  <set-property name="sizeDefault"><![CDATA[30]]></set-property>
+		  <set-property name="displayNameDefault"><![CDATA[Mens Denim Jacket Large]]></set-property>
+		  <set-property name="translations"><![CDATA[de=de_xlatesku40124,es=es_xlatesku40124]]></set-property>
+		  <set-property name="color"><![CDATA[Blue]]></set-property>
+		    -->		
+		</add-item>		
+		
+	</import-items>
+			
+</gsa-template>	

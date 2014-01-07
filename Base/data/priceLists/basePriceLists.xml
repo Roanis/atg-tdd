@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+
+	<import-items>
+
+		<add-item item-descriptor="priceList" id="baseListPrices">
+		  <set-property name="displayName"><![CDATA[Base List Prices]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="creationDate"><![CDATA[11/21/2013 11:29:48]]></set-property>
+		  <set-property name="lastModifiedDate"><![CDATA[11/13/2013 20:12:36]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="priceList" id="baseSalePrices">
+		  <set-property name="displayName"><![CDATA[Base Sale Prices]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="creationDate"><![CDATA[11/21/2013 11:29:48]]></set-property>
+		  <set-property name="lastModifiedDate"><![CDATA[11/13/2013 20:12:36]]></set-property>
+		</add-item>
+		
+	</import-items>
+			
+</gsa-template>	

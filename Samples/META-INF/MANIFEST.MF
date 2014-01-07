@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: Roanis TDD Samples
+Implementation-Version: 1.0
+ATG-Config-Path: config
+ATG-Required: Roanis.TDD.Base
+ATG-Client-Class-Path: libs/samples-1.0.jar
+ATG-Class-Path: libs/samples-1.0.jar
+
