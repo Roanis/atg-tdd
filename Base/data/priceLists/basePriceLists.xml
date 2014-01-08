@@ -4,18 +4,33 @@
 
 	<import-items>
 
+		<!-- PRICE LISTS -->
 		<add-item item-descriptor="priceList" id="baseListPrices">
-		  <set-property name="displayName"><![CDATA[Base List Prices]]></set-property>
+		  <set-property name="displayName"><![CDATA[TDD List Prices]]></set-property>
+		  <set-property name="description"><![CDATA[List Prices for the TDD products and skus]]></set-property>
 		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
 		  <set-property name="creationDate"><![CDATA[11/21/2013 11:29:48]]></set-property>
 		  <set-property name="lastModifiedDate"><![CDATA[11/13/2013 20:12:36]]></set-property>
 		</add-item>
 		
 		<add-item item-descriptor="priceList" id="baseSalePrices">
-		  <set-property name="displayName"><![CDATA[Base Sale Prices]]></set-property>
+		  <set-property name="displayName"><![CDATA[TDD Sale Prices]]></set-property>
+		  <set-property name="description"><![CDATA[Sale Prices for the TDD products and skus]]></set-property>
 		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
 		  <set-property name="creationDate"><![CDATA[11/21/2013 11:29:48]]></set-property>
 		  <set-property name="lastModifiedDate"><![CDATA[11/13/2013 20:12:36]]></set-property>
+		</add-item>
+		
+		<!-- PRICES -->
+		
+		<!-- Mens Clothing -->
+		
+		<!-- Belts -->
+		<add-item item-descriptor="price" id="priceCasualBeltBrownSmall">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuCasualBeltBrownSmall]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
 		</add-item>
 		
 	</import-items>

@@ -43,37 +43,21 @@ public abstract class RoanisTestCase extends TestCase {
     @Before
     public void setUp () throws Exception {
         super.setUp();
-        setupMocks();   
-        setUpComponents();
-        setupTestData();                                  
+        setupMocks();                                       
     }
 
     @Override
     @After
     public void tearDown () throws Exception {
-    	tearDownMocks();
-        tearDownComponents();
-        tearDownTestData();
+    	tearDownMocks();        
         super.tearDown();
     }
-
-    public void setupTestData () throws Exception {
-    }
-
+    
     public void setupMocks () {
     }    
-
-    public void setUpComponents () throws Exception {
-    }
-
-    public void tearDownTestData () throws Exception {
-    }
-
+    
     public void tearDownMocks () {
-    }
-
-    public void tearDownComponents () {
-    }
+    }    
     
     public static void shutdownNucleus () {
         if (baseNucleus != null) {

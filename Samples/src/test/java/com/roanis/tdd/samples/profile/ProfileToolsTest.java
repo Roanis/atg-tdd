@@ -7,9 +7,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;  
-
-import atg.userprofiling.ProfileTools;
+import org.junit.runners.JUnit4;
 
 import com.roanis.tdd.base.BaseProfileTest;
 import com.roanis.tdd.base.RoanisTestCase;
@@ -28,33 +26,30 @@ public class ProfileToolsTest extends BaseProfileTest {
     public static void shutdown () {
     	RoanisTestCase.shutdownNucleus();
     }
+    
+    String baseUserEmailAddress;
+    
+    @Override
+    public void setUp() throws Exception {    	
+    	super.setUp();
+    	
+    	baseUserEmailAddress = (String) getBaseProfile().getPropertyValue(mProfileTools.getPropertyManager().getEmailAddressPropertyName());
+    }
 	
-	protected ProfileTools mProfileTools = null;
-	protected String mEmailPropertyName = null;
+    @Override
+    public void tearDown() throws Exception {
+    	baseUserEmailAddress = null;
+    	super.tearDown();
+    }
 	
-	@Override
-	public void setUpComponents() throws Exception {
-		super.setUpComponents();
-		
-		mProfileTools = getProfileTestTools().getProfileTools();
-		mEmailPropertyName = mProfileTools.getPropertyManager().getEmailAddressPropertyName();
+	@Test
+	public void userExists(){
+		assertNotNull(mProfileTools.getItemFromEmail(baseUserEmailAddress));
 	}
 	
 	@Test
-	public void emailAddressExists(){
-		assertNotNull(mProfileTools.getItemFromEmail((String) getBaseProfile().getPropertyValue(mEmailPropertyName)));
-	}
-	
-	@Test
-	public void noEmailAddressFound(){
+	public void noSuchUser(){
 		assertNull(mProfileTools.getItemFromEmail("noSuchEmail@nosuchdomain.com"));
 	}
-	
-	@Override
-	public void tearDownComponents() {
-		mProfileTools = null;
-		mEmailPropertyName = null;
-		super.tearDownComponents();
-	}
-
+		
 }
