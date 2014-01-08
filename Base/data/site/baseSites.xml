@@ -16,7 +16,7 @@
 		  <set-property name="siteIcon"><![CDATA[/rshop/static/images/basesite_logo_small.png]]></set-property>		  
 		  <set-property name="defaultListPriceList"><![CDATA[baseListPrices]]></set-property>
 		  <set-property name="modificationTime"><![CDATA[10/1/2013 22:33:07]]></set-property>		  
-		  <set-property name="defaultCatalog"><![CDATA[baseCatalog]]></set-property>
+		  <!--<set-property name="defaultCatalog"><![CDATA[baseCatalog]]></set-property> -->
 		  <set-property name="defaultSalePriceList"><![CDATA[baseSalePrices]]></set-property>		  		  
 		  <set-property name="name"><![CDATA[Base Test Site]]></set-property>
 		  <set-property name="favicon"><![CDATA[/rshop/static/images/favicon.png]]></set-property>
