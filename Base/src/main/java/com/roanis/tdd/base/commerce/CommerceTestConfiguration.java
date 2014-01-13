@@ -2,6 +2,7 @@ package com.roanis.tdd.base.commerce;
 
 import javax.transaction.TransactionManager;
 
+import atg.commerce.catalog.CatalogTools;
 import atg.commerce.claimable.ClaimableManager;
 import atg.commerce.gifts.GiftlistManager;
 import atg.commerce.order.CommerceItemManager;
@@ -139,6 +140,14 @@ public class CommerceTestConfiguration {
 		mPriceListManager = pPriceListManager;
 	}	
 	
-	
+	private CatalogTools mCatalogTools;
+
+	public CatalogTools getCatalogTools() {
+		return mCatalogTools;
+	}
+
+	public void setCatalogTools(CatalogTools pCatalogTools) {
+		mCatalogTools = pCatalogTools;
+	}
 
 }
