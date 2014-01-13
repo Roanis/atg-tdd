@@ -10,5 +10,10 @@ jar {
         attributes 'ATG-Client-Class-Path': 'libs/samples-1.0.jar', 'ATG-Class-Path': 'libs/samples-1.0.jar'
 		writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
     }
+    
+    test {
+    	// Only run AllTests to start/stop Nucleus once per set of test suites.
+   		include '**/AllTests.class'    	
+	}
 }
 

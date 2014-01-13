@@ -20,7 +20,7 @@ public abstract class RoanisTestCase extends TestCase {
     // The running DUST Nucleus - can also be accessed with
     // Nucleus.getGlobalNucleus()
     protected static Nucleus baseNucleus = null;
-    private static final ApplicationLogging log = ClassLoggingFactory.getFactory().getLoggerForClass(RoanisTestCase.class);
+    private static final ApplicationLogging log = ClassLoggingFactory.getFactory().getLoggerForClass(RoanisTestCase.class);        
     
     public static void startNucleus (List<String> moduleList) throws Exception {   	
         if ((null == moduleList) || (0 == moduleList.size())) {
@@ -42,11 +42,15 @@ public abstract class RoanisTestCase extends TestCase {
     @Override
     @Before
     public void setUp () throws Exception {
-        super.setUp();
+        super.setUp();        
+        setupTestConfiguration();
         setupMocks();                                       
-    }
+    }    
 
-    @Override
+	protected void setupTestConfiguration() {				
+	}
+
+	@Override
     @After
     public void tearDown () throws Exception {
     	tearDownMocks();        
