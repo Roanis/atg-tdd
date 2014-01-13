@@ -38,7 +38,7 @@ public class CatalogToolsTest extends BaseCatalogTest {
 
 	@Test
 	public void skuExists() throws RepositoryException {
-		assertNotNull(getCatalogTools().findSKU(CatalogTestConstants.CASUAL_BELT_BLACK_SMALL_ID));
+		assertNotNull(getCatalogTools().findSKU(CatalogTestConstants.CASUAL_BELT_BLACK_SMALL_SKU_ID));
 	}		
 		
 }
