@@ -1,7 +1,7 @@
 package com.roanis.tdd.base;
 
-import com.roanis.tdd.base.commerce.CatalogTestConstants;
 import com.roanis.tdd.base.commerce.CommerceTestConfiguration;
+import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.base.site.SiteTestConstants;
 
 import atg.commerce.dp.CatalogContext;

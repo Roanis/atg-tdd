@@ -10,11 +10,12 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import com.roanis.tdd.base.RoanisTestCase;
+import com.roanis.tdd.samples.catalog.CatalogTestSuite;
 import com.roanis.tdd.samples.profile.ProfileTestSuite;
 import com.roanis.tdd.samples.site.SiteTestSuite;
 
 @RunWith(Suite.class)
-@SuiteClasses({ProfileTestSuite.class, SiteTestSuite.class})
+@SuiteClasses({ProfileTestSuite.class, SiteTestSuite.class, CatalogTestSuite.class})
 public class AllTests {
 	
 	@BeforeClass
