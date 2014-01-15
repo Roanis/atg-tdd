@@ -5,6 +5,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CurrentUserTest.class, ProfileToolsTest.class})
+@SuiteClasses({ CurrentProfileTest.class, ProfileToolsTest.class})
 public class ProfileTestSuite {
 }

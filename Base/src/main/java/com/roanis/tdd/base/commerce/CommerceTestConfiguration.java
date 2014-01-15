@@ -11,11 +11,10 @@ import atg.commerce.order.OrderManager;
 import atg.commerce.order.PaymentGroupManager;
 import atg.commerce.order.ShippingGroupManager;
 import atg.commerce.order.purchase.PurchaseProcessHelper;
+import atg.commerce.pricing.PricingTools;
 import atg.commerce.pricing.priceLists.PriceListManager;
 import atg.commerce.profile.CommerceProfileTools;
-import atg.multisite.SiteContextManager;
-import atg.multisite.SiteManager;
-import atg.multisite.SiteTools;
+import atg.commerce.profile.CommercePropertyManager;
 import atg.service.pipeline.PipelineManager;
 
 public class CommerceTestConfiguration {
@@ -148,6 +147,26 @@ public class CommerceTestConfiguration {
 
 	public void setCatalogTools(CatalogTools pCatalogTools) {
 		mCatalogTools = pCatalogTools;
+	}
+	
+	private CommercePropertyManager mCommercePropertyManager;
+
+	public CommercePropertyManager getCommercePropertyManager() {
+		return mCommercePropertyManager;
+	}
+
+	public void setCommercePropertyManager(CommercePropertyManager pCommercePropertyManager) {
+		mCommercePropertyManager = pCommercePropertyManager;
+	}
+	
+	private PricingTools mPricingTools;
+
+	public PricingTools getPricingTools() {
+		return mPricingTools;
+	}
+
+	public void setPricingTools(PricingTools pPricingTools) {
+		mPricingTools = pPricingTools;
 	}
 
 }

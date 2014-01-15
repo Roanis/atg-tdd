@@ -9,7 +9,7 @@ import atg.servlet.ServletUtil;
 import com.roanis.tdd.base.BaseProfileTest;
 
 @RunWith(JUnit4.class)
-public class CurrentUserTest extends BaseProfileTest {
+public class CurrentProfileTest extends BaseProfileTest {
 
 	@Test
 	public void currentUserExists() {
