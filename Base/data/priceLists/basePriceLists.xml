@@ -21,7 +21,7 @@
 		  <set-property name="lastModifiedDate"><![CDATA[11/13/2013 20:12:36]]></set-property>
 		</add-item>
 		
-		<!-- PRICES -->
+		<!-- LIST PRICES -->
 		
 		<!-- Mens Clothing -->
 		
@@ -31,6 +31,146 @@
 		  <set-property name="skuId"><![CDATA[skuCasualBeltBrownSmall]]></set-property>
 		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
 		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceCasualBeltBrownMedium">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuCasualBeltBrownMedium]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceCasualBeltBrownLarge">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuCasualBeltBrownLarge]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceCasualBeltBlackSmall">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuCasualBeltBlackSmall]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceCasualBeltBlackMedium">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuCasualBeltBlackMedium]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceCasualBeltBlackLarge">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuCasualBeltBlackLarge]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[19.99]]></set-property>
+		</add-item>
+		
+		<!-- Mens Jackets -->
+		<add-item item-descriptor="price" id="priceMensJacketSmall">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuMensJacketSmall]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[85.00]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceMensJacketMedium">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuMensJacketMedium]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[85.00]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceMensJacketLarge">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuMensJacketLarge]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[85.00]]></set-property>
+		</add-item>
+		
+		<!-- Womens Dress -->
+		<add-item item-descriptor="price" id="priceDressBlue8">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuDressBlue8]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[24.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceDressBlue10">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuDressBlue10]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[24.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceDressBlue12">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuDressBlue12]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[24.99]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceDressBlue14">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuDressBlue14]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[24.99]]></set-property>
+		</add-item>
+		
+		<!-- Womens Boots -->	
+		<add-item item-descriptor="price" id="priceWomensBoots5">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuWomensBoots5]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[34.00]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceWomensBoots6">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuWomensBoots6]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[34.00]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceWomensBoots7">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuWomensBoots7]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[34.00]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="price" id="priceWomensBoots8">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuWomensBoots8]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[34.00]]></set-property>
+		</add-item>
+		
+		<!-- Phones -->
+		<add-item item-descriptor="price" id="pricePhone">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuPhone]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[329.00]]></set-property>
+		</add-item>
+		
+		<!-- Televisions -->		
+		<add-item item-descriptor="price" id="priceTelevision">
+		  <set-property name="priceList"><![CDATA[baseListPrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuTelevision]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[299.00]]></set-property>
+		</add-item>
+		
+		<!-- SALE PRICES -->
+		<!-- Phones -->
+		<add-item item-descriptor="price" id="pricePhone">
+		  <set-property name="priceList"><![CDATA[baseSalePrices]]></set-property>
+		  <set-property name="skuId"><![CDATA[skuPhone]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->		  
+		  <set-property name="listPrice"><![CDATA[269.00]]></set-property>
 		</add-item>
 		
 	</import-items>
