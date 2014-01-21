@@ -2,6 +2,7 @@ package com.roanis.tdd.samples.catalog;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -30,10 +31,6 @@ public class CatalogToolsTest extends BaseCatalogTest {
 		RepositoryItem jacket = getCatalogTools().findProduct(CatalogTestConstants.MENS_JACKET_PRODUCT_ID);
 		List<RepositoryItem> childSkus = (List<RepositoryItem>) jacket.getPropertyValue("childSKUs");
 		assertEquals(3, childSkus.size());
-		
-		for (RepositoryItem sku : childSkus) {
-			assertNotNull(sku.getPropertyValue("description"));
-		}
 	}
 
 	@Test
