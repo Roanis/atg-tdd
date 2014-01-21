@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import atg.servlet.ServletUtil;
+
 import com.roanis.tdd.base.BaseProfileTest;
 
 @RunWith(JUnit4.class)
@@ -15,7 +17,7 @@ public class ProfileToolsTest extends BaseProfileTest {
     public void setUp() throws Exception {    	
     	super.setUp();
     	
-    	baseUserEmailAddress = (String) getBaseProfile().getPropertyValue(getProfileTestConfiguration().getPropertyManager().getEmailAddressPropertyName());
+    	baseUserEmailAddress = (String) ServletUtil.getCurrentUserProfile().getPropertyValue(getProfileTestHelper().getPropertyManager().getEmailAddressPropertyName());
     }
 	
     @Override
@@ -26,12 +28,12 @@ public class ProfileToolsTest extends BaseProfileTest {
 	
 	@Test
 	public void userExists(){
-		assertNotNull(getProfileTestConfiguration().getProfileTools().getItemFromEmail(baseUserEmailAddress));
+		assertNotNull(getProfileTestHelper().getProfileTools().getItemFromEmail(baseUserEmailAddress));
 	}
 	
 	@Test
 	public void noSuchUser(){
-		assertNull(getProfileTestConfiguration().getProfileTools().getItemFromEmail("noSuchEmail@nosuchdomain.com"));
+		assertNull(getProfileTestHelper().getProfileTools().getItemFromEmail("noSuchEmail@nosuchdomain.com"));
 	}
 		
 }

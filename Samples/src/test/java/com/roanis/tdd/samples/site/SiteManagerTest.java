@@ -18,7 +18,7 @@ public class SiteManagerTest extends BaseSiteTest {
 	@Override
 	public void setUp() throws Exception {
 		super.setUp();
-		mSiteManager = getSiteTestConfiguration().getSiteManager();
+		mSiteManager = getSiteTestHelper().getSiteManager();
 	}
 	
 	@Override

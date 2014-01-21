@@ -4,18 +4,30 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import atg.commerce.pricing.priceLists.PriceListManager;
+import atg.commerce.pricing.priceLists.PriceListException;
 import atg.repository.RepositoryItem;
 
-import com.roanis.tdd.base.BaseCommerceTest;
+import com.roanis.tdd.base.BasePriceListTest;
+import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
 
 @RunWith(JUnit4.class)
-public class PriceListManagerTest extends BasePriceTest {
-	
+public class PriceListManagerTest extends BasePriceListTest {
+		
+	@Test
+	public void priceListExists(){
+		assertNotNull(getListPrices());
+	}
 	
 	@Test
-	public void skuPriceExists() {
-		RepositoryItem price = getPriceListManager().getPrice(pPriceListId, pProductId, pSkuId);
+	public void salePriceListExists(){
+		assertNotNull(getSalePrices());
+	}
+	
+	@Test
+	public void skuPriceExists() throws PriceListException {
+		RepositoryItem price = getPriceListManager().getPrice(getListPrices().getRepositoryId(), CatalogTestConstants.MENS_BELT_PRODUCT_ID, CatalogTestConstants.CASUAL_BELT_BROWN_SMALL_SKU_ID);
+		assertNotNull(price);
+		assertEquals(19.99D, price.getPropertyValue(getPriceListManager().getListPricePropertyName()));
 	}
 	
 	

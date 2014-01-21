@@ -1,102 +1,106 @@
 package com.roanis.tdd.base;
 
-import com.roanis.tdd.base.commerce.CommerceTestConfiguration;
-import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
-import com.roanis.tdd.base.site.SiteTestConstants;
+import junit.framework.TestCase;
 
-import atg.commerce.dp.CatalogContext;
-import atg.commerce.order.Order;
-import atg.multisite.Site;
-import atg.multisite.SiteContextImpl;
-import atg.multisite.SiteContextManager;
+import org.junit.After;
+import org.junit.Before;
+
+import atg.commerce.pricing.priceLists.PriceListException;
 import atg.nucleus.Nucleus;
-import atg.repository.MutableRepositoryItem;
 import atg.repository.RepositoryException;
-import atg.repository.RepositoryItem;
 
-public class BaseCommerceTest extends BaseProfileTest {		
-		
-	private String mOrderId;		
-	private Order mBaseOrder;
+import com.roanis.tdd.base.commerce.catalog.CatalogTestHelper;
+import com.roanis.tdd.base.commerce.pricing.priceLists.PriceListTestHelper;
+import com.roanis.tdd.base.profile.ProfileTestHelper;
+import com.roanis.tdd.base.site.SiteTestHelper;
+
+public abstract class BaseCommerceTest extends TestCase {
+	private SiteTestHelper mSiteTestHelper;	
+	private ProfileTestHelper mProfileTestHelper;
+	private CatalogTestHelper mCatalogTestHelper;	
+	private PriceListTestHelper mPriceListTestHelper;	
+                 
+    @Override
+    @Before
+    public void setUp () throws Exception {
+        super.setUp();        
+        setupTestComponents();        
+    }    
+
+	protected void setupTestComponents() {	
+		mSiteTestHelper = (SiteTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/site/SiteTestHelper");
+		mProfileTestHelper = (ProfileTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/profile/ProfileTestHelper");
+		mCatalogTestHelper = (CatalogTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/catalog/CatalogTestHelper");
+		mPriceListTestHelper = (PriceListTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/pricing/priceLists/PriceListTestHelper");
+	}
 	
-	private RepositoryItem mBaseCatalog;
-	private String mCatalogId = CatalogTestConstants.BASE_CATALOG_ID;
-		
-	private CommerceTestConfiguration mCommerceTestConfiguration;
+	protected void setupSites() throws Exception {	
+		getSiteTestHelper().defaultCurrentSite();
+	}
 	
+	protected void setupProfiles() throws Exception {
+		getProfileTestHelper().defaultCurrentProfile();
+	}
+	
+	protected void setupCatalogs() throws RepositoryException{
+		getCatalogTestHelper().defaultCurrentCatalog();
+	}
+	
+	protected void setupProfilePriceLists() throws PriceListException{
+		getPriceListTestHelper().defaultCurrentProfilePriceLists();
+	}
+
 	@Override
-	public void setUp() throws Exception {
-		super.setUp();				
-		setupCatalog();
-		setupOrder();
-	}
-	
-	@Override
-	protected void setupTestConfiguration() {		
-		super.setupTestConfiguration();
-		
-		mCommerceTestConfiguration = (CommerceTestConfiguration) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/CommerceTestConfiguration");
-	}
-	
-	protected void setupCatalog() throws RepositoryException {
-		mBaseCatalog = getCommerceTestConfiguration().getCatalogTools().getCatalog().getItem(getCatalogId(), "catalog"); 
-		CatalogContext.setCurrentCatalog(mBaseCatalog); 		
-	}
-	
-	protected void setupOrder() {
-		// TODO Auto-generated method stub
-		
-	}	
-
-	@Override
-	public void tearDown() throws Exception {
-		mOrderId = null;
-		mBaseOrder = null;
-		mCatalogId = null;
-		mBaseCatalog = null;
-		mCommerceTestConfiguration = null;
-		super.tearDown();
-	}
-				
-	
-	public Order getBaseOrder() {
-		return mBaseOrder;
+    @After
+    public void tearDown () throws Exception {
+    	tearDownTestComponents();        
+        super.tearDown();
+    }
+    
+    private void tearDownTestComponents() {
+    	mSiteTestHelper = null;		
+    	mProfileTestHelper = null;
+    	mCatalogTestHelper = null;
+    	mPriceListTestHelper = null;
 	}
 
-	public void setBaseOrder(Order pBaseOrder) {
-		mBaseOrder = pBaseOrder;
-	}
-				
-	public CommerceTestConfiguration getCommerceTestConfiguration() {
-		return mCommerceTestConfiguration;
-	}
-
-	public void setCommerceTestConfiguration(CommerceTestConfiguration pCommerceTestConfiguration) {
-		mCommerceTestConfiguration = pCommerceTestConfiguration;
-	}		
-	
-	public String getOrderId() {
-		return mOrderId;
+	public void setupMocks () {
+    }    
+    
+    public void tearDownMocks () {
+    }    
+    
+    public SiteTestHelper getSiteTestHelper() {
+		return mSiteTestHelper;
 	}
 
-	public void setOrderId(String pOrderId) {
-		mOrderId = pOrderId;
+	public void setSiteTestHelper(SiteTestHelper pSiteTestHelper) {
+		mSiteTestHelper = pSiteTestHelper;
 	}
 	
-	public String getCatalogId() {
-		return mCatalogId;
-	}
-
-	public void setCatalogId(String pCatalogId) {
-		mCatalogId = pCatalogId;
-	}
-
-	public RepositoryItem getBaseCatalog() {
-		return mBaseCatalog;
-	}
-
-	public void setBaseCatalog(RepositoryItem pBaseCatalog) {
-		mBaseCatalog = pBaseCatalog;
+	public ProfileTestHelper getProfileTestHelper(){
+		return mProfileTestHelper;
 	}
 	
+	public void setProfileTestHelper(ProfileTestHelper pProfileTestHelper){
+		mProfileTestHelper = pProfileTestHelper;
+	}
+	
+	public CatalogTestHelper getCatalogTestHelper() {
+		return mCatalogTestHelper;
+	}
+
+	public void setCatalogTestHelper(CatalogTestHelper pCatalogTestHelper) {
+		mCatalogTestHelper = pCatalogTestHelper;
+	}
+	
+	public PriceListTestHelper getPriceListTestHelper() {
+		return mPriceListTestHelper;
+	}
+
+	public void setPriceListTestHelper(PriceListTestHelper pPriceListTestHelper) {
+		mPriceListTestHelper = pPriceListTestHelper;
+	}
+    
+      
 }

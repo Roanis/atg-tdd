@@ -1,30 +1,19 @@
 package com.roanis.tdd.base.commerce.catalog;
 
-import atg.commerce.catalog.custom.CustomCatalogTools;
+import atg.commerce.catalog.CatalogTools;
 
 import com.roanis.tdd.base.BaseCommerceTest;
 
 public class BaseCatalogTest extends BaseCommerceTest {
 	
-	private CustomCatalogTools mCatalogTools;
-	
 	@Override
-	protected void setupTestConfiguration() {		
-		super.setupTestConfiguration();
-		mCatalogTools = (CustomCatalogTools) getCommerceTestConfiguration().getCatalogTools();
+	public void setUp() throws Exception {		
+		super.setUp();
+		setupCatalogs();
 	}
 	
-	@Override
-	public void tearDown() throws Exception {
-		mCatalogTools = null;
-	}	
-	
-	public CustomCatalogTools getCatalogTools() {
-		return mCatalogTools;
-	}
-
-	public void setCatalogTools(CustomCatalogTools pCatalogTools) {
-		mCatalogTools = pCatalogTools;
+	public CatalogTools getCatalogTools(){
+		return getCatalogTestHelper().getCatalogTools();
 	}
 
 }

@@ -129,26 +129,6 @@ public class CommerceTestConfiguration {
 		mPurchaseProcessHelper = pPurchaseProcessHelper;
 	}
 	
-	private PriceListManager mPriceListManager;
-
-	public PriceListManager getPriceListManager() {
-		return mPriceListManager;
-	}
-
-	public void setPriceListManager(PriceListManager pPriceListManager) {
-		mPriceListManager = pPriceListManager;
-	}	
-	
-	private CatalogTools mCatalogTools;
-
-	public CatalogTools getCatalogTools() {
-		return mCatalogTools;
-	}
-
-	public void setCatalogTools(CatalogTools pCatalogTools) {
-		mCatalogTools = pCatalogTools;
-	}
-	
 	private CommercePropertyManager mCommercePropertyManager;
 
 	public CommercePropertyManager getCommercePropertyManager() {
