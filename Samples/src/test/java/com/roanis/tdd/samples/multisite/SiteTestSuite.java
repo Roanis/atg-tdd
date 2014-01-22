@@ -1,11 +1,11 @@
-package com.roanis.tdd.samples.inventory;
+package com.roanis.tdd.samples.multisite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ InventoryManagerTest.class })
-public class InventoryTestSuite {
+@SuiteClasses({ CurrentSiteTest.class, SiteManagerTest.class })
+public class SiteTestSuite {
 
 }

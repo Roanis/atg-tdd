@@ -1,4 +1,4 @@
-package com.roanis.tdd.samples.inventory;
+package com.roanis.tdd.samples.commerce.inventory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

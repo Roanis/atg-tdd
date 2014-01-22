@@ -1,4 +1,4 @@
-package com.roanis.tdd.samples.catalog;
+package com.roanis.tdd.samples.commerce.catalog;
 
 import java.util.List;
 

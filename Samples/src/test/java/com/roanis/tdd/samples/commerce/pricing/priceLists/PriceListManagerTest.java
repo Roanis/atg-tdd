@@ -1,4 +1,4 @@
-package com.roanis.tdd.samples.price;
+package com.roanis.tdd.samples.commerce.pricing.priceLists;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

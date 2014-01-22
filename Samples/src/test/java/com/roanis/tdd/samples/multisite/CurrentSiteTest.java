@@ -1,4 +1,4 @@
-package com.roanis.tdd.samples.site;
+package com.roanis.tdd.samples.multisite;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.junit.runners.JUnit4;
 import atg.multisite.SiteContextManager;
 
 import com.roanis.tdd.base.BaseSiteTest;
-import com.roanis.tdd.base.site.SiteTestConstants;
+import com.roanis.tdd.base.multisite.SiteTestConstants;
 
 @RunWith(JUnit4.class)
 public class CurrentSiteTest extends BaseSiteTest {

@@ -1,4 +1,4 @@
-package com.roanis.tdd.base.site;
+package com.roanis.tdd.base.multisite;
 
 import atg.multisite.Site;
 import atg.multisite.SiteContextException;

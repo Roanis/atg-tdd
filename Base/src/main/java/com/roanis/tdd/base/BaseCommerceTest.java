@@ -12,8 +12,8 @@ import atg.repository.RepositoryException;
 import com.roanis.tdd.base.commerce.catalog.CatalogTestHelper;
 import com.roanis.tdd.base.commerce.inventory.InventoryTestHelper;
 import com.roanis.tdd.base.commerce.pricing.priceLists.PriceListTestHelper;
-import com.roanis.tdd.base.profile.ProfileTestHelper;
-import com.roanis.tdd.base.site.SiteTestHelper;
+import com.roanis.tdd.base.multisite.SiteTestHelper;
+import com.roanis.tdd.base.userprofiling.ProfileTestHelper;
 
 public abstract class BaseCommerceTest extends TestCase {
 	private SiteTestHelper mSiteTestHelper;	

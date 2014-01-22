@@ -9,12 +9,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.roanis.tdd.base.util.RoanisNucleusTestUtils;
-import com.roanis.tdd.samples.catalog.CatalogTestSuite;
-import com.roanis.tdd.samples.inventory.InventoryTestSuite;
-import com.roanis.tdd.samples.price.PriceListTestSuite;
-import com.roanis.tdd.samples.profile.ProfileTestSuite;
-import com.roanis.tdd.samples.site.SiteTestSuite;
+import com.roanis.tdd.base.nucleus.RoanisNucleusTestUtils;
+import com.roanis.tdd.samples.commerce.catalog.CatalogTestSuite;
+import com.roanis.tdd.samples.commerce.inventory.InventoryTestSuite;
+import com.roanis.tdd.samples.commerce.pricing.priceLists.PriceListTestSuite;
+import com.roanis.tdd.samples.multisite.SiteTestSuite;
+import com.roanis.tdd.samples.userprofiling.ProfileTestSuite;
 
 @RunWith(Suite.class)
 @SuiteClasses({ProfileTestSuite.class, SiteTestSuite.class, CatalogTestSuite.class, PriceListTestSuite.class, InventoryTestSuite.class})

@@ -1,4 +1,4 @@
-package com.roanis.tdd.samples.site;
+package com.roanis.tdd.samples.multisite;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.junit.Test;

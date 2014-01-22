@@ -1,4 +1,4 @@
-package com.roanis.tdd.base.profile;
+package com.roanis.tdd.base.userprofiling;
 
 import com.roanis.tdd.base.MissingDataException;
 
