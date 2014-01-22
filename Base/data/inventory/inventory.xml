@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+	<header>
+	    <name>Roans TDD Inventory</name>
+	    <author>Roanis Dev Team</author>
+	    <version>1.0</version>
+  	</header>
+
+	<import-items>
+
+		<!-- Mens Belts -->
+		<add-item item-descriptor="inventory" id="invCasualBeltBrownSmall">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Casual Jeans Brown Belt Small]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBrownSmall]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invCasualBeltBrownMedium">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Casual Jeans Brown Belt Medium]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBrownMedium]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invCasualBeltBrownLarge">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Casual Jeans Brown Belt Large]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBrownLarge]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invCasualBeltBlackSmall">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Casual Jeans Black Belt Small]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBlackSmall]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invCasualBeltBlackMedium">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Casual Jeans Black Belt Medium]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBlackMedium]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invCasualBeltBlackLarge">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Casual Jeans Black Belt Large]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBlackLarge]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<!-- Mens Jackets -->
+		<add-item item-descriptor="inventory" id="invMensJacketSmall">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Mens Denim Jacket Small]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuMensJacketSmall]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invMensJacketMedium">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Mens Denim Jacket Medium]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuMensJacketMedium]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invMensJacketLarge">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Mens Denim Jacket Large]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuMensJacketLarge]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<!-- Womens Dress -->
+		<add-item item-descriptor="inventory" id="invDressBlue8">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Blue Tunic Womens Dress, size 8]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuDressBlue8]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invDressBlue10">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Blue Tunic Womens Dress, size 10]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuDressBlue10]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invDressBlue12">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Blue Tunic Womens Dress, size 12]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuDressBlue12]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invDressBlue14">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Blue Tunic Womens Dress, size 14]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuDressBlue14]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<!-- Womens Boots -->	
+		<add-item item-descriptor="inventory" id="invWomensBoots5">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Womens Boots, size 5]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuWomensBoots5]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invWomensBoots6">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Womens Boots, size 6]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuWomensBoots6]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invWomensBoots7">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Womens Boots, size 7]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuWomensBoots7]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="inventory" id="invWomensBoots8">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Womens Boots, size 8]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuWomensBoots8]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<!-- Phones -->
+		<add-item item-descriptor="inventory" id="invPhone">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Phone]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuPhone]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+		<!-- Televisions -->
+		<add-item item-descriptor="inventory" id="invTelevision">
+		  <set-property name="stockThreshold"><![CDATA[5]]></set-property>
+		  <set-property name="displayName"><![CDATA[Test Television]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="catalogRefId"><![CDATA[skuTelevision]]></set-property>
+		  <set-property name="creationDate"><![CDATA[10/1/2013 22:33:07]]></set-property>
+		  <set-property name="stockLevel"><![CDATA[1000]]></set-property>
+		</add-item>
+		
+	</import-items>
+			
+</gsa-template>	

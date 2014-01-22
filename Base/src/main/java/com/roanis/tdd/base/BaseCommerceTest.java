@@ -10,6 +10,7 @@ import atg.nucleus.Nucleus;
 import atg.repository.RepositoryException;
 
 import com.roanis.tdd.base.commerce.catalog.CatalogTestHelper;
+import com.roanis.tdd.base.commerce.inventory.InventoryTestHelper;
 import com.roanis.tdd.base.commerce.pricing.priceLists.PriceListTestHelper;
 import com.roanis.tdd.base.profile.ProfileTestHelper;
 import com.roanis.tdd.base.site.SiteTestHelper;
@@ -19,6 +20,7 @@ public abstract class BaseCommerceTest extends TestCase {
 	private ProfileTestHelper mProfileTestHelper;
 	private CatalogTestHelper mCatalogTestHelper;	
 	private PriceListTestHelper mPriceListTestHelper;	
+	private InventoryTestHelper mInventoryTestHelper;	
                  
     @Override
     @Before
@@ -32,6 +34,7 @@ public abstract class BaseCommerceTest extends TestCase {
 		mProfileTestHelper = (ProfileTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/profile/ProfileTestHelper");
 		mCatalogTestHelper = (CatalogTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/catalog/CatalogTestHelper");
 		mPriceListTestHelper = (PriceListTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/pricing/priceLists/PriceListTestHelper");
+		mInventoryTestHelper = (InventoryTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/inventory/InventoryTestHelper");
 	}
 	
 	protected void setupSites() throws Exception {	
@@ -62,6 +65,7 @@ public abstract class BaseCommerceTest extends TestCase {
     	mProfileTestHelper = null;
     	mCatalogTestHelper = null;
     	mPriceListTestHelper = null;
+    	mInventoryTestHelper = null;
 	}
 
 	public void setupMocks () {
@@ -100,6 +104,14 @@ public abstract class BaseCommerceTest extends TestCase {
 
 	public void setPriceListTestHelper(PriceListTestHelper pPriceListTestHelper) {
 		mPriceListTestHelper = pPriceListTestHelper;
+	}
+	
+	public InventoryTestHelper getInventoryTestHelper() {
+		return mInventoryTestHelper;
+	}
+
+	public void setInventoryTestHelper(InventoryTestHelper pInventoryTestHelper) {
+		mInventoryTestHelper = pInventoryTestHelper;
 	}
     
       

@@ -36,15 +36,15 @@ public class CatalogTestConstants {
     public static final String JACKET_MEDIUM_SKU_ID = "skuCasualBeltBrownMedium";
     public static final String JACKET_LARGE_SKU_ID = "skuCasualBeltBrownLarge";
     
-    public static final String BLUE_DRESS_8_SKU_ID = "skuDressBlue8";
-    public static final String BLUE_DRESS_10_SKU_ID = "skuDressBlue10";
-    public static final String BLUE_DRESS_12_SKU_ID = "skuDressBlue12";
-    public static final String BLUE_DRESS_14_SKU_ID = "skuDressBlue14";
+    public static final String BLUE_DRESS_SIZE_8_SKU_ID = "skuDressBlue8";
+    public static final String BLUE_DRESS_SIZE_10_SKU_ID = "skuDressBlue10";
+    public static final String BLUE_DRESS_SIZE_12_SKU_ID = "skuDressBlue12";
+    public static final String BLUE_DRESS_SIZE_14_SKU_ID = "skuDressBlue14";
     
-    public static final String BOOTS_5_SKU_ID = "skuWomensBoots5";
-    public static final String BOOTS_6_SKU_ID = "skuWomensBoots6";
-    public static final String BOOTS_7_SKU_ID = "skuWomensBoots7";
-    public static final String BOOTS_8_SKU_ID = "skuWomensBoots8";
+    public static final String BOOTS_SIZE_5_SKU_ID = "skuWomensBoots5";
+    public static final String BOOTS_SIZE_6_SKU_ID = "skuWomensBoots6";
+    public static final String BOOTS_SIZE_7_SKU_ID = "skuWomensBoots7";
+    public static final String BOOTS_SIZE_8_SKU_ID = "skuWomensBoots8";
     
     public static final String PHONE_SKU_ID = "skuPhone";
     
