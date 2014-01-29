@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+	<header>
+	    <name>Roans TDD Orders</name>
+	    <author>Roanis Dev Team</author>
+	    <version>1.0</version>
+  	</header>
+
+	<import-items>
+
+		<!-- INCOMPLETE ORDERS -->
+		
+		<!-- Empty Order -->
+		<add-item item-descriptor="order" id="emptyOrder">
+		  <set-property name="description"><![CDATA[emptyOrder]]></set-property>
+		  <!-- rdonly   <set-property name="giftWrapped"><![CDATA[false]]></set-property>  -->
+		  <set-property name="shippingGroups"><![CDATA[sg80008]]></set-property>
+		  <set-property name="profileId"><![CDATA[180000]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="siteId"><![CDATA[storeSiteUS]]></set-property>
+		  <set-property name="orderClassType"><![CDATA[default]]></set-property>
+		  <set-property name="creationDate"><![CDATA[1/29/2014 16:18:19]]></set-property>
+		  <set-property name="paymentGroups"><![CDATA[pg80002]]></set-property>
+		  <set-property name="lastModifiedDate"><![CDATA[1/29/2014 16:18:19]]></set-property>
+		</add-item>
+		
+		<!-- Shipping Groups -->
+		<add-item item-descriptor="hardgoodShippingGroup" id="sg80008">
+		  <set-property name="description"><![CDATA[sg80008]]></set-property>
+		  <set-property name="order"><![CDATA[emptyOrder]]></set-property>
+		  <set-property name="shippingMethod"><![CDATA[Two Day]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="shippingGroupClassType"><![CDATA[hardgoodShippingGroup]]></set-property>
+		  <set-property name="type"><![CDATA[hardgoodShippingGroup]]></set-property>
+		</add-item>
+		
+		<!-- Payment Groups -->
+		<add-item item-descriptor="creditCard" id="pg80002">
+		  <set-property name="paymentGroupClassType"><![CDATA[creditCard]]></set-property>
+		  <set-property name="order"><![CDATA[emptyOrder]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[2]]></set-property>  -->
+		  <set-property name="type"><![CDATA[creditCard]]></set-property>
+		  <set-property name="paymentMethod"><![CDATA[creditCard]]></set-property>
+		</add-item>
+		
+		<!-- /Empty Order -->
+		
+		
+		<!-- Order with Single Item and populated Shipping and Payment groups -->
+		<add-item item-descriptor="order" id="incompleteOrder">
+		  <set-property name="description"><![CDATA[incompleteOrder]]></set-property>
+		  <set-property name="relationships"><![CDATA[r30002,r30003]]></set-property>
+		  <!-- rdonly   <set-property name="giftWrapped"><![CDATA[false]]></set-property>  -->
+		  <set-property name="commerceItems"><![CDATA[ci3000001]]></set-property>
+		  <set-property name="shippingGroups"><![CDATA[sg80002]]></set-property>
+		  <set-property name="profileId"><![CDATA[baseUser]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[13]]></set-property>  -->
+		  <set-property name="siteId"><![CDATA[baseSite]]></set-property>
+		  <set-property name="orderClassType"><![CDATA[default]]></set-property>
+		  <set-property name="creationSiteId"><![CDATA[baseSite]]></set-property>
+		  <set-property name="creationDate"><![CDATA[12/12/2013 15:06:47]]></set-property>
+		  <!-- rdonly   <set-property name="abandonmentInfo"><![CDATA[300001]]></set-property>  -->
+		  <set-property name="paymentGroups"><![CDATA[pg70003]]></set-property>
+		  <set-property name="lastModifiedDate"><![CDATA[1/29/2014 16:04:21]]></set-property>
+		</add-item>
+		
+		<!-- Relationships -->
+		<add-item item-descriptor="shipItemRel" id="r30002">
+		  <set-property name="quantity"><![CDATA[1]]></set-property>
+		  <set-property name="highBound"><![CDATA[0]]></set-property>
+		  <set-property name="order"><![CDATA[incompleteOrder]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[7]]></set-property>  -->
+		  <set-property name="lowBound"><![CDATA[0]]></set-property>
+		  <set-property name="shippingGroup"><![CDATA[sg80002]]></set-property>
+		  <set-property name="relationshipClassType"><![CDATA[shippingGroupCommerceItem]]></set-property>
+		  <set-property name="type"><![CDATA[shipItemRel]]></set-property>
+		  <set-property name="relationshipType"><![CDATA[SHIPPINGQUANTITY]]></set-property>
+		  <set-property name="commerceItem"><![CDATA[ci3000001]]></set-property>
+		</add-item>
+		
+		<add-item item-descriptor="payOrderRel" id="r30003">
+		  <set-property name="order"><![CDATA[incompleteOrder]]></set-property>
+		  <set-property name="orderRef"><![CDATA[incompleteOrder]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[1]]></set-property>  -->
+		  <set-property name="paymentGroup"><![CDATA[pg70003]]></set-property>
+		  <set-property name="relationshipClassType"><![CDATA[paymentGroupOrder]]></set-property>
+		  <set-property name="type"><![CDATA[payOrderRel]]></set-property>
+		  <set-property name="relationshipType"><![CDATA[ORDERAMOUNTREMAINING]]></set-property>
+		</add-item>
+		
+		<!-- Commerce Items -->
+		<add-item item-descriptor="commerceItem" id="ci3000001">
+		  <set-property name="quantity"><![CDATA[1]]></set-property>
+		  <set-property name="order"><![CDATA[incompleteOrder]]></set-property>
+		  <set-property name="commerceItemClassType"><![CDATA[default]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[1]]></set-property>  -->
+		  <set-property name="siteId"><![CDATA[baseSite]]></set-property>
+		  <set-property name="catalogRefId"><![CDATA[skuCasualBeltBlackSmall]]></set-property>
+		  <set-property name="catalogKey"><![CDATA[en_US]]></set-property>
+		  <set-property name="productId"><![CDATA[prodMensBelt]]></set-property>
+		</add-item>
+		
+		<!-- Shipping Groups -->
+		<add-item item-descriptor="hardgoodShippingGroup" id="sg80002">
+		  <set-property name="postalCode"><![CDATA[L701AB]]></set-property>
+		  <set-property name="description"><![CDATA[sg80002]]></set-property>
+		  <set-property name="city"><![CDATA[Belfast]]></set-property>
+		  <set-property name="country"><![CDATA[UK]]></set-property>
+		  <set-property name="phoneNumber"><![CDATA[07653276154]]></set-property>
+		  <set-property name="lastName"><![CDATA[User]]></set-property>
+		  <set-property name="order"><![CDATA[incompleteOrder]]></set-property>
+		  <set-property name="address2"><![CDATA[]]></set-property>
+		  <set-property name="address1"><![CDATA[23 some st]]></set-property>
+		  <set-property name="shippingMethod"><![CDATA[Two Day]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[14]]></set-property>  -->
+		  <set-property name="firstName"><![CDATA[Test]]></set-property>
+		  <set-property name="shippingGroupClassType"><![CDATA[hardgoodShippingGroup]]></set-property>		  
+		  <set-property name="type"><![CDATA[hardgoodShippingGroup]]></set-property>
+		</add-item>
+				
+		<!-- Payment Groups -->
+		<add-item item-descriptor="creditCard" id="pg70003">
+		  <set-property name="postalCode"><![CDATA[L701AB]]></set-property>
+		  <set-property name="city"><![CDATA[Belfast]]></set-property>
+		  <set-property name="country"><![CDATA[UK]]></set-property>
+		  <set-property name="paymentGroupClassType"><![CDATA[creditCard]]></set-property>
+		  <set-property name="phoneNumber"><![CDATA[07653276154]]></set-property>
+		  <set-property name="lastName"><![CDATA[User]]></set-property>
+		  <set-property name="order"><![CDATA[incompleteOrder]]></set-property>
+		  <set-property name="expirationMonth"><![CDATA[2]]></set-property>
+		  <set-property name="address2"><![CDATA[]]></set-property>
+		  <set-property name="address1"><![CDATA[23 some st]]></set-property>
+		  <set-property name="creditCardNumber"><![CDATA[4111111111111111]]></set-property>
+		  <!-- export is false   <set-property name="version"><![CDATA[3]]></set-property>  -->
+		  <set-property name="firstName"><![CDATA[Test]]></set-property>		  
+		  <set-property name="expirationYear"><![CDATA[2014]]></set-property>
+		  <set-property name="creditCardType"><![CDATA[visa]]></set-property>
+		  <set-property name="type"><![CDATA[creditCard]]></set-property>
+		  <set-property name="paymentMethod"><![CDATA[creditCard]]></set-property>
+		</add-item>
+		
+		<!-- /Order with Single Item and populated Shipping and Payment groups -->				
+		
+	</import-items>
+			
+</gsa-template>	

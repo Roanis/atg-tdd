@@ -1,7 +1,5 @@
 package com.roanis.tdd.base;
 
-import junit.framework.TestCase;
-
 import org.junit.After;
 import org.junit.Before;
 
@@ -15,7 +13,7 @@ import com.roanis.tdd.base.commerce.pricing.priceLists.PriceListTestHelper;
 import com.roanis.tdd.base.multisite.SiteTestHelper;
 import com.roanis.tdd.base.userprofiling.ProfileTestHelper;
 
-public abstract class BaseCommerceTest extends TestCase {
+public abstract class BaseCommerceTest extends RoanisTestCase {
 	private SiteTestHelper mSiteTestHelper;	
 	private ProfileTestHelper mProfileTestHelper;
 	private CatalogTestHelper mCatalogTestHelper;	
