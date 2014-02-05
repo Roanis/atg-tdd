@@ -1,7 +1,9 @@
 archivesBaseName = 'base'  
 
-dependencies {
-	    compile 'junit:junit:4+', 'atg:DUST:1.2.2'
+dependencies { 		  
+		// Using libraries.dust instead of 'atg:DUST:1.2.2' results in the wrong classpath and a build failure.
+		// TODO - Might need to include all the libs dust needs, as this may be reading the DUST POM.
+	    compile libraries.junit, 'atg:DUST:1.2.2'
 	}
 
 jar {	

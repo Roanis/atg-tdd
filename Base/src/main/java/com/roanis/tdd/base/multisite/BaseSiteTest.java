@@ -1,4 +1,6 @@
-package com.roanis.tdd.base;
+package com.roanis.tdd.base.multisite;
+
+import com.roanis.tdd.base.BaseCommerceTest;
 
 
 public class BaseSiteTest extends BaseCommerceTest {

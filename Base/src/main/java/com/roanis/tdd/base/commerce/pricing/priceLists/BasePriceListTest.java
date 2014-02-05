@@ -1,4 +1,6 @@
-package com.roanis.tdd.base;
+package com.roanis.tdd.base.commerce.pricing.priceLists;
+
+import com.roanis.tdd.base.BaseCommerceTest;
 
 import atg.commerce.pricing.priceLists.PriceListException;
 import atg.commerce.pricing.priceLists.PriceListManager;

@@ -6,7 +6,7 @@ import org.junit.runners.JUnit4;
 
 import atg.servlet.ServletUtil;
 
-import com.roanis.tdd.base.BaseProfileTest;
+import com.roanis.tdd.base.userprofiling.BaseProfileTest;
 
 @RunWith(JUnit4.class)
 public class CurrentProfileTest extends BaseProfileTest {

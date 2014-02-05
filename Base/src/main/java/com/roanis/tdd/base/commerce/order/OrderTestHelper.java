@@ -1,33 +1,21 @@
-package com.roanis.tdd.base.commerce;
+package com.roanis.tdd.base.commerce.order;
 
 import javax.transaction.TransactionManager;
 
-import atg.commerce.catalog.CatalogTools;
-import atg.commerce.claimable.ClaimableManager;
-import atg.commerce.gifts.GiftlistManager;
 import atg.commerce.order.CommerceItemManager;
 import atg.commerce.order.HandlingInstructionManager;
+import atg.commerce.order.OrderHolder;
 import atg.commerce.order.OrderManager;
 import atg.commerce.order.PaymentGroupManager;
 import atg.commerce.order.ShippingGroupManager;
 import atg.commerce.order.purchase.PurchaseProcessHelper;
+import atg.commerce.pricing.PricingModelHolder;
 import atg.commerce.pricing.PricingTools;
-import atg.commerce.pricing.priceLists.PriceListManager;
 import atg.commerce.profile.CommerceProfileTools;
 import atg.commerce.profile.CommercePropertyManager;
 import atg.service.pipeline.PipelineManager;
 
-public class CommerceTestConfiguration {
-	
-	private ClaimableManager mClaimableManager;
-
-	public ClaimableManager getClaimableManager() {
-		return mClaimableManager;
-	}
-
-	public void setClaimableManager(ClaimableManager pClaimableManager) {
-		mClaimableManager = pClaimableManager;
-	}
+public class OrderTestHelper {
 	
 	private CommerceItemManager mCommerceItemManager;
 
@@ -37,16 +25,6 @@ public class CommerceTestConfiguration {
 
 	public void setCommerceItemManager(CommerceItemManager pCommerceItemManager) {
 		mCommerceItemManager = pCommerceItemManager;
-	}
-	
-	private GiftlistManager mGiftlistManager;
-
-	public GiftlistManager getGiftlistManager() {
-		return mGiftlistManager;
-	}
-
-	public void setGiftlistManager(GiftlistManager pGiftlistManager) {
-		mGiftlistManager = pGiftlistManager;
 	}
 	
 	private HandlingInstructionManager mHandlingInstructionManager;
@@ -147,6 +125,26 @@ public class CommerceTestConfiguration {
 
 	public void setPricingTools(PricingTools pPricingTools) {
 		mPricingTools = pPricingTools;
+	}
+	
+	private PricingModelHolder mUserPricingModels;
+
+	public PricingModelHolder getUserPricingModels() {
+		return mUserPricingModels;
+	}
+
+	public void setUserPricingModels(PricingModelHolder pUserPricingModels) {
+		mUserPricingModels = pUserPricingModels;
+	}
+	
+	private OrderHolder mShoppingCart;
+
+	public OrderHolder getShoppingCart() {
+		return mShoppingCart;
+	}
+
+	public void setShoppingCart(OrderHolder pShoppingCart) {
+		mShoppingCart = pShoppingCart;
 	}
 
 }

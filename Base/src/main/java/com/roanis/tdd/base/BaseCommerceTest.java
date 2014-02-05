@@ -1,9 +1,13 @@
 package com.roanis.tdd.base;
 
+import javax.transaction.TransactionManager;
+
 import org.junit.After;
 import org.junit.Before;
 
 import atg.commerce.pricing.priceLists.PriceListException;
+import atg.dtm.TransactionDemarcation;
+import atg.dtm.TransactionDemarcationException;
 import atg.nucleus.Nucleus;
 import atg.repository.RepositoryException;
 
@@ -19,20 +23,30 @@ public abstract class BaseCommerceTest extends RoanisTestCase {
 	private CatalogTestHelper mCatalogTestHelper;	
 	private PriceListTestHelper mPriceListTestHelper;	
 	private InventoryTestHelper mInventoryTestHelper;	
-                 
+	private TransactionDemarcation mTransactionDemarcation;
+	private TransactionManager mTransactionManager;
+
+	            
     @Override
     @Before
     public void setUp () throws Exception {
         super.setUp();        
-        setupTestComponents();        
-    }    
+        setupTestHelpers();    
+        setupTransaction();
+    }    	
 
-	protected void setupTestComponents() {	
+	protected void setupTestHelpers() {	
 		mSiteTestHelper = (SiteTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/site/SiteTestHelper");
 		mProfileTestHelper = (ProfileTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/profile/ProfileTestHelper");
 		mCatalogTestHelper = (CatalogTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/catalog/CatalogTestHelper");
 		mPriceListTestHelper = (PriceListTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/pricing/priceLists/PriceListTestHelper");
 		mInventoryTestHelper = (InventoryTestHelper) Nucleus.getGlobalNucleus().resolveName("/roanis/tdd/base/commerce/inventory/InventoryTestHelper");
+	}
+	
+	protected void setupTransaction() throws TransactionDemarcationException {
+		mTransactionManager = (TransactionManager) Nucleus.getGlobalNucleus().resolveName("/atg/dynamo/transaction/TransactionManager");
+		mTransactionDemarcation = new TransactionDemarcation();
+		mTransactionDemarcation.begin(mTransactionManager);
 	}
 	
 	protected void setupSites() throws Exception {	
@@ -54,11 +68,18 @@ public abstract class BaseCommerceTest extends RoanisTestCase {
 	@Override
     @After
     public void tearDown () throws Exception {
-    	tearDownTestComponents();        
+    	tearDownTestComponents(); 
+    	rollbackTransaction();
+    	
+    	mTransactionDemarcation = null;
         super.tearDown();
     }
     
-    private void tearDownTestComponents() {
+	protected void rollbackTransaction() throws TransactionDemarcationException {
+		mTransactionDemarcation.end(true);		
+	}
+
+    protected void tearDownTestComponents() {
     	mSiteTestHelper = null;		
     	mProfileTestHelper = null;
     	mCatalogTestHelper = null;
@@ -111,6 +132,22 @@ public abstract class BaseCommerceTest extends RoanisTestCase {
 	public void setInventoryTestHelper(InventoryTestHelper pInventoryTestHelper) {
 		mInventoryTestHelper = pInventoryTestHelper;
 	}
+	
+	public TransactionDemarcation getTransactionDemarcation() {
+		return mTransactionDemarcation;
+	}
+
+	public void setTransactionDemarcation(TransactionDemarcation pTransactionDemarcation) {
+		mTransactionDemarcation = pTransactionDemarcation;
+	}
     
-      
+	public TransactionManager getTransactionManager() {
+		return mTransactionManager;
+	}
+
+	public void setTransactionManager(TransactionManager pTransactionManager) {
+		mTransactionManager = pTransactionManager;
+	}
+	
+     
 }

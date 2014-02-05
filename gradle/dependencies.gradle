@@ -1,0 +1,16 @@
+ext {  	
+    libraries = [:]
+}            
+
+libraries.commons_collections = 'commons-collections:commons-collections:3.2.1@jar'
+libraries.cglib = 'cglib:cglib-nodep:2.2.2'
+libraries.junit = 'junit:junit:4.11@jar'
+   
+libraries.dust = dependencies.module('atg:DUST:1.2.2@jar')
+
+libraries.atg = [
+	files(dynamo_home+'/../DAS/lib/classes.jar', dynamo_home+'/../DAS/lib/resources.jar', dynamo_home+'/../DAS-UI/lib/uiclasses.jar', dynamo_home+'/../DAS/lib/validation-api-1.0.0.GA.jar',
+	  				dynamo_home+'/../DPS/lib/classes.jar', dynamo_home+'/../DPS/lib/resources.jar', 
+	  				dynamo_home+'/../DSS/lib/classes.jar', dynamo_home+'/../DSS/lib/resources.jar',
+	  				dynamo_home+'/../DCS/lib/classes.jar', dynamo_home+'/../DCS/lib/resources.jar')
+]

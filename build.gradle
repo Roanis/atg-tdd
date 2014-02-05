@@ -7,32 +7,35 @@ subprojects {
 	sourceCompatibility = 1.6
 	version = '1.0'
 	
-	project.ext {
-	  dynHome="$System.env.DYNAMO_HOME"  
-	  atgLibs = files(dynHome+'/../DAS/lib/classes.jar', dynHome+'/../DAS/lib/resources.jar', dynHome+'/../DAS-UI/lib/uiclasses.jar', dynHome+'/../DAS/lib/validation-api-1.0.0.GA.jar',
-	  				dynHome+'/../DPS/lib/classes.jar', dynHome+'/../DPS/lib/resources.jar', 
-	  				dynHome+'/../DSS/lib/classes.jar', dynHome+'/../DSS/lib/resources.jar',
-	  				dynHome+'/../DCS/lib/classes.jar', dynHome+'/../DCS/lib/resources.jar') 
+	ext {
+	  dynamo_home="$System.env.DYNAMO_HOME"  	   
 	  m2Repo="$System.env.M2_REPO"
 	  atgJavadocLocation='http://docs.oracle.com/cd/E35319_01/Platform.10-2/apidoc'
-	}      
-	
+	}      		
 	
 	repositories {   
 		mavenLocal()
 	    mavenCentral()
-	}   
+	}      
+	
+	apply from: "$rootDir/gradle/dependencies.gradle"	
 	
 	dependencies {
-	    compile 'commons-collections:commons-collections:3.2', 'cglib:cglib:2+'     
-		compile atgLibs
-	    testCompile group: 'junit', name: 'junit', version: '4.+'
+	    compile libraries.commons_collections      
+		compile libraries.cglib
+		compile libraries.atg
+	    testCompile libraries.junit
 	}
 	
 	jar {	
 	    manifest {
 	        writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
 	    }
+	}    
+	
+	test {
+    	// Only run AllTests to start/stop Nucleus once per set of test suites.
+   		include '**/AllTests.class'    	
 	}
 	
 	uploadArchives {

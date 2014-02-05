@@ -8,7 +8,7 @@ import org.junit.runners.JUnit4;
 import atg.multisite.SiteManager;
 import atg.repository.RepositoryException;
 
-import com.roanis.tdd.base.BaseSiteTest;
+import com.roanis.tdd.base.multisite.BaseSiteTest;
 
 @RunWith(JUnit4.class)
 public class SiteManagerTest extends BaseSiteTest {

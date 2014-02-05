@@ -7,8 +7,8 @@ import org.junit.runners.JUnit4;
 import atg.commerce.pricing.priceLists.PriceListException;
 import atg.repository.RepositoryItem;
 
-import com.roanis.tdd.base.BasePriceListTest;
 import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.base.commerce.pricing.priceLists.BasePriceListTest;
 
 @RunWith(JUnit4.class)
 public class PriceListManagerTest extends BasePriceListTest {

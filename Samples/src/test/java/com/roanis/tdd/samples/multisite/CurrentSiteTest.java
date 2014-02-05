@@ -6,7 +6,7 @@ import org.junit.runners.JUnit4;
 
 import atg.multisite.SiteContextManager;
 
-import com.roanis.tdd.base.BaseSiteTest;
+import com.roanis.tdd.base.multisite.BaseSiteTest;
 import com.roanis.tdd.base.multisite.SiteTestConstants;
 
 @RunWith(JUnit4.class)

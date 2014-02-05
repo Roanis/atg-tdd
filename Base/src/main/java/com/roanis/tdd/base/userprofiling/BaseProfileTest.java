@@ -1,4 +1,6 @@
-package com.roanis.tdd.base;
+package com.roanis.tdd.base.userprofiling;
+
+import com.roanis.tdd.base.BaseCommerceTest;
 
 
 public class BaseProfileTest extends BaseCommerceTest {	

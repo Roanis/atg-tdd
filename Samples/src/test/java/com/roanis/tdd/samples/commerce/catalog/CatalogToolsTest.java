@@ -29,6 +29,8 @@ public class CatalogToolsTest extends BaseCatalogTest {
 	@Test
 	public void productHasChildSkus() throws RepositoryException{
 		RepositoryItem jacket = getCatalogTools().findProduct(CatalogTestConstants.MENS_JACKET_PRODUCT_ID);
+		
+		@SuppressWarnings("unchecked")
 		List<RepositoryItem> childSkus = (List<RepositoryItem>) jacket.getPropertyValue("childSKUs");
 		assertEquals(3, childSkus.size());
 	}
