@@ -22,10 +22,10 @@ import atg.commerce.order.purchase.PurchaseProcessHelper;
 import atg.repository.RepositoryItem;
 import atg.servlet.ServletUtil;
 
-import com.roanis.tdd.base.RoanisTestCase;
-import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
-import com.roanis.tdd.base.commerce.order.BaseOrderTest;
-import com.roanis.tdd.base.commerce.util.TestingPipelineErrorHandler;
+import com.roanis.tdd.core.RoanisTestCase;
+import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.core.commerce.order.BaseOrderTest;
+import com.roanis.tdd.core.commerce.util.TestingPipelineErrorHandler;
 
 @RunWith(JUnit4.class)
 public class PurchaseProcessHelperTest extends BaseOrderTest {

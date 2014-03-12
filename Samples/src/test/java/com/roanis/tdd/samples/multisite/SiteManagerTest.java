@@ -13,7 +13,7 @@ import atg.multisite.SiteManager;
 import atg.repository.RepositoryException;
 
 import com.roanis.tdd.annotation.WithSite;
-import com.roanis.tdd.base.multisite.SiteTestConstants;
+import com.roanis.tdd.core.multisite.SiteTestConstants;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 import com.roanis.tdd.util.TestUtils;
 

@@ -1,0 +1,15 @@
+archivesBaseName = 'core'  
+
+dependencies { 		  
+		// Using libraries.dust instead of 'atg:DUST:1.2.2' results in the wrong classpath and a build failure.
+		// TODO - Might need to include all the libs dust needs, as this may be reading the DUST POM.
+	    compile libraries.junit, 'atg:DUST:1.2.2'  	
+	}
+
+jar {	
+    manifest {
+        attributes 'Implementation-Title': 'Roanis TDD Base', 'Implementation-Version': version, 'ATG-Config-Path': 'config', 'ATG-Required': 'DCS'
+        attributes 'ATG-Client-Class-Path': 'libs/core-1.0.jar', 'ATG-Class-Path': 'libs/core-1.0.jar'    
+    	writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
+    }
+}

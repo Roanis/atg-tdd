@@ -7,8 +7,8 @@ import org.junit.runners.JUnit4;
 import atg.commerce.inventory.InventoryException;
 import atg.commerce.inventory.InventoryManager;
 
-import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
-import com.roanis.tdd.base.commerce.inventory.BaseInventoryTest;
+import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.core.commerce.inventory.BaseInventoryTest;
 
 @RunWith(JUnit4.class)
 public class InventoryManagerTest extends BaseInventoryTest {

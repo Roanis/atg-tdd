@@ -6,8 +6,8 @@ import org.junit.runners.JUnit4;
 
 import atg.commerce.dp.CatalogContext;
 
-import com.roanis.tdd.base.commerce.catalog.BaseCatalogTest;
-import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.core.commerce.catalog.BaseCatalogTest;
+import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 
 @RunWith(JUnit4.class)
 public class CurrentCatalogTest extends BaseCatalogTest {

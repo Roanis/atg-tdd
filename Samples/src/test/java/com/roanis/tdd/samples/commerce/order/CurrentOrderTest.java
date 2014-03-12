@@ -10,7 +10,7 @@ import atg.commerce.order.Order;
 import atg.commerce.states.OrderStates;
 import atg.commerce.states.StateDefinitions;
 
-import com.roanis.tdd.base.commerce.order.BaseOrderTest;
+import com.roanis.tdd.core.commerce.order.BaseOrderTest;
 
 @RunWith(JUnit4.class)
 public class CurrentOrderTest extends BaseOrderTest {

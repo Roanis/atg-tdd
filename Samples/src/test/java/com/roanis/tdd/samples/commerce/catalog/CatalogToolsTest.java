@@ -10,8 +10,8 @@ import org.junit.runners.JUnit4;
 import atg.repository.RepositoryException;
 import atg.repository.RepositoryItem;
 
-import com.roanis.tdd.base.commerce.catalog.BaseCatalogTest;
-import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.core.commerce.catalog.BaseCatalogTest;
+import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 
 @RunWith(JUnit4.class)
 public class CatalogToolsTest extends BaseCatalogTest {	
