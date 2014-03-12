@@ -1,11 +1,13 @@
 package com.roanis.tdd.base.commerce.catalog;
 
+import com.roanis.tdd.base.TestHelper;
+
 import atg.commerce.catalog.CatalogTools;
 import atg.commerce.dp.CatalogContext;
 import atg.repository.RepositoryException;
 import atg.repository.RepositoryItem;
 
-public class CatalogTestHelper {
+public class CatalogTestHelper implements TestHelper {
 	
 	private CatalogTools mCatalogTools;
 	private String mDefaultCatalogId;
@@ -33,6 +35,11 @@ public class CatalogTestHelper {
 
 	public void setCatalogTools(CatalogTools pCatalogTools) {
 		mCatalogTools = pCatalogTools;
+	}
+
+	@Override
+	public String getName() {
+		return getClass().getCanonicalName();
 	}
 
 }

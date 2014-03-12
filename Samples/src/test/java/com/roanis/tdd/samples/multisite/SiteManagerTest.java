@@ -1,30 +1,36 @@
 package com.roanis.tdd.samples.multisite;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.apache.commons.lang.ArrayUtils;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import atg.multisite.SiteManager;
 import atg.repository.RepositoryException;
 
-import com.roanis.tdd.base.multisite.BaseSiteTest;
+import com.roanis.tdd.annotation.WithSite;
+import com.roanis.tdd.base.multisite.SiteTestConstants;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
+import com.roanis.tdd.util.TestUtils;
 
-@RunWith(JUnit4.class)
-public class SiteManagerTest extends BaseSiteTest {
+@WithSite(SiteTestConstants.BASE_SITE_ID)
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+public class SiteManagerTest  {
 	
 	private SiteManager mSiteManager;
 		
-	@Override
-	public void setUp() throws Exception {
-		super.setUp();
-		mSiteManager = getSiteTestHelper().getSiteManager();
+	@Before
+	public void setUp() throws Exception {		
+		mSiteManager = TestUtils.getTestConfiguration().getSiteTestHelper().getSiteManager();
 	}
 	
-	@Override
+	@After
 	public void tearDown() throws Exception {
-		mSiteManager = null;
-		super.tearDown();
+		mSiteManager = null;		
 	}
 		
 	// Some tests that run queries against the Site repository

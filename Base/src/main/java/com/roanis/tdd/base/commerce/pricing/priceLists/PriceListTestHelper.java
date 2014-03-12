@@ -1,5 +1,7 @@
 package com.roanis.tdd.base.commerce.pricing.priceLists;
 
+import com.roanis.tdd.base.TestHelper;
+
 import atg.commerce.pricing.priceLists.PriceListException;
 import atg.commerce.pricing.priceLists.PriceListManager;
 import atg.commerce.profile.CommercePropertyManager;
@@ -7,7 +9,7 @@ import atg.repository.MutableRepositoryItem;
 import atg.repository.RepositoryItem;
 import atg.servlet.ServletUtil;
 
-public class PriceListTestHelper {
+public class PriceListTestHelper implements TestHelper {
 	
 	private String mDefaultSalePriceListId;
 	private String mDefaultPriceListId;
@@ -77,5 +79,8 @@ public class PriceListTestHelper {
 		mCommercePropertyManager = pCommercePropertyManager;
 	}
 	
-
+	@Override
+	public String getName() {
+		return getClass().getCanonicalName();
+	}
 }

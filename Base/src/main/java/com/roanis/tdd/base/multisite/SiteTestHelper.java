@@ -1,5 +1,7 @@
 package com.roanis.tdd.base.multisite;
 
+import com.roanis.tdd.base.TestHelper;
+
 import atg.multisite.Site;
 import atg.multisite.SiteContextException;
 import atg.multisite.SiteContextImpl;
@@ -7,7 +9,8 @@ import atg.multisite.SiteContextManager;
 import atg.multisite.SiteManager;
 import atg.multisite.SiteTools;
 
-public class SiteTestHelper {
+public class SiteTestHelper implements TestHelper {
+	
 	private SiteManager mSiteManager;
 	private SiteTools mSiteTools;
 	private SiteContextManager mSiteContextManager;
@@ -24,6 +27,10 @@ public class SiteTestHelper {
 		// Set site as the current site
         SiteContextImpl siteContext = new SiteContextImpl(siteContextManager, site);
         siteContextManager.pushSiteContext(siteContext); 
+	}
+	
+	public void reset(){
+		getSiteContextManager().clearSiteContextStack();
 	}
 	
 	public SiteManager getSiteManager() {
@@ -56,6 +63,11 @@ public class SiteTestHelper {
 
 	public void setDefaultSiteId(String pDefaultSiteId) {
 		mDefaultSiteId = pDefaultSiteId;
+	}
+
+	@Override
+	public String getName() {
+		return getClass().getCanonicalName();
 	}
 
 }

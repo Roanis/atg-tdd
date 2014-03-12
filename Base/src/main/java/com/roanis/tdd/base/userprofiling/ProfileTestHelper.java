@@ -1,6 +1,7 @@
 package com.roanis.tdd.base.userprofiling;
 
 import com.roanis.tdd.base.MissingDataException;
+import com.roanis.tdd.base.TestHelper;
 
 import atg.repository.MutableRepository;
 import atg.repository.MutableRepositoryItem;
@@ -9,7 +10,7 @@ import atg.userprofiling.Profile;
 import atg.userprofiling.ProfileTools;
 import atg.userprofiling.PropertyManager;
 
-public class ProfileTestHelper {
+public class ProfileTestHelper implements TestHelper {
 	
 	private ProfileTools mProfileTools;
 	private String mDefaultProfileId;	
@@ -56,5 +57,10 @@ public class ProfileTestHelper {
     public PropertyManager getPropertyManager() throws Exception{
     	return getProfileTools().getPropertyManager();
     }	  
+    
+    @Override
+	public String getName() {
+		return getClass().getCanonicalName();
+	}
 
 }

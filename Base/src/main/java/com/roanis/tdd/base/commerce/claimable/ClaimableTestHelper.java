@@ -1,8 +1,10 @@
 package com.roanis.tdd.base.commerce.claimable;
 
+import com.roanis.tdd.base.TestHelper;
+
 import atg.commerce.claimable.ClaimableManager;
 
-public class ClaimableTestHelper {
+public class ClaimableTestHelper implements TestHelper{
 	
 	private ClaimableManager mClaimableManager;
 
@@ -14,6 +16,9 @@ public class ClaimableTestHelper {
 		mClaimableManager = pClaimableManager;
 	}
 	
-	
+	@Override
+	public String getName() {
+		return getClass().getCanonicalName();
+	}
 
 }

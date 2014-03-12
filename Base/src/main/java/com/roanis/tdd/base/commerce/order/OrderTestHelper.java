@@ -2,6 +2,8 @@ package com.roanis.tdd.base.commerce.order;
 
 import javax.transaction.TransactionManager;
 
+import com.roanis.tdd.base.TestHelper;
+
 import atg.commerce.order.CommerceItemManager;
 import atg.commerce.order.HandlingInstructionManager;
 import atg.commerce.order.OrderHolder;
@@ -15,7 +17,7 @@ import atg.commerce.profile.CommerceProfileTools;
 import atg.commerce.profile.CommercePropertyManager;
 import atg.service.pipeline.PipelineManager;
 
-public class OrderTestHelper {
+public class OrderTestHelper implements TestHelper{
 	
 	private CommerceItemManager mCommerceItemManager;
 
@@ -147,4 +149,8 @@ public class OrderTestHelper {
 		mShoppingCart = pShoppingCart;
 	}
 
+	@Override
+	public String getName() {
+		return getClass().getCanonicalName();
+	}
 }

@@ -8,6 +8,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -20,12 +22,26 @@ import atg.commerce.order.purchase.PurchaseProcessHelper;
 import atg.repository.RepositoryItem;
 import atg.servlet.ServletUtil;
 
+import com.roanis.tdd.base.RoanisTestCase;
 import com.roanis.tdd.base.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.base.commerce.order.BaseOrderTest;
 import com.roanis.tdd.base.commerce.util.TestingPipelineErrorHandler;
 
 @RunWith(JUnit4.class)
 public class PurchaseProcessHelperTest extends BaseOrderTest {
+	
+	@BeforeClass
+    public static void startup () throws Exception {
+        List<String> modules = new ArrayList<String>();
+        modules.add("Roanis.TDD.Samples");
+        RoanisTestCase.startNucleus(modules);
+    }
+
+    @AfterClass
+    public static void shutdown () {
+    	RoanisTestCase.shutdownNucleus();
+    }
+
 	
 	@Test
 	public void addNewProduct() throws Exception{

@@ -1,8 +1,10 @@
 package com.roanis.tdd.base.commerce.gifts;
 
+import com.roanis.tdd.base.TestHelper;
+
 import atg.commerce.gifts.GiftlistManager;
 
-public class GiftListTestHelper {
+public class GiftListTestHelper implements TestHelper {
 	
 	private GiftlistManager mGiftlistManager;
 
@@ -14,6 +16,9 @@ public class GiftListTestHelper {
 		mGiftlistManager = pGiftlistManager;
 	}
 	
-	
+	@Override
+	public String getName() {
+		return getClass().getCanonicalName();
+	}
 
 }

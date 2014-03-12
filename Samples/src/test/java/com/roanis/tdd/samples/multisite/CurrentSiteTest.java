@@ -1,16 +1,21 @@
 package com.roanis.tdd.samples.multisite;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import atg.multisite.SiteContextManager;
 
-import com.roanis.tdd.base.multisite.BaseSiteTest;
+import com.roanis.tdd.annotation.WithSite;
 import com.roanis.tdd.base.multisite.SiteTestConstants;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
-@RunWith(JUnit4.class)
-public class CurrentSiteTest extends BaseSiteTest {
+@WithSite(SiteTestConstants.BASE_SITE_ID)
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+public class CurrentSiteTest {		
 	
 	@Test
 	public void currentSiteExists() {		
