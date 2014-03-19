@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+	<header>
+	    <name>TDD User Profiles</name>
+	    <author>Rory Curtis</author>
+	    <version>1.0</version>
+  	</header>
+    
+    <import-items>    
+       
+		<!-- Let's layer in some sample data, for the MyModule extensions.  -->
+		<add-item item-descriptor="user" id="baseUser">
+			<set-property name="isStaff"><![CDATA[true]]></set-property>								
+		</add-item>
+	
+	</import-items>
+			
+</gsa-template>	

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- Let's add an isStaff transient flag -->
+<gsa-template xml-combine="append">
+	<item-descriptor name="user" xml-combine="append"> 
+		<property name="isStaff" data-type="boolean" default="false">
+	    </property>
+    </item-descriptor>
+</gsa-template>  

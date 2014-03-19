@@ -1,0 +1,9 @@
+archivesBaseName = 'mymodule'  
+
+jar {	
+    manifest {
+        attributes 'Implementation-Title': 'My Module', 'Implementation-Version': version, 'ATG-Config-Path': 'config', 'ATG-Required': 'DCS'
+        attributes 'ATG-Client-Class-Path': 'libs/mymodule-1.0.jar', 'ATG-Class-Path': 'libs/mymodule-1.0.jar'    
+    	writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
+    }
+}

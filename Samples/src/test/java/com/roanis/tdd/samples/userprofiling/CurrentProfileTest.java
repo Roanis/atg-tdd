@@ -7,6 +7,7 @@ import org.junit.runners.JUnit4;
 import atg.servlet.ServletUtil;
 
 import com.roanis.tdd.core.userprofiling.BaseProfileTest;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
 @RunWith(JUnit4.class)
 public class CurrentProfileTest extends BaseProfileTest {
@@ -14,6 +15,11 @@ public class CurrentProfileTest extends BaseProfileTest {
 	@Test
 	public void currentUserExists() {
 		assertNotNull(ServletUtil.getCurrentUserProfile());
+	}
+	
+	@Test
+	public void isStaffMember(){
+		assertTrue((Boolean) ServletUtil.getCurrentUserProfile().getPropertyValue("isStaff"));
 	}
 
 }

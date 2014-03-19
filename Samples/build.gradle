@@ -2,11 +2,12 @@ archivesBaseName = 'samples'
 
 dependencies {
     compile project(':Core')
+    compile project(':MyModule')
 } 
 
 jar {	
     manifest {
-        attributes 'Implementation-Title': 'Roanis TDD Samples', 'Implementation-Version': version, 'ATG-Config-Path': 'config', 'ATG-Required': 'Roanis.TDD.Core'
+        attributes 'Implementation-Title': 'Roanis TDD Samples', 'Implementation-Version': version, 'ATG-Config-Path': 'config', 'ATG-Required': 'Roanis.TDD.Core Roanis.TDD.MyModule'
         attributes 'ATG-Client-Class-Path': 'libs/samples-1.0.jar', 'ATG-Class-Path': 'libs/samples-1.0.jar'
 		writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
     }        

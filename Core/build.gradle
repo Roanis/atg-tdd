@@ -8,7 +8,7 @@ dependencies {
 
 jar {	
     manifest {
-        attributes 'Implementation-Title': 'Roanis TDD Base', 'Implementation-Version': version, 'ATG-Config-Path': 'config', 'ATG-Required': 'DCS'
+        attributes 'Implementation-Title': 'Roanis TDD Base', 'Implementation-Version': version, 'ATG-Config-Path': 'config'
         attributes 'ATG-Client-Class-Path': 'libs/core-1.0.jar', 'ATG-Class-Path': 'libs/core-1.0.jar'    
     	writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
     }
