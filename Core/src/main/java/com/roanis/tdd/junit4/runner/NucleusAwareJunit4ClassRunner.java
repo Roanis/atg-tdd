@@ -11,9 +11,9 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
-import com.roanis.tdd.annotation.Nucleus;
-import com.roanis.tdd.annotation.processor.rule.AnnotationRuleGenerator;
-import com.roanis.tdd.annotation.processor.rule.AnnotationRuleGeneratorImpl;
+import com.roanis.tdd.annotation.RunNucleus;
+import com.roanis.tdd.annotation.processor.rule.AnnotationTestRuleGenerator;
+import com.roanis.tdd.annotation.processor.rule.AnnotationTestRuleGeneratorImpl;
 import com.roanis.tdd.junit4.rules.NucleusWithModules;
 
 public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {	
@@ -36,11 +36,11 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	}
 
 	protected boolean hasNucleusAnnotation() {
-		return null != getTestClass().getJavaClass().getAnnotation(Nucleus.class);
+		return null != getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
 	}
 	
 	protected Statement withNucleusAndClassData(Statement statement) {	
-		Nucleus testNucleus = getTestClass().getJavaClass().getAnnotation(Nucleus.class);
+		RunNucleus testNucleus = getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
 		if (null == testNucleus){
 			return statement;
 		}
@@ -50,7 +50,7 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 		return chainNucleusWithData(statement, testNucleus);		
 	}
 	
-	protected Statement chainNucleusWithData(Statement statement, Nucleus testNucleus) {
+	protected Statement chainNucleusWithData(Statement statement, RunNucleus testNucleus) {
 		List<TestRule> chainedRules = new ArrayList<TestRule>(1);		
 		RuleChain chain = RuleChain.outerRule(new NucleusWithModules(testNucleus.modules(), getTestClass().getJavaClass()));
 		
@@ -69,7 +69,7 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	protected List<TestRule> classDataRules(){
-		AnnotationRuleGenerator ruleGenerator = new AnnotationRuleGeneratorImpl();
+		AnnotationTestRuleGenerator ruleGenerator = new AnnotationTestRuleGeneratorImpl();
 		return ruleGenerator.generateRules(getTestClass().getAnnotations());
 	}
 	

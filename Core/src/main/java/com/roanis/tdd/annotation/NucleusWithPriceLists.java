@@ -7,12 +7,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@TestData
+@NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface WithOrder {
-	
-	String value();
+public @interface NucleusWithPriceLists {
+	String priceListId();
+	String salePriceListId();
 }

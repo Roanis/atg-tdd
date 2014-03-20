@@ -25,35 +25,35 @@ public class TestConfiguration {
 	}	
 	
 	public CatalogTestHelper getCatalogTestHelper(){
-		return (CatalogTestHelper) getTestHelpers().get(CatalogTestHelper.class.getName());
+		return (CatalogTestHelper) getTestHelpers().get(CatalogTestHelper.class.getSimpleName());
 	}
 	
 	public ClaimableTestHelper getClaimableTestHelper(){
-		return (ClaimableTestHelper) getTestHelpers().get(ClaimableTestHelper.class.getName());
+		return (ClaimableTestHelper) getTestHelpers().get(ClaimableTestHelper.class.getSimpleName());
 	}
 	
 	public GiftListTestHelper getGiftListTestHelper(){
-		return (GiftListTestHelper) getTestHelpers().get(GiftListTestHelper.class.getName());				
+		return (GiftListTestHelper) getTestHelpers().get(GiftListTestHelper.class.getSimpleName());				
 	}
 	
 	public InventoryTestHelper getInventoryTestHelper(){
-		return (InventoryTestHelper) getTestHelpers().get(InventoryTestHelper.class.getName());
+		return (InventoryTestHelper) getTestHelpers().get(InventoryTestHelper.class.getSimpleName());
 	}
 	
 	public OrderTestHelper getOrderTestHelper(){
-		return (OrderTestHelper) getTestHelpers().get(OrderTestHelper.class.getName());				
+		return (OrderTestHelper) getTestHelpers().get(OrderTestHelper.class.getSimpleName());				
 	}
 	
 	public PriceListTestHelper getPriceListTestHelper(){
-		return (PriceListTestHelper) getTestHelpers().get(PriceListTestHelper.class.getName());
+		return (PriceListTestHelper) getTestHelpers().get(PriceListTestHelper.class.getSimpleName());
 	}
 	
 	public PromotionTestHelper getPromotionTestHelper(){
-		return (PromotionTestHelper) getTestHelpers().get(PromotionTestHelper.class.getName());
+		return (PromotionTestHelper) getTestHelpers().get(PromotionTestHelper.class.getSimpleName());
 	}
 	
 	public ProfileTestHelper getProfileTestHelper(){
-		return (ProfileTestHelper) getTestHelpers().get(ProfileTestHelper.class.getName());
+		return (ProfileTestHelper) getTestHelpers().get(ProfileTestHelper.class.getSimpleName());
 	}
 
 	public SiteTestHelper getSiteTestHelper() {

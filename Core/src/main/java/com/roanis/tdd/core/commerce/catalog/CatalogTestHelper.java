@@ -20,6 +20,10 @@ public class CatalogTestHelper implements TestHelper {
 		RepositoryItem catalog = getCatalogTools().getCatalog().getItem(pId, "catalog"); 
 		CatalogContext.setCurrentCatalog(catalog); 
 	}
+	
+	public void reset(){
+		CatalogContext.setCurrentCatalog(null); 
+	}
 
 	public String getDefaultCatalogId() {
 		return mDefaultCatalogId;

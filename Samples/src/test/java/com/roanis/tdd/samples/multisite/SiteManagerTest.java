@@ -12,12 +12,11 @@ import org.junit.runner.RunWith;
 import atg.multisite.SiteManager;
 import atg.repository.RepositoryException;
 
-import com.roanis.tdd.annotation.WithSite;
-import com.roanis.tdd.core.multisite.SiteTestConstants;
+import com.roanis.tdd.annotation.NucleusWithSite;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 import com.roanis.tdd.util.TestUtils;
 
-@WithSite(SiteTestConstants.BASE_SITE_ID)
+@NucleusWithSite()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class SiteManagerTest  {
 	

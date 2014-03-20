@@ -1,10 +1,10 @@
 package com.roanis.tdd.junit4.rules;
 
 
-public class WithTestSite extends ExternalData {
+public class SiteData extends ExternalNucleusData {
 	String mSiteId;
 	
-	public WithTestSite(String siteId){
+	public SiteData(String siteId){
 		mSiteId = siteId;
 	}
 	

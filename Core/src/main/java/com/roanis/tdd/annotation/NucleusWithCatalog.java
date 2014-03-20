@@ -7,11 +7,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@TestData
+import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
+
+@NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface WithCatalog {
-	String value();
+public @interface NucleusWithCatalog {
+	String value() default CatalogTestConstants.BASE_CATALOG_ID;
 }

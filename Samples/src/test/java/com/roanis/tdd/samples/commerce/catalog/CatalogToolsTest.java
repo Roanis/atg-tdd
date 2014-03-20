@@ -1,20 +1,27 @@
 package com.roanis.tdd.samples.commerce.catalog;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import atg.commerce.catalog.CatalogTools;
 import atg.repository.RepositoryException;
 import atg.repository.RepositoryItem;
 
-import com.roanis.tdd.core.commerce.catalog.BaseCatalogTest;
+import com.roanis.tdd.annotation.NucleusWithCatalog;
+import com.roanis.tdd.annotation.RunNucleus;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
+import com.roanis.tdd.util.TestUtils;
 
-@RunWith(JUnit4.class)
-public class CatalogToolsTest extends BaseCatalogTest {	
+@NucleusWithCatalog()
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+
+public class CatalogToolsTest {	
 	
 	@Test
 	public void rootCategoryExists() throws RepositoryException{
@@ -38,6 +45,10 @@ public class CatalogToolsTest extends BaseCatalogTest {
 	@Test
 	public void skuExists() throws RepositoryException {
 		assertNotNull(getCatalogTools().findSKU(CatalogTestConstants.CASUAL_BELT_BLACK_SMALL_SKU_ID));
-	}		
+	}	
+	
+	private CatalogTools getCatalogTools(){
+		return TestUtils.getTestConfiguration().getCatalogTestHelper().getCatalogTools();
+	}
 		
 }

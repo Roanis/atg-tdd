@@ -7,13 +7,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@TestData
+import com.roanis.tdd.core.multisite.SiteTestConstants;
+
+@NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface WithSite {
+public @interface NucleusWithSite {
 	
-	String value();
+	String value() default SiteTestConstants.BASE_SITE_ID;
 
 }

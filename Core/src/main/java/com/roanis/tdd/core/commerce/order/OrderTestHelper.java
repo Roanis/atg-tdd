@@ -6,6 +6,7 @@ import com.roanis.tdd.core.TestHelper;
 
 import atg.commerce.order.CommerceItemManager;
 import atg.commerce.order.HandlingInstructionManager;
+import atg.commerce.order.Order;
 import atg.commerce.order.OrderHolder;
 import atg.commerce.order.OrderManager;
 import atg.commerce.order.PaymentGroupManager;
@@ -18,6 +19,15 @@ import atg.commerce.profile.CommercePropertyManager;
 import atg.service.pipeline.PipelineManager;
 
 public class OrderTestHelper implements TestHelper{
+	
+	public void setAsCurrent(String pOrderId) throws Exception {
+		Order order = getOrderManager().loadOrder(pOrderId);
+		getShoppingCart().setCurrent(order);
+	}
+	
+	public void resetCart(){
+		getShoppingCart().setCurrent(null);
+	}
 	
 	private CommerceItemManager mCommerceItemManager;
 
@@ -152,5 +162,5 @@ public class OrderTestHelper implements TestHelper{
 	@Override
 	public String getName() {
 		return getClass().getCanonicalName();
-	}
+	}	
 }

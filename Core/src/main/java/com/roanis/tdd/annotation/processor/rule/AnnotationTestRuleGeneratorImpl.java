@@ -8,14 +8,16 @@ import java.util.Map;
 
 import org.junit.rules.TestRule;
 
-import com.roanis.tdd.annotation.WithSite;
+import com.roanis.tdd.annotation.NucleusWithCatalog;
+import com.roanis.tdd.annotation.NucleusWithSite;
 
 
-public class AnnotationRuleGeneratorImpl implements AnnotationRuleGenerator {
+public class AnnotationTestRuleGeneratorImpl implements AnnotationTestRuleGenerator {
 	private static final Map<Class<? extends Annotation>, AnnotationRuleProcessor> supportedAnnotationTypes;
 	static {
 		supportedAnnotationTypes = new HashMap<Class<? extends Annotation>, AnnotationRuleProcessor>();
-		supportedAnnotationTypes.put(WithSite.class, new SiteProcessor());
+		supportedAnnotationTypes.put(NucleusWithSite.class, new SiteProcessor());
+		supportedAnnotationTypes.put(NucleusWithCatalog.class, new CatalogProcessor());
 	}
 
 	@Override

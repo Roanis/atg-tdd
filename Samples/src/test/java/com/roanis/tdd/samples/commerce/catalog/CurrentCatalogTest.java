@@ -1,16 +1,20 @@
 package com.roanis.tdd.samples.commerce.catalog;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import atg.commerce.dp.CatalogContext;
 
-import com.roanis.tdd.core.commerce.catalog.BaseCatalogTest;
+import com.roanis.tdd.annotation.NucleusWithCatalog;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
-@RunWith(JUnit4.class)
-public class CurrentCatalogTest extends BaseCatalogTest {
+@NucleusWithCatalog()
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+public class CurrentCatalogTest {
 
 	@Test
 	public void currentCatalogExists() {

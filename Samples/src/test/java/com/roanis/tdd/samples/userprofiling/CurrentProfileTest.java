@@ -18,6 +18,7 @@ public class CurrentProfileTest extends BaseProfileTest {
 	}
 	
 	@Test
+	// Let's have a look at that extended Profile property from MyModule!
 	public void isStaffMember(){
 		assertTrue((Boolean) ServletUtil.getCurrentUserProfile().getPropertyValue("isStaff"));
 	}

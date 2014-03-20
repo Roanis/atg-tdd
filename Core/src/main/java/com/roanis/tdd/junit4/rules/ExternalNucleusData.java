@@ -5,7 +5,7 @@ import org.junit.rules.ExternalResource;
 import com.roanis.tdd.core.configuration.TestConfiguration;
 import com.roanis.tdd.util.TestUtils;
 
-public class ExternalData extends ExternalResource {
+public class ExternalNucleusData extends ExternalResource {
 	private TestConfiguration mTestConfiguration;
 
 	public TestConfiguration getTestConfiguration() {

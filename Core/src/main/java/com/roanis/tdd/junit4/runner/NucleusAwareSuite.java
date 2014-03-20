@@ -12,7 +12,7 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
 import org.junit.runners.model.Statement;
 
-import com.roanis.tdd.annotation.Nucleus;
+import com.roanis.tdd.annotation.RunNucleus;
 import com.roanis.tdd.junit4.rules.NucleusWithModules;
 
 public class NucleusAwareSuite extends Suite {
@@ -46,7 +46,7 @@ public class NucleusAwareSuite extends Suite {
 	}
 	
 	private void validateAnnotations(List<Throwable> errors){				
-		if (null == getTestClass().getJavaClass().getAnnotation(Nucleus.class)){
+		if (null == getTestClass().getJavaClass().getAnnotation(RunNucleus.class)){
 			errors.add(new Exception("No Nucleus modules were specified, via a @WithNucleus annotation, e.g. @WithNucleus(modules=\"DCS\")"));
 			return;
 		}				
@@ -63,7 +63,7 @@ public class NucleusAwareSuite extends Suite {
 		List<TestRule> nucleusRules = new ArrayList<TestRule>(1);
 		
 		// Add a class rule to start/stop Nucleus
-		Nucleus withNucleus = getTestClass().getJavaClass().getAnnotation(Nucleus.class);
+		RunNucleus withNucleus = getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
 		nucleusRules.add(new NucleusWithModules(withNucleus.modules(), getTestClass().getJavaClass()));
 		
 		return new RunRules(statement, nucleusRules, getDescription());
