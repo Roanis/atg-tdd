@@ -7,11 +7,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.roanis.tdd.core.userprofiling.ProfileTestConstants;
+
 @NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
 public @interface NucleusWithProfile {
-	String value();
+	String value() default ProfileTestConstants.BASE_USER_ID;
 }

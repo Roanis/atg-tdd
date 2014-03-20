@@ -34,6 +34,10 @@ public class ProfileTestHelper implements TestHelper {
 		return user;
 	}
 	
+	public void reset(){
+		ServletUtil.setCurrentUserProfile(null);
+	}
+	
 	public String getDefaultProfileId() {
 		return mDefaultProfileId;
 	}

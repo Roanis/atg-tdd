@@ -13,7 +13,6 @@ import atg.repository.RepositoryException;
 import atg.repository.RepositoryItem;
 
 import com.roanis.tdd.annotation.NucleusWithCatalog;
-import com.roanis.tdd.annotation.RunNucleus;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 import com.roanis.tdd.util.TestUtils;

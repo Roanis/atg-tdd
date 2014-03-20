@@ -1,39 +1,47 @@
 package com.roanis.tdd.samples.userprofiling;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import atg.servlet.ServletUtil;
+import atg.userprofiling.ProfileTools;
 
-import com.roanis.tdd.core.userprofiling.BaseProfileTest;
+import com.roanis.tdd.annotation.NucleusWithProfile;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
+import com.roanis.tdd.util.TestUtils;
 
-@RunWith(JUnit4.class)
-public class ProfileToolsTest extends BaseProfileTest {
+@NucleusWithProfile()
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+public class ProfileToolsTest {
     
-    String baseUserEmailAddress;
+    String userEmailAddress;
     
-    @Override
+    @Before
     public void setUp() throws Exception {    	
-    	super.setUp();
-    	
-    	baseUserEmailAddress = (String) ServletUtil.getCurrentUserProfile().getPropertyValue(getProfileTestHelper().getPropertyManager().getEmailAddressPropertyName());
+    	userEmailAddress = (String) ServletUtil.getCurrentUserProfile().getPropertyValue(getProfileTools().getPropertyManager().getEmailAddressPropertyName());
     }
 	
-    @Override
+    @After
     public void tearDown() throws Exception {
-    	baseUserEmailAddress = null;
-    	super.tearDown();
+    	userEmailAddress = null;    	
     }
 	
 	@Test
 	public void userExists(){
-		assertNotNull(getProfileTestHelper().getProfileTools().getItemFromEmail(baseUserEmailAddress));
+		assertNotNull(getProfileTools().getItemFromEmail(userEmailAddress));
 	}
 	
 	@Test
 	public void noSuchUser(){
-		assertNull(getProfileTestHelper().getProfileTools().getItemFromEmail("noSuchEmail@nosuchdomain.com"));
+		assertNull(getProfileTools().getItemFromEmail("noSuchEmail@nosuchdomain.com"));
 	}
 		
+	private ProfileTools getProfileTools(){
+		return TestUtils.getTestConfiguration().getProfileTestHelper().getProfileTools();
+	}
 }
