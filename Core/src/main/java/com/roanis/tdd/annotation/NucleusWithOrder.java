@@ -7,6 +7,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.roanis.tdd.core.commerce.order.OrderTestConstants;
+
 @NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -14,5 +16,5 @@ import java.lang.annotation.Target;
 @Inherited
 public @interface NucleusWithOrder {
 	
-	String value();
+	String value() default OrderTestConstants.BASE_INCOMPLETE_ORDER_ID;
 }
