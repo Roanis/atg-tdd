@@ -58,12 +58,33 @@ As well as configuration, the Core module provides the following:
 3. Custom [JUnit](https://github.com/junit-team/junit) extensions which recognise the new annotations and act on them. See XXX.
 
 ###MyModule
-This is a simple module, which represents your own custom ATG module(s). It is provided as an example, to show how test modules can run unit tests against the code inside it.
+This is a simple module, which represents your own custom ATG module(s). It is provided as an example, to show how test modules can run unit tests against the code inside it. 
 
 ###Samples
-This module contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case). 
+This module contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case). Looking at a sample test (CurrentProfileTest), we can see the annotations in action:
 
-The MANIFEST file, shows that it depends on MyModule and Core. This is typically how your tests will be structured. If you have multiple modules you want to test, then you'll want multile test modules too.
+```java
+@NucleusWithProfile()
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+public class CurrentProfileTest {
+
+	@Test
+	public void currentUserExists() {
+		assertNotNull(ServletUtil.getCurrentUserProfile());
+	}
+	
+	@Test
+	// Let's have a look at that extended Profile property from MyModule!
+	public void isStaffMember(){
+		assertTrue((Boolean) ServletUtil.getCurrentUserProfile().getPropertyValue("isStaff"));
+	}
+
+}
+````
+
+Notice there is no base class we must extend and no setup in the test class. It has all been provided by Core.
+
+The MANIFEST file, shows that Samples depends on MyModule and Core. This is typically how your tests will be structured. If you have multiple modules you want to test, then you'll want multile test modules too.
 
 Notice how the unit tests are structured:
 
