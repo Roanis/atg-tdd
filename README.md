@@ -14,9 +14,13 @@ We need a mechanism, that makes it extremely easy, to write tests for projects b
 
 That's exactly the driving force behind this project. 
 
-The aim is to provide an annotation driven framework, which takes care of a lot of the typical setup needed. By building on the great work already done by [JUnit](https://github.com/junit-team/junit) and [ATG Dust](http://atgdust.sourceforge.net/project-info.html), the aim is to make writing unit tests, as easy as possible. Ideally, we'd like to write test classes like this:
+The aim is to provide an annotation driven framework, which takes care of a lot of the typical setup needed. By building on the great work already done by [JUnit](https://github.com/junit-team/junit) and [ATG Dust](http://atgdust.sourceforge.net/project-info.html), the aim is to make writing unit tests, as easy as possible. 
+
+We can now write test classes, that look like this:
 
 ```java
+@NucleusWithProfile()
+@RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentProfileTest {
 
 	@Test
@@ -25,12 +29,15 @@ public class CurrentProfileTest {
 	}
 	
 	@Test
+	// Let's have a look at that extended Profile property from MyModule!
 	public void isStaffMember(){
 		assertTrue((Boolean) ServletUtil.getCurrentUserProfile().getPropertyValue("isStaff"));
 	}
 
 }
-```
+````
+
+Notice there is no base class that must be extended and no setup in the test class. It has all been provided by framework.
 
 **Note** you don't have to understand how ATG DUST works, to use this framework. 
 
@@ -61,28 +68,7 @@ As well as configuration, the Core module provides the following:
 This is a simple module, which represents your own custom ATG module(s). It is provided as an example, to show how test modules can run unit tests against the code inside it. 
 
 ###Samples
-This module contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case). Looking at a sample test (CurrentProfileTest), we can see the annotations in action:
-
-```java
-@NucleusWithProfile()
-@RunWith(NucleusAwareJunit4ClassRunner.class)
-public class CurrentProfileTest {
-
-	@Test
-	public void currentUserExists() {
-		assertNotNull(ServletUtil.getCurrentUserProfile());
-	}
-	
-	@Test
-	// Let's have a look at that extended Profile property from MyModule!
-	public void isStaffMember(){
-		assertTrue((Boolean) ServletUtil.getCurrentUserProfile().getPropertyValue("isStaff"));
-	}
-
-}
-````
-
-Notice there is no base class we must extend and no setup in the test class. It has all been provided by Core.
+This module contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case).
 
 The MANIFEST file, shows that Samples depends on MyModule and Core. This is typically how your tests will be structured. If you have multiple modules you want to test, then you'll want multile test modules too.
 
