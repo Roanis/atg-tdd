@@ -48,7 +48,7 @@ The following table shows the logical structure of the project:
 | ------------- | ------------- |
 | Core  | This provides the annotion driven framework for unit testing. (The other modules provided are simple examples of how Core is used.)|
 | MyModule  | A sample custom module, extending ATG Commerce, as a client would typically do. This is the code you'd want to write unit tests for. It's provided here to complete the example, of how to structure your modules for unit testing.  |
-| Samples  | The module, which contains the unit tests for MyModule |
+| Samples  | The module containing the unit test suites for MyModule |
 
 
 ###Core
