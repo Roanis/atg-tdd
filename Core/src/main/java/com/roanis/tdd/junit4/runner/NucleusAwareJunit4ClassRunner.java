@@ -8,6 +8,7 @@ import org.junit.rules.RunRules;
 import org.junit.rules.TestRule;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
@@ -15,6 +16,7 @@ import com.roanis.tdd.annotation.RunNucleus;
 import com.roanis.tdd.annotation.processor.rule.AnnotationTestRuleGenerator;
 import com.roanis.tdd.annotation.processor.rule.AnnotationTestRuleGeneratorImpl;
 import com.roanis.tdd.junit4.rules.NucleusWithModules;
+import com.roanis.tdd.junit4.rules.NucleusWithTransaction;
 
 public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {	
 
@@ -23,10 +25,23 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	}
 	
 	@Override
+	protected Statement methodBlock(FrameworkMethod method) {		
+		Statement statement = super.methodBlock(method);
+		statement = withTransaction(method, statement);
+		return statement;
+	}
+	
+	protected Statement withTransaction(FrameworkMethod method, Statement statement) {
+		List<TestRule> transactionRules = new ArrayList<TestRule>(1);
+		transactionRules.add(new NucleusWithTransaction());
+		return new RunRules(statement, transactionRules, describeChild(method));
+	}
+
+	@Override
 	protected Statement classBlock(RunNotifier notifier) {		
 		Statement statement = super.classBlock(notifier);
 		
-		if (hasNucleusAnnotation()){
+		if (hasRunNucleusAnnotation()){
 			statement = withNucleusAndClassData(statement);
 		} else {
 			statement = withClassData(statement);
@@ -35,7 +50,7 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 		return statement;
 	}
 
-	protected boolean hasNucleusAnnotation() {
+	protected boolean hasRunNucleusAnnotation() {
 		return null != getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
 	}
 	
