@@ -2,8 +2,8 @@
 <!DOCTYPE gsa-template SYSTEM "dynamosystemresource:/atg/dtds/gsa/gsa_1.0.dtd">
 <gsa-template>
 	<header>
-	    <name>Roans TDD Inventory</name>
-	    <author>Roanis Dev Team</author>
+	    <name>TDD Inventory</name>
+	    <author>TDD Dev Team</author>
 	    <version>1.0</version>
   	</header>
 

@@ -10,8 +10,8 @@ import atg.nucleus.NucleusTestUtils;
 import atg.nucleus.NucleusTestUtils.NucleusStartupOptions;
 import atg.nucleus.ServiceException;
 
-public class RoanisNucleusTestUtils {
-	public static final Logger log = Logger.getLogger(RoanisNucleusTestUtils.class);
+public class TddNucleusTestUtils {
+	public static final Logger log = Logger.getLogger(TddNucleusTestUtils.class);
 	
 	public static Nucleus startNucleus (List<String> moduleList, Class<?> testClass) throws Exception {	
 		System.out.println("TDD by Rory Curtis: rory_curtis@roanis.com");

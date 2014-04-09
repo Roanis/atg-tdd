@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.junit.rules.ExternalResource;
 
-import com.roanis.tdd.nucleus.RoanisNucleusTestUtils;
+import com.roanis.tdd.nucleus.TddNucleusTestUtils;
 
 import atg.nucleus.Nucleus;
 
@@ -20,12 +20,12 @@ public class NucleusWithModules extends ExternalResource {
 	
 	@Override
 	protected void before() throws Throwable {	
-		mNucleus = RoanisNucleusTestUtils.startNucleus(Arrays.asList(mModules), mTestClass);
+		mNucleus = TddNucleusTestUtils.startNucleus(Arrays.asList(mModules), mTestClass);
 	}
 	
 	@Override
 	protected void after() {
-		RoanisNucleusTestUtils.shutdownNucleus(mNucleus);
+		TddNucleusTestUtils.shutdownNucleus(mNucleus);
 	}
 
 }
