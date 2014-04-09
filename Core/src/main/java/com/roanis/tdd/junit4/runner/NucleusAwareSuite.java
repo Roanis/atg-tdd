@@ -47,7 +47,7 @@ public class NucleusAwareSuite extends Suite {
 	
 	private void validateAnnotations(List<Throwable> errors){				
 		if (null == getTestClass().getJavaClass().getAnnotation(RunNucleus.class)){
-			errors.add(new Exception("No Nucleus modules were specified, via a @WithNucleus annotation, e.g. @WithNucleus(modules=\"DCS\")"));
+			errors.add(new Exception("No Nucleus modules were specified, via a @RunNucleus annotation, e.g. @RunNucleus(modules=\"DCS\")"));
 			return;
 		}				
 	}

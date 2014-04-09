@@ -15,8 +15,10 @@ import atg.commerce.order.OrderHolder;
 import atg.commerce.order.OrderManager;
 import atg.servlet.ServletUtil;
 
+import com.roanis.tdd.annotation.NucleusWithCommerce;
 import com.roanis.tdd.annotation.NucleusWithOrder;
 import com.roanis.tdd.annotation.NucleusWithProfile;
+import com.roanis.tdd.annotation.RunNucleus;
 import com.roanis.tdd.core.commerce.order.OrderTestHelper;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 import com.roanis.tdd.util.TestUtils;
@@ -26,8 +28,7 @@ import com.roanis.tdd.util.TestUtils;
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class OrderManagerTest {	
 	
-	private OrderTestHelper mOrderTestHelper;
-	private Order mIncompleteOrder;
+	private OrderTestHelper mOrderTestHelper;	
 	private OrderHolder mShoppingCart;
 	private OrderManager mOrderManager;
 	
@@ -36,15 +37,16 @@ public class OrderManagerTest {
 		mOrderTestHelper = TestUtils.getTestConfiguration().getOrderTestHelper();
 		mOrderManager = mOrderTestHelper.getOrderManager();
 		mShoppingCart = mOrderTestHelper.getShoppingCart();
-		mShoppingCart.setCurrent(mIncompleteOrder);
+		mShoppingCart.setLoggingDebug(true);
 		mShoppingCart.setProfile(ServletUtil.getCurrentUserProfile());
 	}
 	
 	@After
 	public void tearDown(){
+		mShoppingCart.setLoggingDebug(false);
+		mShoppingCart.setProfile(null);
 		mOrderTestHelper = null;
-		mShoppingCart = null;
-		mIncompleteOrder = null;
+		mShoppingCart = null;		
 		mOrderManager = null;
 	}
 	

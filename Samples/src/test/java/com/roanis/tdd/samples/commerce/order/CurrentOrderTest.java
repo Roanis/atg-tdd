@@ -1,31 +1,41 @@
 package com.roanis.tdd.samples.commerce.order;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import atg.commerce.order.CreditCard;
 import atg.commerce.order.HardgoodShippingGroup;
 import atg.commerce.order.Order;
+import atg.commerce.order.OrderHolder;
 import atg.commerce.states.OrderStates;
 import atg.commerce.states.StateDefinitions;
 
-import com.roanis.tdd.core.commerce.order.BaseOrderTest;
+import com.roanis.tdd.annotation.NucleusWithOrder;
+import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
+import com.roanis.tdd.util.TestUtils;
 
-@RunWith(JUnit4.class)
-public class CurrentOrderTest extends BaseOrderTest {
+@NucleusWithOrder()
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+public class CurrentOrderTest{
 	
 	private Order mCurrentOrder;
+	private OrderHolder mShoppingCart;
 		
-	@Override
+	@Before
     public void setUp() throws Exception {    	
-    	super.setUp();
-    	mCurrentOrder = getShoppingCart().getCurrent();
+		mShoppingCart = TestUtils.getTestConfiguration().getOrderTestHelper().getShoppingCart();		
+    	mCurrentOrder = mShoppingCart.getCurrent();
     }
     
-    @Override
-    public void tearDown() throws Exception {    	
-    	super.tearDown();
+    @After
+    public void tearDown() throws Exception { 
+    	mShoppingCart.setLoggingDebug(true);
+    	mShoppingCart = null;
     	mCurrentOrder = null;
     }
        

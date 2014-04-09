@@ -16,4 +16,5 @@ import com.roanis.tdd.core.userprofiling.ProfileTestConstants;
 @Inherited
 public @interface NucleusWithProfile {
 	String value() default ProfileTestConstants.BASE_USER_ID;
+	
 }

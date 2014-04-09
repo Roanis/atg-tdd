@@ -9,6 +9,8 @@ import java.util.Map;
 import org.junit.rules.TestRule;
 
 import com.roanis.tdd.annotation.NucleusWithCatalog;
+import com.roanis.tdd.annotation.NucleusWithCommerce;
+import com.roanis.tdd.annotation.NucleusWithOrder;
 import com.roanis.tdd.annotation.NucleusWithProfile;
 import com.roanis.tdd.annotation.NucleusWithSite;
 
@@ -18,8 +20,10 @@ public class AnnotationTestRuleGeneratorImpl implements AnnotationTestRuleGenera
 	static {
 		supportedAnnotationTypes = new HashMap<Class<? extends Annotation>, AnnotationRuleProcessor>();
 		supportedAnnotationTypes.put(NucleusWithSite.class, new SiteProcessor());
-		supportedAnnotationTypes.put(NucleusWithCatalog.class, new CatalogProcessor());
 		supportedAnnotationTypes.put(NucleusWithProfile.class, new ProfileProcessor());
+		supportedAnnotationTypes.put(NucleusWithCatalog.class, new CatalogProcessor());		
+		supportedAnnotationTypes.put(NucleusWithOrder.class, new OrderProcessor());	
+		supportedAnnotationTypes.put(NucleusWithCommerce.class, new CommerceProcessor());	
 	}
 
 	@Override

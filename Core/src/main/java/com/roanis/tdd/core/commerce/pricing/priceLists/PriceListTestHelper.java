@@ -46,6 +46,13 @@ public class PriceListTestHelper implements TestHelper {
 	public void setSalePriceList(RepositoryItem pProfile, RepositoryItem pSalePriceList){
 		((MutableRepositoryItem) pProfile).setPropertyValue(getCommercePropertyManager().getSalePriceListPropertyName(), pSalePriceList);
 	}
+	
+	public void reset(RepositoryItem pProfile){
+		RepositoryItem nullPriceList = null;
+		
+		setPriceList(pProfile, nullPriceList);
+		setSalePriceList(pProfile, nullPriceList);
+	}
 			
 	public String getDefaultSalePriceListId() {
 		return mDefaultSalePriceListId;
