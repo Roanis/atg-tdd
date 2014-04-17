@@ -99,7 +99,7 @@ ATG DUST 1.2.2 is required to build this project. It should be made available in
 As per the requirement of DUST, if your ATG installation requires license files, then DUST_HOME should be set to point to the location of those files.
 
 #Getting Started
-Simply clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew install``` from TDD folder. Everything should build and the tests in Samples will be executed.
+Simply clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew build``` from TDD folder. Everything should build and the tests in Samples will be executed.
 
 Obviously, when writing tests for your own ATG module, you don't need Samples and MyModule, so they can be removed.
 
