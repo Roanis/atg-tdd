@@ -1,3 +1,16 @@
+allprojects {
+  version = '1.0'
+}
+
+ext {
+  dynamo_home="$System.env.DYNAMO_HOME"
+  m2Repo="$System.env.M2_REPO"
+  atgJavadocLocation='http://docs.oracle.com/cd/E35319_01/Platform.10-2/apidoc'
+}
+logger.quiet "Build Environment for roanis/TDD"
+logger.quiet "DYNAMO_HOME: ${dynamo_home}"
+
+
 subprojects {
 	apply plugin: 'java'
 	apply plugin: 'maven'   
@@ -5,26 +18,28 @@ subprojects {
 		
 	group = 'roanis.tdd'
 	sourceCompatibility = 1.6
-	version = '1.0'
-	
-	ext {
-	  dynamo_home="$System.env.DYNAMO_HOME"  	   
-	  m2Repo="$System.env.M2_REPO"
-	  atgJavadocLocation='http://docs.oracle.com/cd/E35319_01/Platform.10-2/apidoc'
-	}      		
 	
 	repositories {   
 		mavenLocal()
-	    mavenCentral()
+	  mavenCentral()
+    // For any private maven repo ensure the properties below (mavenUrl, mavenUsername, mavenPassword) are added to
+    // ~/.gradle/gradle.properties and uncomment the maven DSL below.
+//    maven {
+//      credentials {
+//        username mavenUsername
+//        password mavenPassword
+//      }
+//      url mavenUrl
+//    }
 	}      
 	
 	apply from: "$rootDir/gradle/dependencies.gradle"	
 	
 	dependencies {
-	    compile libraries.commons_collections      
+	  compile libraries.commons_collections      
 		compile libraries.cglib
 		compile libraries.atg
-	    testCompile libraries.junit
+	  testCompile libraries.junit
 	}
 	
 	jar {	
@@ -56,6 +71,10 @@ subprojects {
 	}
 } 
 
+apply from: "${rootDir}/gradle/tasks.gradle"
+
+defaultTasks 'build'
+
 task wrapper(type: Wrapper) {	
-		gradleVersion = "1.8"
+		gradleVersion = "1.11"
 }

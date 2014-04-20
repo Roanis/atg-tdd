@@ -1,0 +1,151 @@
+import org.gradle.api.java.archives.internal.DefaultManifest
+import org.gradle.api.internal.file.IdentityFileResolver
+
+//Ensure a valid ATG installation exists
+def atgHome = System.env.ATG_HOME
+if (atgHome == null || atgHome.isEmpty()) {
+  atgHome = "${dynamo_home}/.."
+}
+
+if (atgHome == null || atgHome.isEmpty()) {
+  throw new RuntimeException("ATG tasks cannot be configured as either ATG_HOME or DYNAMO_HOME envrionment variables are not set")
+}
+assert new File(atgHome)
+
+logger.quiet "ATG_HOME: ${atgHome}"
+def atgModuleHome = "${atgHome}/${rootProject.name}"
+def atgVersion='10.2' //Can be derived from $DYNAMO_HOME/installconfig/config.xml
+logger.quiet "ATG Module: ${atgModuleHome}"
+
+/**
+ * Installs this module within ATG as a symlink
+ */
+task installModuleWithinATG (dependsOn: 'uninstallModuleWithinATG'){
+  description="Install ${project.name} module within ATG at ${atgModuleHome}"
+  group='ATG'
+  doLast{
+    exec {
+      executable = 'ln'
+      args = ['-s',projectDir,atgModuleHome]
+    }
+    logger.quiet "Symbolic link created {$atgModuleHome} --> ${projectDir}"
+  }
+}
+
+/**
+ * Un-installs this module from ATG by deleting any existing symlink
+ */
+task uninstallModuleWithinATG {
+  description="Uninstall ${project.name} module within ATG from ${atgModuleHome}"
+  group='ATG'
+  doLast{
+    exec {
+      executable = 'rm'
+      args = ['-rf',atgModuleHome]
+    }
+  }
+}
+
+if (!project.tasks.find { t -> t.name.equals('clean')}) {
+  task clean(type: Delete) {
+    description='Cleans root project build directory'
+    group='build'
+    delete new File("${rootProject.projectDir}",'build')
+  }
+}
+
+project.ext {
+  releaseDir="${buildDir}/release"
+  packageDir="${buildDir}/package"
+  packageModuleDir="${packageDir}/${rootProject.name}"
+}
+
+task createRelease(type: Copy) {
+  description="Creates the artifacts for a release version of ${rootProject.name}."
+  group='Build'
+  dependsOn rootProject.clean,subprojects.build
+  
+  //Generic copy and exclusions
+  from fileTree(projectDir)
+  exclude (
+    '**/.gitignore',
+    '**/build/*',
+    '**/.gradle/*',
+    '**/.settings/*',
+    '**/.classpath',
+    '**/.project',
+    '**/bin/*',
+    '**/*.gradle',
+    '**/gradle*',
+    '**/gradle*.*',
+    '**/src/*'
+  )
+  if (project.hasProperty('jarConfig')) {
+    exclude '**/config/*'
+    filter { String line -> line.replace('config', 'config/config.jar') }
+  }
+  into packageModuleDir
+  
+  includeEmptyDirs = false
+}
+
+subprojects { prj->
+  task copyReleaseLibraries(type: Copy) {
+    description="Copies the libraries for a release version of ${rootProject.name} into the parent packaging directory."
+    group='Build'
+    dependsOn prj.build
+    mustRunAfter rootProject.createRelease
+    
+    def prjDir= prj.path.replace(':','/').replaceFirst('/','')
+    from ("${prj.buildDir}/libs")
+    into ("${packageModuleDir}/${prjDir}/libs")
+    includeEmptyDirs = false
+  }
+}
+
+if (hasProperty('jarConfig')) {
+  subprojects { prj->
+    task jarConfig(type: Jar) {
+      description="Jars the config for a release version of ${rootProject.name} into the parent packaging directory."
+      group='Build'
+      dependsOn prj.build
+      mustRunAfter rootProject.createRelease
+      
+      def prjDir= prj.path.replace(':','/').replaceFirst('/','')
+      from ("${prj.projectDir}/config")
+      destinationDir = file("${packageModuleDir}/${prjDir}/config")
+      baseName='config'
+      version=''
+      includeEmptyDirs = false
+    }
+  }
+}
+
+task createRootModuleManifest {
+  dependsOn rootProject.createRelease,subprojects.copyReleaseLibraries
+  doLast {
+    def manifest = new DefaultManifest(new IdentityFileResolver())
+    manifest.attributes(
+      ['Implementation-Title':project.rootProject.name,
+        'Implementation-Version':"${project.version} - ATG${atgVersion}",
+        'ATG-Version':project.version]
+    )
+    manifest.writeTo("${packageModuleDir}/META-INF/MANIFEST.MF")
+  }
+}
+
+
+task packageRelease(type: Jar) {
+  description="Packages a release version of ${rootProject.name} for distribution."
+  group='Build'
+  dependsOn rootProject.createRelease,subprojects.copyReleaseLibraries,rootProject.createRootModuleManifest
+  
+  destinationDir = file(releaseDir)
+  baseName = rootProject.name.toLowerCase()
+  version = project.version
+  from fileTree(packageDir)
+
+}
+if (hasProperty('jarConfig')) {
+  tasks.packageRelease.dependsOn subprojects.tasks.jarConfig
+}
