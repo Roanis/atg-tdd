@@ -85,11 +85,9 @@ public class AllTests {
 }
 ````
 
-**Note** you'd typically want to configure your build to only run classes called AllTests.java and only have one of those files per module. This ensures that Nucleus only gets started/stopped once per module. The [gradle build file](https://github.com/Roanis/atg-tdd/blob/master/build.gradle) for this project does exactly that.
-
 2. The ```@RunWith(NucleusAwareSuite.class)``` is used, so that the custom JUnit runner picks up the ```@RunNucleus``` annotation and acts on it.
 3. ```@SuiteClasses({ProfileTestSuite.class ...})``` is a standard JUnit annotation, which runs all the test suites provided, as part of the overall suite.
-4. The build is configured to only run test classes with a name of AllTests. This ensures we start Nucleus once, run all the tests and then stop Nucleus at the end. 
+4. The build is configured to only run test classes with a name of AllTests. This ensures we start Nucleus once, run all the tests and then stop Nucleus at the end. The [gradle build file](https://github.com/Roanis/atg-tdd/blob/master/build.gradle) for this project contains such a configuration.
 
 **Note** Ideally, we wouldn't need a separate module for the unit tests at all. They'd be in MyModule/src/test/java. To make that work, we'd need a custom configuration layer (e.g. ATG-testConfig-Path: testconfig) in MyModule, which would only be used during testing. However, custom layers don't seem to work in DUST. So that option isn't available. 
 
