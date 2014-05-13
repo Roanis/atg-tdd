@@ -52,23 +52,23 @@ The following table shows the logical structure of the project:
 
 
 ###Core
-TDD.Core is the module, which you plug into your ATG installation, to enable annotation driven unit testing. It contains all the code, configuration and data needed to get started. Having a module, rather than just a jar, enables us to change configuration to meet the needs of the tests. For example, the following is done:
+[TDD.Core](https://github.com/Roanis/atg-tdd/tree/master/Core) is the module, which you plug into your ATG installation, to enable annotation driven unit testing. It contains all the code, configuration and data needed to get started. Having a module, rather than just a jar, enables us to change configuration to meet the needs of the tests. For example, the following is done:
 
 1. Change some session scoped components to be global scope, for the tests (ShoppingCart, Profile, etc).
 2. Turn off functionality that is typically not required during unit tests, e.g. ScenarioManager
-3. Create new components, to aid unit testing (TestConfiguration, XXXTestHelper, etc)
+3. Create new components, to aid unit testing (TestConfiguration, TestHelper components, etc)
 
 As well as configuration, the Core module provides the following:
 
-1. A set of custom Java annotations, which can start stop Nucleus, set up the ShoppingCart with test order, load a Profile, etc. The annotations are described below. See XXX
-2. A set of sample repository data, containing a catalog, site, profile, orders, inventory, etc. This data can be extended, or changed, in your own test module. It can also be ignored completely, using configuration. See XXX
-3. Custom [JUnit](https://github.com/junit-team/junit) extensions which recognise the new annotations and act on them. See XXX.
+1. A set of custom Java [annotations]((https://github.com/Roanis/atg-tdd/tree/master/Core/src/main/java/com/roanis/tdd/annotation)), which can start/stop Nucleus, set up the ShoppingCart with test order, load a Profile, etc. The annotations provide meta data about the individual test classes. For example ```@NucleusWithOrder``` will load the ShoopingCart with a sample order. By default, an order from the test data layer is used but a different order can be specified by passing an id to the annotation ```@NucleusWithOrder(MyOrderId)```. All of the other annotations follow a similar pattern. 
+2. A set of [sample repository data](https://github.com/Roanis/atg-tdd/tree/master/Core/data), containing a catalog, site, profile, orders, inventory, etc. This data can be extended, or changed, in your own test module. It can also be ignored completely, using configuration.
+3. Custom [JUnit](https://github.com/junit-team/junit) extensions which recognise the new annotations and act on them. See the [Class runner and Suite runner](https://github.com/Roanis/atg-tdd/tree/master/Core/src/main/java/com/roanis/tdd/junit4/runner). It's not important to know how they work, just that your tests should be annotated with these custom runners i.e. ```@RunWith(NucleusAwareJunit4ClassRunner.class)``` if using an annotation to set test data or ```@RunWith(NucleusAwareSuite.class)``` for the top level test suite to start Nucleus. The [samples](https://github.com/Roanis/atg-tdd/tree/master/Samples/src/test/java/com/roanis/tdd/samples) module has plenty of examples.
 
 ###MyModule
-This is a simple module, which represents your own custom ATG module(s). It is provided as an example, to show how test modules can run unit tests against the code inside it. 
+This is a simple [module](https://github.com/Roanis/atg-tdd/tree/master/MyModule), which represents your own custom ATG module(s). It is provided as an example, to show how test modules can run unit tests against the code inside it. 
 
 ###Samples
-This module contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case).
+This [module](https://github.com/Roanis/atg-tdd/tree/master/Samples) contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case).
 
 The MANIFEST file, shows that Samples depends on MyModule and Core. This is typically how your tests will be structured. If you have multiple modules you want to test, then you'll want multile test modules too.
 
