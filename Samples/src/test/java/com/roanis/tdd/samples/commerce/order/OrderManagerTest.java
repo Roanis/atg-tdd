@@ -36,14 +36,12 @@ public class OrderManagerTest {
 	public void setUp(){
 		mOrderTestHelper = TestUtils.getTestConfiguration().getOrderTestHelper();
 		mOrderManager = mOrderTestHelper.getOrderManager();
-		mShoppingCart = mOrderTestHelper.getShoppingCart();
-		mShoppingCart.setLoggingDebug(true);
+		mShoppingCart = mOrderTestHelper.getShoppingCart();		
 		mShoppingCart.setProfile(ServletUtil.getCurrentUserProfile());
 	}
 	
 	@After
-	public void tearDown(){
-		mShoppingCart.setLoggingDebug(false);
+	public void tearDown(){		
 		mShoppingCart.setProfile(null);
 		mOrderTestHelper = null;
 		mShoppingCart = null;		
