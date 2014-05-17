@@ -1,10 +1,10 @@
 package com.roanis.tdd.junit4.rules;
 
 /**
- * This class in an {@link org.junit.rules.ExternalResource}, which loads the specified Catalog, before a test
- *  and sets it as the current catalog. After the test runs, the current catalog is set back to null.
+ * An {@link org.junit.rules.ExternalResource} {@link TestRule}, which loads the specified Catalog, before a test
+ * and sets it as the current catalog. After the test runs, the current catalog is set back to null.
  * 
- * @author rory curtis
+ * @author rory
  *
  */
 public class CatalogData extends ExternalNucleusData {

@@ -9,6 +9,16 @@ import java.lang.annotation.Target;
 
 import com.roanis.tdd.core.multisite.SiteTestConstants;
 
+/**
+ * Indicates that a site should be loaded from the Site repository
+ * and set as the current site i.e. SiteContextManager.getCurrentSite
+ * will return the specified site.
+ * 
+ * <p>The site used can be changed by specifying a different id e.g. @NucleusWithSite("mySiteID").</p>
+ * 
+ * @author rory
+ *
+ */
 @NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

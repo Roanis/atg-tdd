@@ -1,4 +1,4 @@
-package com.roanis.commerce.promotion;
+package com.roanis.tdd.core.commerce.promotion;
 
 import atg.commerce.order.OrderManager;
 import atg.commerce.promotion.GWPManager;

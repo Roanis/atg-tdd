@@ -8,6 +8,13 @@ import com.roanis.tdd.nucleus.TddNucleusTestUtils;
 
 import atg.nucleus.Nucleus;
 
+/**
+ * An {@link org.junit.rules.ExternalResource} {@link TestRule}, which starts Nucleus in the
+ * before method and stops Nucleus in the after method.
+ * 
+ * @author rory
+ *
+ */
 public class NucleusWithModules extends ExternalResource {
 	private String[] mModules;
 	private Nucleus mNucleus = null;

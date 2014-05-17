@@ -2,6 +2,22 @@ package com.roanis.tdd.junit4.rules;
 
 import atg.servlet.ServletUtil;
 
+/**
+ * An {@link org.junit.rules.ExternalResource} {@link TestRule}, which loads the following components
+ * before a test is run and then cleans up after the test:
+ * 
+ * <ul>
+ * <li>site</li>
+ * <li>profile</li>
+ * <li>catalog</li>
+ * <li>price list</li>
+ * <li>sale price list</li>
+ * <li>order</li>
+ * </ul>
+ * 
+ * @author rory
+ *
+ */
 public class CommerceData extends ExternalNucleusData {
 	private String mSiteId;
 	private String mProfileId;

@@ -9,6 +9,15 @@ import java.lang.annotation.Target;
 
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 
+/**
+ * Indicates that a catalog should be loaded from the Catalog repository and set as the
+ * current catalog i.e. CatalogContext.getCurrentCatalog will return the specified catalog.
+ * 
+ * <p>The catalog used can be changed by specifying a different id e.g. @NucleusWithCatalog("myCatalogID").</p>
+ * 
+ * @author rory
+ *
+ */
 @NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

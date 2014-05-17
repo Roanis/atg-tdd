@@ -15,6 +15,14 @@ import com.roanis.tdd.annotation.NucleusWithProfile;
 import com.roanis.tdd.annotation.NucleusWithSite;
 
 
+/**
+ * An implementation of the {@link AnnotationTestRuleGenerator} interface. This class
+ * maintains a collection of supported annotation types and uses them to generate
+ * the test rules.
+ * 
+ * @author rory
+ *
+ */
 public class AnnotationTestRuleGeneratorImpl implements AnnotationTestRuleGenerator {
 	private static final Map<Class<? extends Annotation>, AnnotationRuleProcessor> supportedAnnotationTypes;
 	static {

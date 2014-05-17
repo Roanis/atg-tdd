@@ -9,6 +9,15 @@ import java.lang.annotation.Target;
 
 import com.roanis.tdd.core.commerce.order.OrderTestConstants;
 
+/**
+ * This annotation indicates that an Order should be loaded from the repository
+ * and set as ShoppingCart.current.
+ * 
+ *  <p>The order used can be changed by specifying a different id e.g. @NucleusWithOrder("myOrderID").</p>
+ * 
+ * @author rory
+ *
+ */
 @NucleusTestData
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

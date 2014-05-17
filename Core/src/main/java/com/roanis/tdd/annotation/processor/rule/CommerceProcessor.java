@@ -7,6 +7,13 @@ import org.junit.rules.TestRule;
 import com.roanis.tdd.annotation.NucleusWithCommerce;
 import com.roanis.tdd.junit4.rules.CommerceData;
 
+/**
+ * An {@link AnnotationRuleProcessor} implementation, which handles {@link NucleusWithCommerce} annotations.
+ * A {@link CommerceData} TestRule is created from the information provided in the annotation.
+ * 
+ * @author rory
+ *
+ */
 public class CommerceProcessor implements AnnotationRuleProcessor {
 
 	@Override

@@ -4,13 +4,23 @@ import javax.transaction.TransactionManager;
 
 import org.junit.rules.ExternalResource;
 
-import atg.dtm.TransactionDemarcation;
 import atg.dtm.TransactionDemarcationException;
 import atg.nucleus.Nucleus;
 
+/**
+ * An {@link org.junit.rules.ExternalResource} {@link TestRule}, which starts a transaction in the
+ * before method and calls rollback the after method. This is typically used to wrap
+ * each test method in it's own transaction and then rollback the changes after the test method finishes.
+ * This ensures that changes in one test do not affect the data used by the remaining tests.<br/>
+ * 
+ * <p>NOTE: Test classes should not use this directly. The framwework already provides transactional support in 
+ * {@link com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner}</p>
+ * 
+ * @author rory
+ *
+ */
 public class NucleusWithTransaction extends ExternalResource  {
 	private TransactionManager mTransactionManager;
-	private TransactionDemarcation mTransactionDemarcation;
 	
 	@Override
 	protected void before() throws Throwable {		
@@ -21,22 +31,22 @@ public class NucleusWithTransaction extends ExternalResource  {
 
 	private void startTransaction() throws TransactionDemarcationException {
 		mTransactionManager = (TransactionManager) Nucleus.getGlobalNucleus().resolveName("/atg/dynamo/transaction/TransactionManager");
-		mTransactionDemarcation = new TransactionDemarcation();
-		mTransactionDemarcation.begin(mTransactionManager);
+		try {
+			mTransactionManager.begin();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	protected void after() {
 		try {
-			rollbackTransaction();
-		} catch (TransactionDemarcationException e) {			
+			mTransactionManager.rollback();
+		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
+		
 		super.after();
-	}
-	
-	protected void rollbackTransaction() throws TransactionDemarcationException {
-		mTransactionDemarcation.end(true);		
-	}
+	}	
 
 }
