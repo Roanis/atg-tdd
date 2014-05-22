@@ -36,9 +36,10 @@ subprojects {
 	apply from: "$rootDir/gradle/dependencies.gradle"	
 	
 	dependencies {
-	  compile libraries.commons_collections      
-		compile libraries.cglib
-		compile libraries.atg
+	  compile libraries.commons_collections  
+	  compile libraries.google_guava    
+	  compile libraries.cglib
+	  compile libraries.atg
 	  testCompile libraries.junit
 	}
 	

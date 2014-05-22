@@ -1,22 +1,32 @@
 package com.roanis.tdd.core.commerce.order;
 
+import java.util.Map;
+
 import javax.transaction.TransactionManager;
 
-import com.roanis.tdd.core.TestHelper;
-
+import atg.commerce.CommerceException;
+import atg.commerce.order.CommerceItem;
 import atg.commerce.order.CommerceItemManager;
 import atg.commerce.order.HandlingInstructionManager;
 import atg.commerce.order.Order;
 import atg.commerce.order.OrderHolder;
 import atg.commerce.order.OrderManager;
 import atg.commerce.order.PaymentGroupManager;
+import atg.commerce.order.ShippingGroup;
 import atg.commerce.order.ShippingGroupManager;
 import atg.commerce.order.purchase.PurchaseProcessHelper;
+import atg.commerce.pricing.PricingConstants;
 import atg.commerce.pricing.PricingModelHolder;
 import atg.commerce.pricing.PricingTools;
 import atg.commerce.profile.CommerceProfileTools;
 import atg.commerce.profile.CommercePropertyManager;
+import atg.repository.RepositoryItem;
 import atg.service.pipeline.PipelineManager;
+import atg.servlet.ServletUtil;
+import atg.userprofiling.Profile;
+
+import com.google.common.collect.Maps;
+import com.roanis.tdd.core.TestHelper;
 
 public class OrderTestHelper implements TestHelper{
 	
@@ -27,6 +37,42 @@ public class OrderTestHelper implements TestHelper{
 	
 	public void resetCart(){
 		getShoppingCart().setCurrent(null);
+	}
+	
+	public void reloadCart() throws Exception{
+		resetCart();
+		setAsCurrent(OrderTestConstants.BASE_INCOMPLETE_ORDER_ID);
+	}
+	
+	public CommerceItem addItemToOrder(Order order, String skuId, String productId, Long quantity) throws CommerceException{
+		CommerceItem item = mOrderManager.getCommerceItemManager().
+				createCommerceItem(skuId, productId, quantity);
+		mOrderManager.getCommerceItemManager().addItemToOrder(order, item);
+		ShippingGroup sg = (ShippingGroup) order.getShippingGroups().get(0);
+		mOrderManager.getCommerceItemManager().addItemQuantityToShippingGroup(order, item.getId(), sg.getId(), item.getQuantity());
+		return item;
+	}
+	
+	public void removeItemFromOrder(Order order, CommerceItem item) throws CommerceException{
+		mOrderManager.getCommerceItemManager().removeItemFromOrder(order, item.getId());
+	}
+	
+	public Map<String, Object> createDefaultRepriceMap(){
+		Profile profile = (Profile) ServletUtil.getCurrentUserProfile();
+		RepositoryItem priceList = (RepositoryItem) profile.getPropertyValue("myPriceList");	
+		
+		Map<String, Object> repriceMap = Maps.newHashMap();
+		repriceMap.put("OrderManager", mOrderManager);
+		repriceMap.put("Order", getShoppingCart().getCurrent());
+		repriceMap.put("Profile", profile);
+		repriceMap.put("PricingModels", getUserPricingModels());
+		repriceMap.put("PricingOp", PricingConstants.OP_REPRICE_ORDER_TOTAL);
+
+		Map<String, Object> extraParams = Maps.newHashMap();
+		extraParams.put("priceList", priceList);
+		
+		repriceMap.put("ExtraParameters", extraParams);
+		return repriceMap;
 	}
 	
 	private CommerceItemManager mCommerceItemManager;

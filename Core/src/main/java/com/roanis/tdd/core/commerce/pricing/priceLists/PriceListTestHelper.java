@@ -26,7 +26,7 @@ public class PriceListTestHelper implements TestHelper {
 	
 	public void setPriceLists(RepositoryItem pProfile, String pPriceListId, String pSalePriceListId) throws PriceListException{
 		setPriceList(pProfile, pPriceListId);
-		setSalePriceList(pProfile, pSalePriceListId);
+		setSalePriceList(pProfile, pSalePriceListId);		
 	}
 	
 	public void setPriceList(RepositoryItem pProfile, String pPriceListId) throws PriceListException{

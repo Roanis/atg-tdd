@@ -1,6 +1,6 @@
 package com.roanis.tdd.junit4.rules;
 
-import atg.servlet.ServletUtil;
+import org.junit.rules.TestRule;
 
 /**
  * An {@link org.junit.rules.ExternalResource} {@link TestRule}, which loads the following components
@@ -22,8 +22,6 @@ public class CommerceData extends ExternalNucleusData {
 	private String mSiteId;
 	private String mProfileId;
 	private String mCatalogId;
-	private String mPriceListId;
-	private String mSalePriceListId;
 	private String mOrderId;
 		
 	
@@ -33,14 +31,12 @@ public class CommerceData extends ExternalNucleusData {
 		
 		getTestConfiguration().getSiteTestHelper().setAsCurrent(mSiteId);
 		getTestConfiguration().getProfileTestHelper().setAsCurrent(mProfileId);
-		getTestConfiguration().getCatalogTestHelper().setAsCurrent(mCatalogId);
-		getTestConfiguration().getPriceListTestHelper().setPriceLists(ServletUtil.getCurrentUserProfile(), mPriceListId, mSalePriceListId);
-		getTestConfiguration().getOrderTestHelper().setAsCurrent(mOrderId);
+		getTestConfiguration().getCatalogTestHelper().setAsCurrent(mCatalogId);		
+		getTestConfiguration().getOrderTestHelper().setAsCurrent(mOrderId);				
 	}
-	
+
 	@Override
 	protected void after() {
-		getTestConfiguration().getPriceListTestHelper().reset(ServletUtil.getCurrentUserProfile());
 		getTestConfiguration().getSiteTestHelper().reset();
 		getTestConfiguration().getProfileTestHelper().reset();
 		getTestConfiguration().getCatalogTestHelper().reset();		
@@ -97,8 +93,6 @@ public class CommerceData extends ExternalNucleusData {
 		mSiteId = builder.mSiteId;
 		mProfileId = builder.mProfileId;
 		mCatalogId = builder.mCatalogId;
-		mPriceListId = builder.mPriceListId;
-		mSalePriceListId = builder.mSalePriceListId;
 		mOrderId = builder.mOrderId;
 	}
 	

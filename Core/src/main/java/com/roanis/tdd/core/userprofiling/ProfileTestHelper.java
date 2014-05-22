@@ -14,6 +14,7 @@ public class ProfileTestHelper implements TestHelper {
 	
 	private ProfileTools mProfileTools;
 	private String mDefaultProfileId;	
+	private Profile mProfile;
 	
 	public void defaultCurrentProfile() throws Exception{
 		setAsCurrent(getDefaultProfileId());
@@ -21,7 +22,7 @@ public class ProfileTestHelper implements TestHelper {
 	
 	public void setAsCurrent(String pId) throws Exception {
 		MutableRepositoryItem user = getUser(pId);
-		Profile profile = new Profile();
+		Profile profile = getProfile();
 		profile.setDataSource(user);	
 		ServletUtil.setCurrentUserProfile(profile);
 	}
@@ -60,7 +61,15 @@ public class ProfileTestHelper implements TestHelper {
     
     public PropertyManager getPropertyManager() throws Exception{
     	return getProfileTools().getPropertyManager();
-    }	  
+    }	
+    
+    public Profile getProfile() {
+		return mProfile;
+	}
+
+	public void setProfile(Profile pProfile) {
+		mProfile = pProfile;
+	}
     
     @Override
 	public String getName() {

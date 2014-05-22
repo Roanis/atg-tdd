@@ -32,9 +32,9 @@ public class CatalogTestConstants {
     public static final String CASUAL_BELT_BLACK_MEDIUM_SKU_ID = "skuCasualBeltBlackMedium";
     public static final String CASUAL_BELT_BLACK_LARGE_SKU_ID = "skuCasualBeltBlackLarge";
     
-    public static final String JACKET_SMALL_SKU_ID = "skuCasualBeltBrownSmall";
-    public static final String JACKET_MEDIUM_SKU_ID = "skuCasualBeltBrownMedium";
-    public static final String JACKET_LARGE_SKU_ID = "skuCasualBeltBrownLarge";
+    public static final String JACKET_SMALL_SKU_ID = "skuMensJacketSmall";
+    public static final String JACKET_MEDIUM_SKU_ID = "skuMensJacketMedium";
+    public static final String JACKET_LARGE_SKU_ID = "skuMensJacketLarge";
     
     public static final String BLUE_DRESS_SIZE_8_SKU_ID = "skuDressBlue8";
     public static final String BLUE_DRESS_SIZE_10_SKU_ID = "skuDressBlue10";

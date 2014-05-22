@@ -37,6 +37,8 @@
 			<set-property name="passwordSalt"><![CDATA[1fe8bed4b6fd63c7]]></set-property>
 			<set-property name="firstName"><![CDATA[Test]]></set-property>
 			<set-property name="lastPasswordUpdate"><![CDATA[10/2/2013 16:41:46]]></set-property>
+			<set-property name="myPriceList"><![CDATA[baseListPrices]]></set-property>
+			<set-property name="mySalePriceList"><![CDATA[baseSalePrices]]></set-property>
 			<!-- rdonly   <set-property name="ThirtySomethings"><![CDATA[false]]></set-property>  -->
 			<!-- rdonly   <set-property name="MenOnly"><![CDATA[false]]></set-property>  -->
 			<!-- rdonly   <set-property name="Fashionista"><![CDATA[false]]></set-property>  -->
