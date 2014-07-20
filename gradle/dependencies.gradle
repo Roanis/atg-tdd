@@ -6,6 +6,8 @@ libraries.commons_collections = 'commons-collections:commons-collections:3.2.1@j
 libraries.google_guava='com.google.guava:guava:17.0'
 libraries.cglib = 'cglib:cglib-nodep:2.2.2'
 libraries.junit = 'junit:junit:4.11@jar'
+libraries.log4j = 'log4j:log4j:1.2.17' // Required by DUST classes
+libraries.servlet_api='javax.servlet:servlet-api:2.4'
    
 libraries.dust = dependencies.create("atg:DUST:1.2.2")
 

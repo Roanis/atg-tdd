@@ -1,5 +1,5 @@
 allprojects {
-  version = '1.0'
+  version = '1.0.0'
 }
 
 ext {
@@ -40,6 +40,8 @@ subprojects {
 	  compile libraries.google_guava    
 	  compile libraries.cglib
 	  compile libraries.atg
+	  compile libraries.log4j
+	  compile libraries.servlet_api
 	  testCompile libraries.junit
 	}
 	
