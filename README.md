@@ -109,7 +109,8 @@ The focus of this framework is on testing global components i.e. Services, Manag
 #Supported ATG Versions
 | TDD Version  | ATG Version |
 | ------------- | ------------- |
-| 1.x  | 10.2|
+| 1.0  | 10.2|
+| 1.1  | 11.0, 11.1|
 
 
 
