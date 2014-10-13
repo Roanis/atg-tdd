@@ -11,19 +11,23 @@ import org.junit.runner.RunWith;
 import atg.servlet.ServletUtil;
 import atg.userprofiling.ProfileTools;
 
+import com.roanis.tdd.annotation.NucleusComponent;
 import com.roanis.tdd.annotation.NucleusWithProfile;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
-import com.roanis.tdd.util.TestUtils;
+
 
 @NucleusWithProfile()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class ProfileToolsTest {
     
+	@NucleusComponent("/atg/userprofiling/ProfileTools")
+	private ProfileTools mProfileTools;
+	
     String userEmailAddress;
     
     @Before
     public void setUp() throws Exception {    	
-    	userEmailAddress = (String) ServletUtil.getCurrentUserProfile().getPropertyValue(getProfileTools().getPropertyManager().getEmailAddressPropertyName());
+    	userEmailAddress = (String) ServletUtil.getCurrentUserProfile().getPropertyValue(mProfileTools.getPropertyManager().getEmailAddressPropertyName());
     }
 	
     @After
@@ -33,15 +37,11 @@ public class ProfileToolsTest {
 	
 	@Test
 	public void userExists(){
-		assertNotNull(getProfileTools().getItemFromEmail(userEmailAddress));
+		assertNotNull(mProfileTools.getItemFromEmail(userEmailAddress));
 	}
 	
 	@Test
 	public void noSuchUser(){
-		assertNull(getProfileTools().getItemFromEmail("noSuchEmail@nosuchdomain.com"));
-	}
-		
-	private ProfileTools getProfileTools(){
-		return TestUtils.getTestConfiguration().getProfileTestHelper().getProfileTools();
-	}
+		assertNull(mProfileTools.getItemFromEmail("noSuchEmail@nosuchdomain.com"));
+	}			
 }

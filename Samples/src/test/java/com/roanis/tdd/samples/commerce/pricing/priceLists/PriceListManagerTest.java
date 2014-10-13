@@ -12,31 +12,30 @@ import atg.commerce.pricing.priceLists.PriceListException;
 import atg.commerce.pricing.priceLists.PriceListManager;
 import atg.repository.RepositoryItem;
 
+import com.roanis.tdd.annotation.NucleusComponent;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.core.commerce.pricing.priceLists.PriceListTestHelper;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
-import com.roanis.tdd.util.TestUtils;
 
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class PriceListManagerTest {
 	
+	@NucleusComponent("/atg/commerce/pricing/priceLists/PriceListManager")
 	private PriceListManager mPriceListManager;	
+	
+	@NucleusComponent("/roanis/tdd/base/commerce/pricing/priceLists/PriceListTestHelper")
 	private PriceListTestHelper mPriceListTestHelper;
+	
 	private RepositoryItem mListPrices;
 	private RepositoryItem mSalePrices;	
 	
 	@Before
 	public void setUp() throws Exception {	
-		mPriceListTestHelper = TestUtils.getTestConfiguration().getPriceListTestHelper();
-		mPriceListManager = mPriceListTestHelper.getPriceListManager();		
-		
 		setupDefaultPriceLists();		
 	}	
 	
 	@After
 	public void tearDown() throws Exception {
-		mPriceListTestHelper = null;
-		mPriceListManager = null;
 		mListPrices = null;
 		mSalePrices = null;				
 	}

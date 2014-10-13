@@ -15,27 +15,26 @@ import atg.commerce.order.OrderHolder;
 import atg.commerce.states.OrderStates;
 import atg.commerce.states.StateDefinitions;
 
+import com.roanis.tdd.annotation.NucleusComponent;
 import com.roanis.tdd.annotation.NucleusWithOrder;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
-import com.roanis.tdd.util.TestUtils;
 
 @NucleusWithOrder()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentOrderTest{
 	
 	private Order mCurrentOrder;
+	
+	@NucleusComponent("/atg/commerce/ShoppingCart")
 	private OrderHolder mShoppingCart;
 		
 	@Before
     public void setUp() throws Exception {    	
-		mShoppingCart = TestUtils.getTestConfiguration().getOrderTestHelper().getShoppingCart();		
-    	mCurrentOrder = mShoppingCart.getCurrent();
+		mCurrentOrder = mShoppingCart.getCurrent();
     }
     
     @After
     public void tearDown() throws Exception { 
-    	mShoppingCart.setLoggingDebug(true);
-    	mShoppingCart = null;
     	mCurrentOrder = null;
     }
        

@@ -13,12 +13,13 @@ import atg.commerce.order.CommerceItem;
 import atg.commerce.order.Order;
 import atg.commerce.order.OrderHolder;
 import atg.commerce.order.OrderManager;
+import atg.commerce.order.purchase.PurchaseProcessHelper;
 
+import com.roanis.tdd.annotation.NucleusComponent;
 import com.roanis.tdd.annotation.NucleusWithCommerce;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.core.commerce.order.OrderTestHelper;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
-import com.roanis.tdd.util.TestUtils;
 
 @NucleusWithCommerce()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
@@ -26,27 +27,28 @@ import com.roanis.tdd.util.TestUtils;
 public class RepriceOrderTest {
 	private static final String repriceChainId="repriceOrder";
 	
+	@NucleusComponent("/atg/commerce/order/OrderManager")
 	private OrderManager mOrderManager;
-	private OrderTestHelper mOrderTestHelper;	
+	
+	@NucleusComponent("/roanis/tdd/base/commerce/order/OrderTestHelper")
+	private OrderTestHelper mOrderTestHelper;
+	
+	@NucleusComponent("/atg/commerce/ShoppingCart")
 	private OrderHolder mShoppingCart;
+	
+	@NucleusComponent("/atg/commerce/order/purchase/PurchaseProcessHelper")
+	private PurchaseProcessHelper mPurchaseProcessHelper;
+		
 	private Order mOrder;	
 	
 	@Before
 	public void setUp(){	
-		mOrderTestHelper = TestUtils.getTestConfiguration().getOrderTestHelper();
-		mOrderManager = mOrderTestHelper.getOrderManager();
-		mShoppingCart = mOrderTestHelper.getShoppingCart();		
 		mOrder = mShoppingCart.getCurrent();				
 	}
 	
 	@After
 	public void tearDown() throws Throwable{		
-		mOrderTestHelper.reloadCart();		
-		
-		mOrderTestHelper = null;
-		mOrderManager = null;
-		mShoppingCart = null;
-		mOrder = null;		
+		mOrderTestHelper.reloadCart();				
 	}	
 
 	@Test
@@ -92,7 +94,7 @@ public class RepriceOrderTest {
 		assertEquals(1, item.getQuantity());
 		
 		// Change qty to 2.
-		mOrderTestHelper.getPurchaseProcessHelper().adjustItemRelationshipsForQuantityChange(mOrder, item, 2L);
+		mOrderManager.getCommerceItemManager().adjustItemRelationshipsForQuantityChange(mOrder, item, 2L);
 		
 		mOrderManager.getPipelineManager().runProcess(repriceChainId, mOrderTestHelper.createDefaultRepriceMap());
 		assertEquals(39.98D, mOrder.getPriceInfo().getTotal(), 0.00D);
