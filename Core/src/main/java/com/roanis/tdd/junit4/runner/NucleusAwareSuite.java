@@ -88,7 +88,7 @@ public class NucleusAwareSuite extends Suite {
 		
 		// Add a class rule to start/stop Nucleus
 		RunNucleus withNucleus = getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
-		nucleusRules.add(new NucleusWithModules(withNucleus.modules(), getTestClass().getJavaClass()));
+		nucleusRules.add(new NucleusWithModules(withNucleus.modules(), withNucleus.isUseTestConfigLayer(), getTestClass().getJavaClass()));
 		
 		return new RunRules(statement, nucleusRules, getDescription());
 	}

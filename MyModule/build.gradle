@@ -1,4 +1,10 @@
-archivesBaseName = 'mymodule'  
+archivesBaseName = 'mymodule' 
+
+dependencies {
+    compile( 
+    	project(':Core')
+    )
+}  
 
 jar {	
     manifest {

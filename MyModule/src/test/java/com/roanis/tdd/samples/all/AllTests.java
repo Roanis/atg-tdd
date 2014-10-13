@@ -13,7 +13,7 @@ import com.roanis.tdd.samples.commerce.pricing.priceLists.PriceListTestSuite;
 import com.roanis.tdd.samples.multisite.SiteTestSuite;
 import com.roanis.tdd.samples.userprofiling.ProfileTestSuite;
 
-@RunNucleus(modules={"TDD.Samples"})
+@RunNucleus(modules={"TDD.MyModule"})
 @RunWith(NucleusAwareSuite.class)
 @SuiteClasses({ ProfileTestSuite.class, 
 				SiteTestSuite.class, 

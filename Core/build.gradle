@@ -1,9 +1,12 @@
 archivesBaseName = 'core'  
 
 dependencies {		
-	    compile libraries.junit
-	 	compile libraries.dust
-	}
+    compile(
+		libraries.junit,
+ 		libraries.dust,
+ 		libraries.google_guava
+ 	)
+}
 
 jar {	
     manifest {

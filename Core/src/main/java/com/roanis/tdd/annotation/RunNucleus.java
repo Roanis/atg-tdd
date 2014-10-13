@@ -13,6 +13,11 @@ import java.lang.annotation.Target;
  * <p>This will typically be used in a top level {@link TestSuite}, so that Nucleus is only
  * started/stopped once per test run.</p>
  * 
+ * <p>If {@code isUseTestConfigLayer} is true (the default) then the Manifest file of each module
+ * being started will be updated with ATG-testConfig-Path: testconfig during Nucleus startup. 
+ * This enables each module to contain it's own unit tests and configuration. The Manifest file
+ * is restored during Nucleus shutdown</p>
+ * 
  * @author rory
  *
  */
@@ -23,4 +28,5 @@ import java.lang.annotation.Target;
 public @interface RunNucleus {
 	public abstract String[] modules();
 	public boolean isTransactional() default true;
+	public boolean isUseTestConfigLayer() default true;
 }

@@ -129,7 +129,7 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	 */
 	protected Statement createRuleChain(Statement statement, RunNucleus testNucleus) {
 		List<TestRule> chainedRules = new ArrayList<TestRule>(1);		
-		RuleChain chain = RuleChain.outerRule(new NucleusWithModules(testNucleus.modules(), getTestClass().getJavaClass()));
+		RuleChain chain = RuleChain.outerRule(new NucleusWithModules(testNucleus.modules(), testNucleus.isUseTestConfigLayer(), getTestClass().getJavaClass()));
 		
 		for (TestRule dataRule : classDataRules()) {
 			chain = chain.around(dataRule);
