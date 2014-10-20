@@ -65,9 +65,7 @@ As well as configuration, the Core module provides the following:
 3. Custom [JUnit](https://github.com/junit-team/junit) extensions which recognise the new annotations and act on them. See the [Class runner and Suite runner](https://github.com/Roanis/atg-tdd/tree/master/Core/src/main/java/com/roanis/tdd/junit4/runner). It's not important to know how they work, just that your tests should be annotated with these custom runners i.e. ```@RunWith(NucleusAwareJunit4ClassRunner.class)``` if using an annotation to set test data or ```@RunWith(NucleusAwareSuite.class)``` for the top level test suite to start Nucleus. The [samples](https://github.com/Roanis/atg-tdd/tree/master/Samples/src/test/java/com/roanis/tdd/samples) module has plenty of examples.
 
 ###MyModule
-This is a simple [module](https://github.com/Roanis/atg-tdd/tree/master/MyModule), which represents your own custom ATG module(s). It is provided as an example, to show how TDD can be performed when writing code using ATG. The module contains a bunch of sample test classes, which use the annotations and data provided by Core. It .
-
-The MANIFEST file, shows that Samples depends on MyModule and Core. This is typically how your tests will be structured. If you have multiple modules you want to test, then you'll want multile test modules too.
+This is a simple [module](https://github.com/Roanis/atg-tdd/tree/master/MyModule), which represents your own custom ATG module(s). It is provided as an example, to show how TDD can be performed when writing code using ATG. The module contains a bunch of sample test classes, which use the annotations and data provided by Core.
 
 Notice how the unit tests are structured:
 
@@ -78,12 +76,15 @@ Notice how the unit tests are structured:
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 @NucleusWithCatalog()
 public class CatalogToolsTest {
+    @NucleusComponent("/atg/commerce/catalog/CatalogTools")
+	private CatalogTools mCatalogTools;
 
 }
 ````
 
 2. The ```@RunWith(NucleusAwareJunit4ClassRunner.class)``` is used, to denote that a custom JUnit runner should be invoked. This runner recognises and acts on the provided annotations, for example, starting Nuclues with the specified modules, if it's not already running.
 3. The ```@NucleusWithCatalog``` annotation specifies that only catalog components need set up for this test class. There are several of these annotations provided, though most often, NucleusWithCommerce can be used to just bootstrap everything.
+4. The ```@NucleusComponent``` annotation provides a mechanism to auto inject Nucleus components directly into the test class, before any tests are ran.
 
 #Prerequisites
 ATG DUST 1.2.2 is required to build this project. It should be made available in a local maven repository, following the normal naming conventions (i.e. /atg/DUST/1.2.2/DUST-1.2.2.jar). You can download the jar from the [DUST download page](http://sourceforge.net/projects/atgdust/). 
