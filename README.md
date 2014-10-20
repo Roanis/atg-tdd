@@ -79,6 +79,11 @@ public class CatalogToolsTest {
 
     @NucleusComponent("/atg/commerce/catalog/CatalogTools")
 	private CatalogTools mCatalogTools;
+	
+	@Test
+	public void letsStartTesting(){
+	  ....
+	}
 
 }
 ````
