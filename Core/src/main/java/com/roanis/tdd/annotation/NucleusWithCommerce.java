@@ -29,7 +29,7 @@ import com.roanis.tdd.core.userprofiling.ProfileTestConstants;
  * @author rory
  *
  */
-@NucleusTestData
+@NucleusTestSetup
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

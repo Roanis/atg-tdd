@@ -18,7 +18,7 @@ import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
  * @author rory
  *
  */
-@NucleusTestData
+@NucleusTestSetup
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

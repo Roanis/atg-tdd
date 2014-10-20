@@ -19,7 +19,7 @@ import com.roanis.tdd.core.multisite.SiteTestConstants;
  * @author rory
  *
  */
-@NucleusTestData
+@NucleusTestSetup
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
