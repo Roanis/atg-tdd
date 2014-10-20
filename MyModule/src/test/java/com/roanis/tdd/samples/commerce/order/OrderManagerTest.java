@@ -16,12 +16,12 @@ import atg.commerce.order.OrderManager;
 import atg.servlet.ServletUtil;
 
 import com.roanis.tdd.annotation.NucleusComponent;
-import com.roanis.tdd.annotation.NucleusWithOrder;
-import com.roanis.tdd.annotation.NucleusWithProfile;
+import com.roanis.tdd.annotation.NucleusRequired;
+import com.roanis.tdd.annotation.NucleusWithCommerce;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
-@NucleusWithOrder()
-@NucleusWithProfile()
+@NucleusRequired(modules={"TDD.MyModule"})
+@NucleusWithCommerce()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class OrderManagerTest {	
 	

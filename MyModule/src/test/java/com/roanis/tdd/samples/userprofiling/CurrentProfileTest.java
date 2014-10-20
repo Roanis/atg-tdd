@@ -8,9 +8,11 @@ import org.junit.runner.RunWith;
 
 import atg.servlet.ServletUtil;
 
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.NucleusWithProfile;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithProfile()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentProfileTest {

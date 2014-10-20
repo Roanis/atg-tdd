@@ -16,9 +16,11 @@ import atg.commerce.states.OrderStates;
 import atg.commerce.states.StateDefinitions;
 
 import com.roanis.tdd.annotation.NucleusComponent;
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.NucleusWithOrder;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithOrder()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentOrderTest{

@@ -1,5 +1,5 @@
 allprojects {
-  version = '1.1.0'
+  version = '1.2.0'
 }
 
 ext {
@@ -31,30 +31,42 @@ subprojects {
 //      }
 //      url mavenUrl
 //    }
-	}      
+	}  
+  
+  // Workaround for https://issues.gradle.org/browse/GRADLE-2812
+  configurations.all {
+      resolutionStrategy {
+          force 'xml-apis:xml-apis:1.0.b2'
+      }
+  }    
 	
 	apply from: "$rootDir/gradle/dependencies.gradle"	
 	
 	dependencies {
-	  compile libraries.commons_collections  
-	  compile libraries.google_guava    
-	  compile libraries.cglib
-	  compile libraries.atg
-	  compile libraries.log4j
-	  compile libraries.servlet_api
-	  testCompile libraries.junit
+	  compile (
+      libraries.commons_collections,
+	    libraries.google_guava,    
+	    libraries.atg
+    )
+	  testCompile (
+      libraries.junit,      
+    )
+    testRuntime(
+      libraries.dust,
+	    libraries.log4j,      
+	    libraries.cglib,      
+	    libraries.servlet_api,
+      libraries.apache_ddlutils,
+      libraries.hsqldb,
+      libraries.jsp_api
+    )
 	}
 	
 	jar {	
 	    manifest {
 	        writeTo file(project.projectDir.getAbsolutePath() + '/META-INF/MANIFEST.MF')
 	    }
-	}    
-	
-	test {
-    	// Only run AllTests to start/stop Nucleus once per set of test suites.
-   		include '**/AllTests.class'    	
-	}
+	}	
 	
 	uploadArchives {
 	    repositories {       
@@ -79,5 +91,5 @@ apply from: "${rootDir}/gradle/tasks.gradle"
 defaultTasks 'build'
 
 task wrapper(type: Wrapper) {	
-		gradleVersion = "1.11"
+		gradleVersion = "2.0"
 }

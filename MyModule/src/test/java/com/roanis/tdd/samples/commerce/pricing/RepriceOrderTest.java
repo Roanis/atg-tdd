@@ -16,11 +16,13 @@ import atg.commerce.order.OrderManager;
 import atg.commerce.order.purchase.PurchaseProcessHelper;
 
 import com.roanis.tdd.annotation.NucleusComponent;
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.NucleusWithCommerce;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.core.commerce.order.OrderTestHelper;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithCommerce()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 

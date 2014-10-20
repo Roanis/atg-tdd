@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: TDD Base
-Implementation-Version: 1.1.0
+Implementation-Version: 1.2.0
 ATG-Config-Path: config
 ATG-Client-Class-Path: libs/core-1.0.jar
 ATG-Class-Path: libs/core-1.0.jar

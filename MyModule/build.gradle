@@ -4,6 +4,9 @@ dependencies {
     compile( 
     	project(':Core')
     )
+	testCompile(
+		libraries.dust
+	)
 }  
 
 jar {	

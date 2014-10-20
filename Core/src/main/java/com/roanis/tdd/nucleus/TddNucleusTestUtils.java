@@ -8,18 +8,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.apache.log4j.Logger;
-
-import com.google.common.base.Strings;
 
 import atg.nucleus.Nucleus;
 import atg.nucleus.NucleusTestUtils;
 import atg.nucleus.NucleusTestUtils.NucleusStartupOptions;
 import atg.nucleus.ServiceException;
+
+import com.google.common.base.Strings;
 
 /**
  * Utility methods for working with Nucleus.
@@ -53,7 +51,7 @@ public class TddNucleusTestUtils {
         }
         
         if(isUseTestConfigLayer){
-        	addTestConfigLayer(moduleList);
+        	enhanceManifestFiles(moduleList);
         }
         
         // Fire up Nucleus - make sure DYNAMO_HOME and DUST_HOME are set.
@@ -69,7 +67,7 @@ public class TddNucleusTestUtils {
         return nucleus;
     }
 	
-	protected static void addTestConfigLayer(List<String> moduleList) throws IOException {
+	public static void enhanceManifestFiles(List<String> moduleList) throws IOException {
 		String atgHome = getATGHome();
 		for (String moduleName : moduleList) {
 			String moduleDir = atgHome + moduleName.replace(".", File.separator);
@@ -81,10 +79,8 @@ public class TddNucleusTestUtils {
 		if (Strings.isNullOrEmpty(moduleDir)){
 			throw new IllegalArgumentException("A module directory must be specified when adding a test config layer.");
 		}
-		if(testConfigLayerExists(moduleDir)){
-			backupManifestFile(moduleDir);
-			updateManifest(moduleDir);
-		}
+		backupManifestFile(moduleDir);
+		updateManifest(moduleDir);		
 	}
 
 	protected static boolean testConfigLayerExists(String moduleDir) {
@@ -97,16 +93,17 @@ public class TddNucleusTestUtils {
 		return false;
 	}
 
-	protected static void backupManifestFile(String moduleDir) throws IOException {
-		Path manifestPath = getManifestPath(moduleDir);
+	protected static void backupManifestFile(String moduleDir) throws IOException {		
 		Path manifestBackupPath = getBackupManifestPath(moduleDir);	
 		
 		if(Files.exists(manifestBackupPath)){
-			throw new RuntimeException("A backup of the manifest file already exists. This could have happened due to a previous test run not completing properly. Please review the manifest files in:[" +moduleDir +"] and continue when only the proper MANIFEST.MF file exists" );
+			System.out.println("WARN: A backup of the manifest file already exists in:[" +moduleDir +"]. This usually happens when a previous test run has been terminated early. It can be fixed by just doing a full test run." );
+			return;
 		}
 		
+		Path manifestPath = getManifestPath(moduleDir);
 		Files.copy(manifestPath, manifestBackupPath);
-	}		
+	}
 	
 	protected static Path getManifestPath(String moduleDir){
 		String manifestFileLocation = getManifestFileLocation(moduleDir);
@@ -182,7 +179,7 @@ public class TddNucleusTestUtils {
 		}
 	}
 	
-	protected static void restoreAllManifestFiles(List<String> moduleList) {
+	public static void restoreAllManifestFiles(List<String> moduleList) {
 		String atgHome = getATGHome();
 		for (String moduleName : moduleList) {
 			String moduleDir = atgHome + moduleName.replace(".", File.separator);
@@ -192,6 +189,9 @@ public class TddNucleusTestUtils {
 
 	protected static String getATGHome() {
 		String dynamoHome = System.getenv("DYNAMO_HOME");
+		if(Strings.isNullOrEmpty(dynamoHome)){
+			throw new RuntimeException("The DYNAMO_HOME environment variable is not set.");
+		}
 		return dynamoHome + File.separator + ".." + File.separator;
 	}
 
@@ -202,7 +202,7 @@ public class TddNucleusTestUtils {
 	 */
 	public static void shutdownNucleus (Nucleus nucleus, List<String> moduleList, boolean isUseTestConfigLayer) {
 		if(isUseTestConfigLayer){
-			restoreAllManifestFiles(moduleList);
+			restoreAllManifestFiles(moduleList);		
 		}
         if (nucleus != null) {
             try {

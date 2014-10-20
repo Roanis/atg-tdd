@@ -4,7 +4,9 @@ dependencies {
     compile(
 		libraries.junit,
  		libraries.dust,
- 		libraries.google_guava
+ 		libraries.google_guava,
+		libraries.log4j,
+		libraries.servlet_api
  	)
 }
 

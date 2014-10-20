@@ -12,10 +12,11 @@ import atg.servlet.ServletUtil;
 import atg.userprofiling.ProfileTools;
 
 import com.roanis.tdd.annotation.NucleusComponent;
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.NucleusWithProfile;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
-
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithProfile()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class ProfileToolsTest {

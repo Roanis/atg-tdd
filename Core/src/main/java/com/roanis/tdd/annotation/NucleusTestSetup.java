@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Meta annotation that indicates a piece of test data.
+ * Meta annotation that indicates test setup information.
  * 
  * @author rory curtis
  * @version 1.0
@@ -14,6 +14,6 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface NucleusTestData {
+public @interface NucleusTestSetup {
 
 }

@@ -8,10 +8,12 @@ import org.junit.runner.RunWith;
 
 import atg.commerce.dp.CatalogContext;
 
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.NucleusWithCatalog;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithCatalog()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentCatalogTest {

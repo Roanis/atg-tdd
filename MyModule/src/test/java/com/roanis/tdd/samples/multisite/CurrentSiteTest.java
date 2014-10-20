@@ -9,10 +9,12 @@ import org.junit.runner.RunWith;
 
 import atg.multisite.SiteContextManager;
 
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.NucleusWithSite;
 import com.roanis.tdd.core.multisite.SiteTestConstants;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithSite()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentSiteTest {		

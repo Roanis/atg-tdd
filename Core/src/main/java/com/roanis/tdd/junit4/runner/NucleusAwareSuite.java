@@ -12,11 +12,12 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
 import org.junit.runners.model.Statement;
 
-import com.roanis.tdd.annotation.RunNucleus;
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.junit4.rules.NucleusWithModules;
+import com.roanis.tdd.nucleus.NucleusContext;
 
 /**
- * A custom JUnit4 {@link Suite} runner, which looks for the {@link RunNucleus} annotation. If found,
+ * A custom JUnit4 {@link Suite} runner, which looks for the {@link NucleusRequired} annotation. If found,
  * a new {@link NucleusWithModules} rule is added to the suite, so that Nucleus is started/stopped
  * before and after the test suite.
  * 
@@ -54,14 +55,18 @@ public class NucleusAwareSuite extends Suite {
 	}
 	
 	/**
-	 * Ensure that a {@link RunNucleus} annotation has been specified for this Suite runner.
+	 * Ensure that either a {@link NucleusRequired} annotation has been specified for this Suite runner,
+	 * or an existing Nucleus instance is running. If none of those are true, then add an error to the
+	 * {@code errors} collection.
 	 * 
 	 * @param errors
 	 */
 	private void validateAnnotations(List<Throwable> errors){				
-		if (null == getTestClass().getJavaClass().getAnnotation(RunNucleus.class)){
-			errors.add(new Exception("No Nucleus modules were specified, via a @RunNucleus annotation, e.g. @RunNucleus(modules=\"DCS\")"));
-			return;
+		if (null == getTestClass().getJavaClass().getAnnotation(NucleusRequired.class)){
+			if(! NucleusContext.isNucleusRunning()){
+				errors.add(new Exception("No Nucleus modules were specified, via a @NucleusRequired annotation, e.g. @NucleusRequired(modules=\"DCS\")"));
+				return;
+			}			
 		}				
 	}
 	
@@ -87,7 +92,7 @@ public class NucleusAwareSuite extends Suite {
 		List<TestRule> nucleusRules = new ArrayList<TestRule>(1);
 		
 		// Add a class rule to start/stop Nucleus
-		RunNucleus withNucleus = getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
+		NucleusRequired withNucleus = getTestClass().getJavaClass().getAnnotation(NucleusRequired.class);
 		nucleusRules.add(new NucleusWithModules(withNucleus.modules(), withNucleus.isUseTestConfigLayer(), getTestClass().getJavaClass()));
 		
 		return new RunRules(statement, nucleusRules, getDescription());

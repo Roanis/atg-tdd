@@ -16,17 +16,23 @@ import org.junit.runners.model.Statement;
 
 import com.google.common.collect.Lists;
 import com.roanis.tdd.annotation.NucleusComponent;
-import com.roanis.tdd.annotation.RunNucleus;
+import com.roanis.tdd.annotation.NucleusRequired;
 import com.roanis.tdd.annotation.processor.rule.AnnotationTestRuleGenerator;
 import com.roanis.tdd.annotation.processor.rule.AnnotationTestRuleGeneratorImpl;
 import com.roanis.tdd.core.TestContext;
 import com.roanis.tdd.junit4.rules.NucleusComponentRule;
 import com.roanis.tdd.junit4.rules.NucleusWithModules;
 import com.roanis.tdd.junit4.rules.NucleusWithTransaction;
+import com.roanis.tdd.nucleus.NucleusContext;
 
 /**
- * An extension of {@link BlockJUnit4ClassRunner} which looks for any {@link com.roanis.tdd.annotation} on the class
- * and generates a TestRule from the annotation.
+ * <p>An extension of {@link BlockJUnit4ClassRunner}, used to test ATG applications.
+ * This class creates extra JUnit class rules based on the existence of certain
+ * annotations. If a {@link NucleusRequired} annotation is found, then a {@link NucleusWithModules}
+ * rule is created to ensure a Nucleus exists, or is started, with the specified modules.</p>
+ * 
+ * <p>{@link NucleusComponent} annotations are also recognised and can be used to automatically
+ * inject Nucleus components in to class fields.</p>
  * 
  * @author rory
  *
@@ -34,7 +40,6 @@ import com.roanis.tdd.junit4.rules.NucleusWithTransaction;
 public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {	
 	private TestContext mTestContext;
 	
-
 	public NucleusAwareJunit4ClassRunner(Class<?> klass) throws InitializationError {
 		super(klass);	
 		mTestContext = new TestContext(klass);
@@ -80,36 +85,57 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	/* (non-Javadoc)
 	 * @see org.junit.runners.ParentRunner#classBlock(org.junit.runner.notification.RunNotifier)
 	 * 
-	 * Look for any annotations at Class level and generate a TestRule for them. If @RunNucleus is found
-	 * on the class (i.e. when running/debugging an individual class) then chain the rules so that
-	 * Nucleus is started first and then the test data is set up.
+	 * Look for any annotations at Class level and generate a TestRule for them. If @NucleusRequired is found
+	 * on the class then chain the rules to ensure a Nucleus is available. If there is no @NucleusRequired
+	 * annotation on this class, then it could be being run as part of a Test Suite, which has already
+	 * started Nucleus. In that case, we validate that a Nucleus already exists. If it doesn't a RuntimeException
+	 * is thrown. 
 	 */
 	@Override
 	protected Statement classBlock(RunNotifier notifier) {		
 		Statement statement = super.classBlock(notifier);
 		
-		if (hasRunNucleusAnnotation()){
+		if (hasNucleusAnnotation()){
 			statement = withRuleChain(statement);
 		} else {
+			validateRunningNucleus();
 			statement = withClassData(statement);			
 		}
 						
 		return statement;
 	}	
 
-	protected boolean hasRunNucleusAnnotation() {
-		return null != getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
+	/**
+	 * Check for the existence of a {@link NucleusRequired} annotation on the
+	 * test class.
+	 * 
+	 * @return true if an annotations is found, false otherwise.
+	 */
+	protected boolean hasNucleusAnnotation() {
+		return null != getTestClass().getJavaClass().getAnnotation(NucleusRequired.class);
 	}
 	
 	/**
-	 * Check for the {@link RunNucleus annotation}. If present, make sure Nuclues is the first
+	 * If there is no {@link NucleusRequired} on the test class, then Nucleus
+	 * should already be running (probably from a test suite). Validate
+	 * that a running Nucleus exists, or throw a {@link RuntimeException} if
+	 * none was found.
+	 */
+	protected void validateRunningNucleus() {
+		if(! NucleusContext.isNucleusRunning()){
+			throw new RuntimeException("Nucleus is not running, so cannot continue with NucleusAwareJunit4ClassRunner tests. Ensure that a @NucleusRequired annotation is present on either this class, or a top level test suite, if one is being used.");
+		}		
+	}	
+	
+	/**
+	 * Check for the {@link NucleusRequired annotation}. If present, make sure Nuclues is the first
 	 * rule in the chain, otherwise just exit with the existing set of rules.
 	 * 
 	 * @param statement
 	 * @return
 	 */
 	protected Statement withRuleChain(Statement statement) {	
-		RunNucleus annotation = getTestClass().getJavaClass().getAnnotation(RunNucleus.class);
+		NucleusRequired annotation = getTestClass().getJavaClass().getAnnotation(NucleusRequired.class);
 		if (null == annotation){
 			return statement;
 		}
@@ -127,7 +153,7 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	 * @param testNucleus
 	 * @return
 	 */
-	protected Statement createRuleChain(Statement statement, RunNucleus testNucleus) {
+	protected Statement createRuleChain(Statement statement, NucleusRequired testNucleus) {
 		List<TestRule> chainedRules = new ArrayList<TestRule>(1);		
 		RuleChain chain = RuleChain.outerRule(new NucleusWithModules(testNucleus.modules(), testNucleus.isUseTestConfigLayer(), getTestClass().getJavaClass()));
 		
@@ -171,7 +197,9 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	 */
 	@Override
 	protected Statement withBefores(FrameworkMethod method, Object target, Statement statement) {
+		@SuppressWarnings("deprecation")
 		Statement junitBefores = super.withBefores(method, target, statement);
+		
 		List<TestRule> chainedRules = new ArrayList<TestRule>(1);
 		RuleChain chain = RuleChain.emptyRuleChain();
 		
@@ -183,6 +211,17 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 		return new RunRules(junitBefores, chainedRules, getDescription());
 	}
 	
+	/**
+	 * Looks for {@link NucleusComponent} annotations on the test class
+	 * and creates a {@link TestRule} for each field with the annotation.
+	 * The rule ensures that the field is injected with the correct
+	 * component before any tests are run.
+	 * 
+	 * @param statement the current statement
+	 * @return a statement that has been updated with nucleus compoent
+	 * injection rules, or the current statement if no NucleusComponent
+	 * annotations were found.
+	 */
 	protected Statement withNucleusComponentRules(Statement statement) {
 		List<TestRule> nucleusComponentRules = nucleusComponenInjectionRules();
 		return nucleusComponentRules.isEmpty() ? statement :

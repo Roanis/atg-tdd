@@ -9,9 +9,13 @@ import atg.commerce.inventory.InventoryException;
 import atg.commerce.inventory.InventoryManager;
 
 import com.roanis.tdd.annotation.NucleusComponent;
+import com.roanis.tdd.annotation.NucleusRequired;
+import com.roanis.tdd.annotation.NucleusWithCommerce;
 import com.roanis.tdd.core.commerce.catalog.CatalogTestConstants;
 import com.roanis.tdd.junit4.runner.NucleusAwareJunit4ClassRunner;
 
+@NucleusRequired(modules={"TDD.MyModule"})
+@NucleusWithCommerce()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class InventoryManagerTest {
 	
