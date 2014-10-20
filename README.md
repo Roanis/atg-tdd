@@ -19,6 +19,7 @@ The aim is to provide an annotation driven framework, which takes care of a lot 
 We can now write test classes, that look like this:
 
 ```java
+@NucleusRequired(modules={"TDD.MyModule"})
 @NucleusWithProfile()
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 public class CurrentProfileTest {
@@ -47,8 +48,7 @@ The following table shows the logical structure of the project:
 | Module  | Description |
 | ------------- | ------------- |
 | Core  | This provides the annotion driven framework for unit testing. (The other modules provided are simple examples of how Core is used.)|
-| MyModule  | A sample custom module, extending ATG Commerce, as a client would typically do. This is the code you'd want to write unit tests for. It's provided here to complete the example, of how to structure your modules for unit testing.  |
-| Samples  | The module containing the unit test suites for MyModule |
+| MyModule  | A sample custom module, extending ATG Commerce, as a client would typically do. This is the module you'd like to unit test.
 
 
 ###Core
@@ -65,52 +65,44 @@ As well as configuration, the Core module provides the following:
 3. Custom [JUnit](https://github.com/junit-team/junit) extensions which recognise the new annotations and act on them. See the [Class runner and Suite runner](https://github.com/Roanis/atg-tdd/tree/master/Core/src/main/java/com/roanis/tdd/junit4/runner). It's not important to know how they work, just that your tests should be annotated with these custom runners i.e. ```@RunWith(NucleusAwareJunit4ClassRunner.class)``` if using an annotation to set test data or ```@RunWith(NucleusAwareSuite.class)``` for the top level test suite to start Nucleus. The [samples](https://github.com/Roanis/atg-tdd/tree/master/Samples/src/test/java/com/roanis/tdd/samples) module has plenty of examples.
 
 ###MyModule
-This is a simple [module](https://github.com/Roanis/atg-tdd/tree/master/MyModule), which represents your own custom ATG module(s). It is provided as an example, to show how test modules can run unit tests against the code inside it. 
-
-###Samples
-This [module](https://github.com/Roanis/atg-tdd/tree/master/Samples) contains a bunch of sample test suites, which use the annotations and data provided by Core. It's a reference for how you'd typically write unit tests, for your own module (MyModule in this case).
+This is a simple [module](https://github.com/Roanis/atg-tdd/tree/master/MyModule), which represents your own custom ATG module(s). It is provided as an example, to show how TDD can be performed when writing code using ATG. The module contains a bunch of sample test classes, which use the annotations and data provided by Core. It .
 
 The MANIFEST file, shows that Samples depends on MyModule and Core. This is typically how your tests will be structured. If you have multiple modules you want to test, then you'll want multile test modules too.
 
 Notice how the unit tests are structured:
 
-1. AllTests.java contains the top level test suite. It is annotated with ```@RunNucleus``` to start Nuclues with the correct modules, before the test suite runs. Each test suite is executed and then Nucleus is automatically stopped by the annotation.
+1. Each test class has a NucleusRequired annotation. This denotes which Nucleus modules are required for testing this class. Typically, each module will "start itself", for unit testing purposes.
  
 ```java
-@RunNucleus(modules={"TDD.Samples"})
-@RunWith(NucleusAwareSuite.class)
-@SuiteClasses({ProfileTestSuite.class, SiteTestSuite.class, CatalogTestSuite.class, PriceListTestSuite.class, InventoryTestSuite.class, OrderTestSuite.class})
-public class AllTests {
+@NucleusRequired(modules={"TDD.Samples"})
+@RunWith(NucleusAwareJunit4ClassRunner.class)
+@NucleusWithCatalog()
+public class CatalogToolsTest {
 
 }
 ````
 
-2. The ```@RunWith(NucleusAwareSuite.class)``` is used, so that the custom JUnit runner picks up the ```@RunNucleus``` annotation and acts on it.
-3. ```@SuiteClasses({ProfileTestSuite.class ...})``` is a standard JUnit annotation, which runs all the test suites provided, as part of the overall suite.
-4. The build is configured to only run test classes with a name of AllTests. This ensures we start Nucleus once, run all the tests and then stop Nucleus at the end. The [gradle build file](https://github.com/Roanis/atg-tdd/blob/master/build.gradle) for this project contains such a configuration, in the ```test``` section.
-
-**Note** Ideally, we wouldn't need a separate module for the unit tests at all. They'd be in MyModule/src/test/java. To make that work, we'd need a custom configuration layer (e.g. ATG-testConfig-Path: testconfig) in MyModule, which would only be used during testing. However, custom layers don't seem to work in DUST. So that option isn't available. 
+2. The ```@RunWith(NucleusAwareJunit4ClassRunner.class)``` is used, to denote that a custom JUnit runner should be invoked. This runner recognises and acts on the provided annotations, for example, starting Nuclues with the specified modules, if it's not already running.
+3. The ```@NucleusWithCatalog``` annotation specifies that only catalog components need set up for this test class. There are several of these annotations provided, though most often, NucleusWithCommerce can be used to just bootstrap everything.
 
 #Prerequisites
 ATG DUST 1.2.2 is required to build this project. It should be made available in a local maven repository, following the normal naming conventions (i.e. /atg/DUST/1.2.2/DUST-1.2.2.jar). You can download the jar from the [DUST download page](http://sourceforge.net/projects/atgdust/). 
 
-**Note**, you may need the pom.xml file too, to pull in all the required dependencies for DUST.
-
 As per the requirement of DUST, if your ATG installation requires license files, then DUST_HOME should be set to point to the location of those files.
 
 #Getting Started
-Simply clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew build``` from TDD folder. Everything should build and the tests in Samples will be executed.
+Simply clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew clean build``` from atg-tdd folder. Both modules will be built and the tests in MyModile will be executed.
 
 Obviously, when writing tests for your own ATG module, you don't need Samples and MyModule, so they can be removed.
 
 #Limitations
-The focus of this framework is on testing global components i.e. Services, Managers, Tools, etc. That's where the vast majority of your business logic will live. Request and Session scoped components, are outside the scope of this project.
+The focus of this framework is on testing global components i.e. Services, Managers, Tools, etc. That's where the vast majority of your business logic will live. Request and Session scoped components, can also be tested but they should really be changed to global scope in the ```testconfig``` layer.
 
 #Supported ATG Versions
 | TDD Version  | ATG Version |
 | ------------- | ------------- |
 | 1.0  | 10.2|
-| 1.1  | 11.0, 11.1|
+| 1.1, 1.2  | 11.0, 11.1|
 
 
 
