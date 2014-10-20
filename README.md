@@ -76,6 +76,7 @@ Notice how the unit tests are structured:
 @RunWith(NucleusAwareJunit4ClassRunner.class)
 @NucleusWithCatalog()
 public class CatalogToolsTest {
+
     @NucleusComponent("/atg/commerce/catalog/CatalogTools")
 	private CatalogTools mCatalogTools;
 
@@ -93,8 +94,6 @@ As per the requirement of DUST, if your ATG installation requires license files,
 
 #Getting Started
 Simply clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew clean build``` from atg-tdd folder. Both modules will be built and the tests in MyModile will be executed.
-
-Obviously, when writing tests for your own ATG module, you don't need Samples and MyModule, so they can be removed.
 
 #Limitations
 The focus of this framework is on testing global components i.e. Services, Managers, Tools, etc. That's where the vast majority of your business logic will live. Request and Session scoped components, can also be tested but they should really be changed to global scope in the ```testconfig``` layer.
