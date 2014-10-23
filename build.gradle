@@ -1,5 +1,5 @@
 allprojects {
-  version = '1.2.1'
+  version = '1.3'
 }
 
 ext {
@@ -51,7 +51,7 @@ subprojects {
 	    libraries.atg
 	  )
 	  testCompile (
-      libraries.junit,      
+      	libraries.junit,      
       )
 	    testRuntime(
 	      libraries.dust,
