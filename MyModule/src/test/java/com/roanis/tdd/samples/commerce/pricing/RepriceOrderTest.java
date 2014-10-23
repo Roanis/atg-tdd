@@ -96,7 +96,7 @@ public class RepriceOrderTest {
 		assertEquals(1, item.getQuantity());
 		
 		// Change qty to 2.
-		mOrderManager.getCommerceItemManager().adjustItemRelationshipsForQuantityChange(mOrder, item, 2L);
+		mPurchaseProcessHelper.adjustItemRelationshipsForQuantityChange(mOrder, item, 2L);
 		
 		mOrderManager.getPipelineManager().runProcess(repriceChainId, mOrderTestHelper.createDefaultRepriceMap());
 		assertEquals(39.98D, mOrder.getPriceInfo().getTotal(), 0.00D);

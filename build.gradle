@@ -17,7 +17,8 @@ subprojects {
 	apply plugin: 'eclipse'
 		
 	group = 'roanis.tdd'
-	sourceCompatibility = 1.7
+	sourceCompatibility = 1.6
+	targetCompatibility = 1.6
 	
 	repositories {   
 		mavenLocal()
@@ -44,22 +45,23 @@ subprojects {
 	
 	dependencies {
 	  compile (
-      libraries.commons_collections,
+	    libraries.commons_collections,
+	    libraries.commons_io,
 	    libraries.google_guava,    
 	    libraries.atg
-    )
+	  )
 	  testCompile (
       libraries.junit,      
-    )
-    testRuntime(
-      libraries.dust,
-	    libraries.log4j,      
-	    libraries.cglib,      
-	    libraries.servlet_api,
-      libraries.apache_ddlutils,
-      libraries.hsqldb,
-      libraries.jsp_api
-    )
+      )
+	    testRuntime(
+	      libraries.dust,
+		  libraries.log4j,      
+		  libraries.cglib,      
+		  libraries.servlet_api,
+	      libraries.apache_ddlutils,
+	      libraries.hsqldb,
+	      libraries.jsp_api
+	    )
 	}
 	
 	jar {	

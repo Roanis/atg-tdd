@@ -3,13 +3,9 @@ package com.roanis.tdd.nucleus;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
 import atg.nucleus.Nucleus;
@@ -67,6 +63,7 @@ public class TddNucleusTestUtils {
         return nucleus;
     }
 	
+	
 	public static void enhanceManifestFiles(List<String> moduleList) throws IOException {
 		String atgHome = getATGHome();
 		for (String moduleName : moduleList) {
@@ -84,34 +81,34 @@ public class TddNucleusTestUtils {
 	}
 
 	protected static boolean testConfigLayerExists(String moduleDir) {
-		String testConfigDir = moduleDir + File.separator + TEST_CONFIG_LAYER_NAME;
-		Path testConfigPath = Paths.get(testConfigDir);
-		if(Files.exists(testConfigPath) && Files.isDirectory(testConfigPath)){
+		String testConfigPath = moduleDir + File.separator + TEST_CONFIG_LAYER_NAME;
+		File testConfigDir = new File(testConfigPath);
+		if(testConfigDir.exists() && testConfigDir.isDirectory()){
 			return true;
 		}
 				
 		return false;
 	}
 
-	protected static void backupManifestFile(String moduleDir) throws IOException {		
-		Path manifestBackupPath = getBackupManifestPath(moduleDir);	
-		
-		if(Files.exists(manifestBackupPath)){
+	protected static void backupManifestFile(String moduleDir) throws IOException {			
+		String manifestBackupPath = getBackupManifestPath(moduleDir);	
+		File manifestBackupFile = new File(manifestBackupPath);
+		if(manifestBackupFile.exists()){
 			System.out.println("WARN: A backup of the manifest file already exists in:[" +moduleDir +"]. This usually happens when a previous test run has been terminated early. It can be fixed by just doing a full test run." );
 			return;
 		}
 		
-		Path manifestPath = getManifestPath(moduleDir);
-		Files.copy(manifestPath, manifestBackupPath);
+		String manifestPath = getManifestPath(moduleDir);
+		FileUtils.copyFile(new File(manifestPath), manifestBackupFile);
 	}
 	
-	protected static Path getManifestPath(String moduleDir){
+	protected static String getManifestPath(String moduleDir){
 		String manifestFileLocation = getManifestFileLocation(moduleDir);
-		Path manifestPath = Paths.get(manifestFileLocation);
-		if(! Files.exists(manifestPath)){
+		File manifestFile = new File(manifestFileLocation);
+		if(! manifestFile.exists()){
 			throw new RuntimeException("The specified Manifest file doesn't exist: " + manifestFileLocation);
 		}
-		return manifestPath;
+		return manifestFileLocation;
 	}
 
 	protected static String getManifestFileLocation(String moduleDir) {
@@ -119,21 +116,20 @@ public class TddNucleusTestUtils {
 		return manifestLocation;
 	}
 	
-	protected static Path getBackupManifestPath(String moduleDir){
-		String backupManifestFileLocation = getManifestFileLocation(moduleDir) + ".BAK";
-		Path backupPath = Paths.get(backupManifestFileLocation);		
-		return backupPath;
+	protected static String getBackupManifestPath(String moduleDir){
+		return getManifestFileLocation(moduleDir) + ".BAK";		
 	}
 	
 	protected static void updateManifest(String moduleDir){
-		Path manifestPath = getManifestPath(moduleDir);
-		Charset charset = StandardCharsets.UTF_8;
+		String manifestPath = getManifestPath(moduleDir);
+		File manifestFile = new File(manifestPath);
+		Charset charset = Charset.forName("UTF-8");
 		 
 		try {
-			List<String> content = Files.readAllLines(manifestPath, charset);
+			List<String> content = FileUtils.readLines(manifestFile, charset);
 			updateATGConfigPath(content);
 			addTddDependencies(content);
-			Files.write(manifestPath, content, charset);
+			FileUtils.writeLines(manifestFile, content);			
 		} catch (IOException e) {
 			restoreManifestFile(moduleDir);
 			throw new RuntimeException("Unable to add test config layer to Manifest file: " + manifestPath.toString(), e);
@@ -162,18 +158,18 @@ public class TddNucleusTestUtils {
 				return;
 			}
 		}
-	}
-	
+	}	
 
 	protected static void restoreManifestFile(String moduleDir) {
 		if(! testConfigLayerExists(moduleDir)){
 			return;
 		}
 		
-		Path manifestPath = getManifestPath(moduleDir);
-		Path backupManifestPath = getBackupManifestPath(moduleDir);
+		File manifestFile = new File(getManifestPath(moduleDir));
+		File backupManifestFile = new File(getBackupManifestPath(moduleDir));
 		try {
-			Files.move(backupManifestPath, manifestPath, StandardCopyOption.REPLACE_EXISTING);
+			FileUtils.copyFile(backupManifestFile, manifestFile);
+			backupManifestFile.delete();
 		} catch (IOException e) {
 			System.out.println("ERROR: unable to restore manifest files for module:["+moduleDir+"]. Please review the manifest files in this directory.");
 		}
@@ -188,11 +184,11 @@ public class TddNucleusTestUtils {
 	}
 
 	protected static String getATGHome() {
-		String dynamoHome = System.getenv("DYNAMO_HOME");
-		if(Strings.isNullOrEmpty(dynamoHome)){
-			throw new RuntimeException("The DYNAMO_HOME environment variable is not set.");
+		String dynamoRoot = findDynamoRootDir();
+		if(Strings.isNullOrEmpty(dynamoRoot)){
+			throw new RuntimeException("Couldn't find an ATG install. Either set a DYNAMO_HOME or ATG_HOME environment variable. Alternatively, if you don't have an ATG install, the tests can be ignored by setting the tdd.ignoreMissingATGInstall system property to true.");
 		}
-		return dynamoHome + File.separator + ".." + File.separator;
+		return dynamoRoot;
 	}
 
 	/**
@@ -216,6 +212,40 @@ public class TddNucleusTestUtils {
     }
 
 	protected static void removeTestConfigLayer(List<String> moduleList) {
+	}
+	
+	public static String findDynamoRootDir(){
+		String dynamoRoot = fromDynamoHome();
+		if(Strings.isNullOrEmpty(dynamoRoot)){
+			dynamoRoot = fromATGHome();
+		}
+						
+		if(! Strings.isNullOrEmpty(dynamoRoot)){
+			System.setProperty("atg.dynamo.root", dynamoRoot);
+		}
+		return dynamoRoot;
+	}
+	
+	private static String fromDynamoHome(){
+		String dynamoHome = System.getenv("DYNAMO_HOME");
+		if(! Strings.isNullOrEmpty(dynamoHome)){
+			return dynamoHome + File.separator + ".." + File.separator;
+		}
+		return null;
+	}
+
+
+	private static String fromATGHome(){
+		return System.getenv("ATG_HOME");		
+	}
+
+	public static boolean isATGInstallAvailable() {
+		String dynamoRoot = findDynamoRootDir();
+		if(Strings.isNullOrEmpty(dynamoRoot)){
+			return false;
+		}
+		File file = new File(dynamoRoot);
+		return file.exists();
 	}  
 
 }

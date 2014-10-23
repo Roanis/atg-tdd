@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.rules.RuleChain;
 import org.junit.rules.RunRules;
 import org.junit.rules.TestRule;
+import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
@@ -24,6 +25,7 @@ import com.roanis.tdd.junit4.rules.NucleusComponentRule;
 import com.roanis.tdd.junit4.rules.NucleusWithModules;
 import com.roanis.tdd.junit4.rules.NucleusWithTransaction;
 import com.roanis.tdd.nucleus.NucleusContext;
+import com.roanis.tdd.util.EnvironmentUtils;
 
 /**
  * <p>An extension of {@link BlockJUnit4ClassRunner}, used to test ATG applications.
@@ -54,6 +56,29 @@ public class NucleusAwareJunit4ClassRunner extends BlockJUnit4ClassRunner {
 	
 	protected void prepareTest(Object instance) {
 		mTestContext.setTestInstance(instance);
+	}	
+	
+	
+	@Override
+	public Description getDescription() {
+		if(EnvironmentUtils.shouldIgnore(getTestClass().getJavaClass())){
+			return Description.createSuiteDescription(getTestClass().getJavaClass());
+		}
+		return super.getDescription();
+	}
+	
+	/* 
+	 * Check to see if this test class is ignored, before attempting to run any tests.
+	 * 
+	 * @see org.junit.runners.ParentRunner#run(org.junit.runner.notification.RunNotifier)
+	 */
+	@Override
+	public void run(RunNotifier notifier) {
+		if(EnvironmentUtils.shouldIgnore(getTestClass().getJavaClass())){
+			notifier.fireTestIgnored(getDescription());
+			return;
+		}
+		super.run(notifier);
 	}	
 
 	/* (non-Javadoc)
