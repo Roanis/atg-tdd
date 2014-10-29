@@ -109,7 +109,7 @@ Packaged releases of the project can be downloaded from the [releases](https://g
 Alternatively, if you want to compile the project, you can clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew clean build``` from atg-tdd folder. Both modules will be built and the tests in MyModile will be executed.
 
 #Limitations
-The focus of this framework is on testing global components i.e. Services, Managers, Tools, etc. That's where the vast majority of your business logic will live. Request and Session scoped components, can also be tested but they should really be changed to global scope in the ```testconfig``` layer.
+The focus of this framework is on testing global components i.e. Services, Managers, Tools, etc. That's where the vast majority of your business logic will live. Request and Session scoped components, can also be tested but they should really be changed to global scope in the ```testconfig``` layer, in your own module.
 
 #Supported ATG Versions
 | TDD Version  | ATG Version |
