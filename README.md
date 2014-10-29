@@ -98,7 +98,14 @@ ATG DUST 1.2.2 is required to build this project. It should be made available in
 As per the requirement of DUST, if your ATG installation requires license files, then DUST_HOME should be set to point to the location of those files.
 
 #Getting Started
-Simply clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew clean build``` from atg-tdd folder. Both modules will be built and the tests in MyModile will be executed.
+Packaged releases of the project can be downloaded from the [releases](https://github.com/Roanis/atg-tdd/releases) section. Do the following to get up and running:
+
+1. Download the release and extract the tdd-x.x.jar.
+2. Copy the TDD folder into your ATG install under $DYNAMO_HOME/../ i.e. at the same level as the other modules (e.g. DAS, DCS, etc). 
+3. Make the file Core/libs/core-x.x.jar available to your project/build. 
+4. See the MyModule [build file](https://github.com/Roanis/atg-tdd/blob/master/MyModule/build.gradle) for which transitive dependencies are needed and add those to your project/build. 
+
+Alternatively, if you want to compile the project, you can clone this repository to your hard drive. Then copy (or symlink) the TDD folder to your ATG installation under $DYNAMO_HOME/../. Now you're ready to build, so run ```gradlew clean build``` from atg-tdd folder. Both modules will be built and the tests in MyModile will be executed.
 
 #Limitations
 The focus of this framework is on testing global components i.e. Services, Managers, Tools, etc. That's where the vast majority of your business logic will live. Request and Session scoped components, can also be tested but they should really be changed to global scope in the ```testconfig``` layer.
