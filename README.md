@@ -93,7 +93,7 @@ public class CatalogToolsTest {
 4. The ```@NucleusComponent``` annotation provides a mechanism to auto inject Nucleus components directly into the test class, before any tests are ran.
 
 #Prerequisites
-ATG DUST 1.2.2 is required to build this project. It should be made available in a local maven repository, following the normal naming conventions (i.e. /atg/DUST/1.2.2/DUST-1.2.2.jar). You can download the jar from the [DUST download page](http://sourceforge.net/projects/atgdust/). 
+ATG DUST 1.2.2 is required to build this project. It should be made available in a local maven repository, following the normal naming conventions (i.e. /atg/dust/1.2.2/dust-1.2.2.jar). You can download the jar from the [DUST download page](http://sourceforge.net/projects/atgdust/). 
 
 As per the requirement of DUST, if your ATG installation requires license files, then DUST_HOME should be set to point to the location of those files.
 
@@ -108,7 +108,7 @@ The focus of this framework is on testing global components i.e. Services, Manag
 | ------------- | ------------- |
 | 1.0  | 10.2|
 | 1.1, 1.2  | 11.0, 11.1|
-
+| 1.3  | 10.2, 11.0, 11.1|
 
 
 
