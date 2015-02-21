@@ -9,12 +9,12 @@ import atg.userprofiling.PropertyManager;
 
 import com.roanis.tdd.core.MissingDataException;
 import com.roanis.tdd.core.TestHelper;
+import com.roanis.tdd.nucleus.TddNucleusTestUtils;
 
 public class ProfileTestHelper implements TestHelper {
 	
 	private ProfileTools mProfileTools;
 	private String mDefaultProfileId;
-	private Profile profile;
 	
 	public void defaultCurrentProfile() throws Exception{
 		setAsCurrent(getDefaultProfileId());
@@ -22,9 +22,13 @@ public class ProfileTestHelper implements TestHelper {
 	
 	public void setAsCurrent(String pId) throws Exception {
 		MutableRepositoryItem user = getUser(pId);
-		Profile profile = getProfile();
+		Profile profile = resolveProfileComponent();
 		profile.setDataSource(user);	
 		ServletUtil.setCurrentUserProfile(profile);
+	}
+
+	public Profile resolveProfileComponent() {
+		return (Profile) TddNucleusTestUtils.resolveComponent("/atg/userprofiling/Profile");
 	}
 
 	protected MutableRepositoryItem getUser(String pId) throws Exception {
@@ -66,14 +70,6 @@ public class ProfileTestHelper implements TestHelper {
     @Override
 	public String getName() {
 		return getClass().getCanonicalName();
-	}
-
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
+	}	
 
 }
