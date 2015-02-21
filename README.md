@@ -116,8 +116,7 @@ Whilst not really a limitation, it should be noted that the Framework expects to
 | ------------- | ------------- |
 | 1.0  | 10.2|
 | 1.1, 1.2  | 11.0, 11.1|
-| 1.3  | 10.2, 11.0, 11.1|
-| 1.4  | 10.2, 11.0, 11.1|  
+| 1.3, 1.4  | 10.2, 11.0, 11.1|
 
 
 
