@@ -2,8 +2,9 @@ package com.roanis.tdd.nucleus;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -12,8 +13,14 @@ import atg.nucleus.Nucleus;
 import atg.nucleus.NucleusTestUtils;
 import atg.nucleus.NucleusTestUtils.NucleusStartupOptions;
 import atg.nucleus.ServiceException;
+import atg.nucleus.naming.ComponentName;
+import atg.servlet.DynamoHttpServletRequest;
+import atg.servlet.ServletTestUtils;
+import atg.servlet.ServletTestUtils.TestingDynamoHttpServletRequest;
+import atg.servlet.ServletUtil;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Maps;
 
 /**
  * Utility methods for working with Nucleus.
@@ -38,56 +45,104 @@ public class TddNucleusTestUtils {
 	 * @param moduleList - the list of ATG modules to start
 	 * @param testClass - the test class or suite which is invoking this method
 	 * @return - the running Nucleus
-	 * @throws Exception - if an error occurred starting Nucleus
+	 * @throws Throwable 
 	 */
-	public static Nucleus startNucleus (List<String> moduleList, boolean isUseTestConfigLayer, Class<?> testClass) throws Exception {	
+	public static Nucleus startNucleus (List<String> moduleList, boolean isUseTestConfigLayer, Class<?> testClass) throws Throwable {	
+		preStartNucleus(moduleList, isUseTestConfigLayer, testClass);        
+        Nucleus nucleus = doStartNucleus(moduleList, isUseTestConfigLayer, testClass);
+        postStartNucleus(nucleus, moduleList, isUseTestConfigLayer, testClass);        
+        return nucleus;
+    }
+	
+	private static void preStartNucleus(List<String> moduleList, boolean isUseTestConfigLayer, Class<?> testClass) throws Throwable {
 		System.out.println("TDD by Rory Curtis: rory_curtis@roanis.com");
-        if ((null == moduleList) || (0 == moduleList.size())) {
-            throw new Exception("A module list must be specfied when starting Nucleus.");
-        }
+        
+		validateModules(moduleList);        
+        validateATGInstall(); 
         
         if(isUseTestConfigLayer){
-        	enhanceManifestFiles(moduleList);
+			addTestConfigPath(moduleList, testClass);
         }
-        
-        // Fire up Nucleus - make sure DYNAMO_HOME and DUST_HOME are set.
-        String initialComponent = "/atg/dynamo/Configuration";
-        NucleusStartupOptions startupOptions = new NucleusStartupOptions(moduleList.toArray(new String[0]), testClass, initialComponent);        
+        addTddToModules(moduleList);
+	}	
+		
+	protected static void addTddToModules(List<String> moduleList) {
+		moduleList.add(TDD_REQUIRED_MODULES);
+	}
 
+	private static Nucleus doStartNucleus(List<String> moduleList, boolean isUseTestConfigLayer, Class<?> testClass) throws Throwable {
+		// Fire up Nucleus - make sure DYNAMO_HOME and DUST_HOME are set.				
+        String initialComponent = "/atg/dynamo/Configuration";
+        NucleusStartupOptions startupOptions = null;
+        
+        // Make sure to get the testConfigDir, before adding TDD.Core to the front of the module list.
+        String testConfigDir=getTestConfigPath(moduleList);
+        
+        if(isUseTestConfigLayer){
+        	startupOptions = new NucleusStartupOptions(moduleList.toArray(new String[0]), testClass, testConfigDir, initialComponent);
+        } else { 
+        	startupOptions = new NucleusStartupOptions(moduleList.toArray(new String[0]), testClass, initialComponent);
+        }
+                
         Nucleus nucleus = NucleusTestUtils.startNucleusWithModules(startupOptions);
 
         if (null == nucleus) {
             throw new Exception("Unable to start Nucleus for unit tests.");
         }
-                
-        return nucleus;
-    }
+		return nucleus;
+	}
+
 	
+	private static void addTestConfigPath(List<String> moduleList, Class<?> testClass) throws Throwable {
+		String testConfigPath=getTestConfigPath(moduleList);
+		File testConfigDir=getTestConfigDirAsFile(moduleList);
+		updateNucleusConfigProperty(testClass, testConfigPath, testConfigDir);
+		return;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void updateNucleusConfigProperty(Class<?> testClass, String testConfigPath, File testConfigDir) throws NoSuchFieldException, IllegalAccessException {
+		Field field = NucleusTestUtils.class.getDeclaredField("sConfigDir");
+		field.setAccessible(true);		
+		Map<Class<?>, Map<String, File>> value = (Map<Class<?>, Map<String, File>>) field.get(null);
+		Map<String, File> testConfig= Maps.newHashMap();
+		testConfig.put(testConfigPath, testConfigDir);
+		value.put(testClass, testConfig);
+	}
+
+	private static void postStartNucleus(Nucleus nucleus, List<String> moduleList, boolean isUseTestConfigLayer, Class<?> testClass) {
+		initialiseRequestResponsePair();
+	}
+
+
+	public static void validateModules(List<String> moduleList) throws Exception {
+		if ((null == moduleList) || (0 == moduleList.size())) {
+            throw new Exception("A module list must be specfied when starting Nucleus.");
+        }
+	}
+		
+	public static void validateATGInstall() {
+		if(! isATGInstallAvailable()){
+			throw new RuntimeException("No ATG install could be found from DYNAMO_HOME["+dynamoHomeAsString()+"], or ATG_HOME ["+atgHomeAsString()+"]");
+		}		
+	}
 	
-	public static void enhanceManifestFiles(List<String> moduleList) throws IOException {
+	public static String getTestConfigPath(List<String> moduleList) throws IOException {
 		String atgHome = getATGHome();
-		for (String moduleName : moduleList) {
-			String moduleDir = atgHome + moduleName.replace(".", File.separator);
-			addTestConfigToManifest(moduleDir);
-		}
+		String moduleName=moduleList.get(0);
+		String moduleDir = atgHome + moduleName.replace(".", File.separator);
+		String testConfigPath=moduleDir + File.separator + TEST_CONFIG_LAYER_NAME;
+		return testConfigPath;
 	}
 
-	protected static void addTestConfigToManifest(String moduleDir) throws IOException {
-		if (Strings.isNullOrEmpty(moduleDir)){
-			throw new IllegalArgumentException("A module directory must be specified when adding a test config layer.");
-		}
-		backupManifestFile(moduleDir);
-		updateManifest(moduleDir);		
+
+	protected static boolean testConfigLayerExists(List<String> moduleList) throws Throwable {
+		return null != getTestConfigDirAsFile(moduleList);
 	}
 
-	protected static boolean testConfigLayerExists(String moduleDir) {
-		String testConfigPath = moduleDir + File.separator + TEST_CONFIG_LAYER_NAME;
-		File testConfigDir = new File(testConfigPath);
-		if(testConfigDir.exists() && testConfigDir.isDirectory()){
-			return true;
-		}
-				
-		return false;
+	protected static File getTestConfigDirAsFile(List<String> moduleList) throws Throwable {
+		File testConfigDir = new File(getTestConfigPath(moduleList));
+		return testConfigDir;
 	}
 
 	protected static void backupManifestFile(String moduleDir) throws IOException {			
@@ -120,33 +175,6 @@ public class TddNucleusTestUtils {
 		return getManifestFileLocation(moduleDir) + ".BAK";		
 	}
 	
-	protected static void updateManifest(String moduleDir){
-		String manifestPath = getManifestPath(moduleDir);
-		File manifestFile = new File(manifestPath);
-		Charset charset = Charset.forName("UTF-8");
-		 
-		try {
-			List<String> content = FileUtils.readLines(manifestFile, charset);
-			updateATGConfigPath(content);
-			addTddDependencies(content);
-			FileUtils.writeLines(manifestFile, content);			
-		} catch (IOException e) {
-			restoreManifestFile(moduleDir);
-			throw new RuntimeException("Unable to add test config layer to Manifest file: " + manifestPath.toString(), e);
-		}		
-	}	
-
-	protected static void updateATGConfigPath(List<String> manifestContent) {		
-		for (int i = 0; i < manifestContent.size(); i++) {
-			String manifestEntry = manifestContent.get(i);
-			if(manifestEntry.startsWith(ATG_CONFIG_PATH_ATTRIBUTE_NAME)){
-				String newConfigPath = manifestEntry + " " + TEST_CONFIG_LAYER_NAME;
-				manifestContent.set(i, newConfigPath);
-				return;
-			}
-		}
-	}
-	
 	protected static void addTddDependencies(List<String> manifestContent) {
 		for (int i = 0; i < manifestContent.size(); i++) {
 			String manifestEntry = manifestContent.get(i);
@@ -159,29 +187,6 @@ public class TddNucleusTestUtils {
 			}
 		}
 	}	
-
-	protected static void restoreManifestFile(String moduleDir) {
-		if(! testConfigLayerExists(moduleDir)){
-			return;
-		}
-		
-		File manifestFile = new File(getManifestPath(moduleDir));
-		File backupManifestFile = new File(getBackupManifestPath(moduleDir));
-		try {
-			FileUtils.copyFile(backupManifestFile, manifestFile);
-			backupManifestFile.delete();
-		} catch (IOException e) {
-			System.out.println("ERROR: unable to restore manifest files for module:["+moduleDir+"]. Please review the manifest files in this directory.");
-		}
-	}
-	
-	public static void restoreAllManifestFiles(List<String> moduleList) {
-		String atgHome = getATGHome();
-		for (String moduleName : moduleList) {
-			String moduleDir = atgHome + moduleName.replace(".", File.separator);
-			restoreManifestFile(moduleDir);
-		}
-	}
 
 	protected static String getATGHome() {
 		String dynamoRoot = findDynamoRootDir();
@@ -197,10 +202,7 @@ public class TddNucleusTestUtils {
 	 * @param nucleus - a running Nucleus.
 	 */
 	public static void shutdownNucleus (Nucleus nucleus, List<String> moduleList, boolean isUseTestConfigLayer) {
-		if(isUseTestConfigLayer){
-			restoreAllManifestFiles(moduleList);		
-		}
-        if (nucleus != null) {
+		if (nucleus != null) {
             try {
                 NucleusTestUtils.shutdownNucleus(nucleus);
             } catch (ServiceException e) {
@@ -211,13 +213,10 @@ public class TddNucleusTestUtils {
         }
     }
 
-	protected static void removeTestConfigLayer(List<String> moduleList) {
-	}
-	
 	public static String findDynamoRootDir(){
-		String dynamoRoot = fromDynamoHome();
+		String dynamoRoot = dynamoHomeAsString();
 		if(Strings.isNullOrEmpty(dynamoRoot)){
-			dynamoRoot = fromATGHome();
+			dynamoRoot = atgHomeAsString();
 		}
 						
 		if(! Strings.isNullOrEmpty(dynamoRoot)){
@@ -226,7 +225,7 @@ public class TddNucleusTestUtils {
 		return dynamoRoot;
 	}
 	
-	private static String fromDynamoHome(){
+	public static String dynamoHomeAsString(){
 		String dynamoHome = System.getenv("DYNAMO_HOME");
 		if(! Strings.isNullOrEmpty(dynamoHome)){
 			return dynamoHome + File.separator + ".." + File.separator;
@@ -235,7 +234,7 @@ public class TddNucleusTestUtils {
 	}
 
 
-	private static String fromATGHome(){
+	public static String atgHomeAsString(){
 		return System.getenv("ATG_HOME");		
 	}
 
@@ -247,5 +246,29 @@ public class TddNucleusTestUtils {
 		File file = new File(dynamoRoot);
 		return file.exists();
 	}  
+	
+	public static void initialiseRequestResponsePair(){
+		ServletTestUtils servletTestUtils = new ServletTestUtils();
+		TestingDynamoHttpServletRequest request =  servletTestUtils.createDynamoHttpServletRequestForSession(Nucleus.getGlobalNucleus(), "1234", null);
+		request.setLoggingWarning(false);
+		request.prepareForRead();
+		ServletUtil.setCurrentRequest(request);
+		ServletUtil.setCurrentResponse(servletTestUtils.createDynamoHttpServletResponse());
+	}
+	
+	public static Object resolveComponent(String componentPath){
+		ComponentName componentName = ComponentName.getComponentName(componentPath);
+		Object component = null;
+		try {
+			DynamoHttpServletRequest currentRequest = ServletUtil.getCurrentRequest();
+			if(null != currentRequest){
+				component =  currentRequest.resolveName(componentName);
+			}
+			
+		} catch (IllegalStateException e){
+			component = Nucleus.getGlobalNucleus().resolveName(componentName);
+		}
+		return component;
+	}
 
 }

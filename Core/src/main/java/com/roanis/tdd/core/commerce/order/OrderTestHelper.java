@@ -75,6 +75,14 @@ public class OrderTestHelper implements TestHelper{
 		return repriceMap;
 	}
 	
+	public OrderHolder getShoppingCart(){
+		return (OrderHolder) ServletUtil.getCurrentRequest().resolveName("/atg/commerce/ShoppingCart");
+	}
+	
+	public PricingModelHolder getUserPricingModels(){
+		return (PricingModelHolder) ServletUtil.getCurrentRequest().resolveName("/atg/commerce/pricing/UserPricingModels");
+	}
+	
 	private CommerceItemManager mCommerceItemManager;
 
 	public CommerceItemManager getCommerceItemManager() {
@@ -183,27 +191,7 @@ public class OrderTestHelper implements TestHelper{
 
 	public void setPricingTools(PricingTools pPricingTools) {
 		mPricingTools = pPricingTools;
-	}
-	
-	private PricingModelHolder mUserPricingModels;
-
-	public PricingModelHolder getUserPricingModels() {
-		return mUserPricingModels;
-	}
-
-	public void setUserPricingModels(PricingModelHolder pUserPricingModels) {
-		mUserPricingModels = pUserPricingModels;
-	}
-	
-	private OrderHolder mShoppingCart;
-
-	public OrderHolder getShoppingCart() {
-		return mShoppingCart;
-	}
-
-	public void setShoppingCart(OrderHolder pShoppingCart) {
-		mShoppingCart = pShoppingCart;
-	}
+	}		
 
 	@Override
 	public String getName() {

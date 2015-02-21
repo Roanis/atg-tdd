@@ -90,6 +90,7 @@ public class RepriceOrderTest {
 		assertEquals(170.00D, mOrder.getPriceInfo().getTotal(), 0.00D);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void changeQuantity() throws Exception {
 		CommerceItem item = (CommerceItem) mOrder.getCommerceItems().get(0);

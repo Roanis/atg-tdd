@@ -4,8 +4,7 @@ import java.lang.reflect.Field;
 
 import org.junit.rules.ExternalResource;
 
-import atg.nucleus.Nucleus;
-import atg.nucleus.naming.ComponentName;
+import com.roanis.tdd.nucleus.TddNucleusTestUtils;
 
 public class NucleusComponentRule extends ExternalResource {
 	private Field mField;
@@ -20,7 +19,7 @@ public class NucleusComponentRule extends ExternalResource {
 	
 	@Override
 	protected void before() throws Throwable {
-		Object component = Nucleus.getGlobalNucleus().resolveName(ComponentName.getComponentName(mNucleusComponentPath));
+		Object component = TddNucleusTestUtils.resolveComponent(mNucleusComponentPath);
 		if (!mField.isAccessible()){
 			mField.setAccessible(true);
 		}

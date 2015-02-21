@@ -1,5 +1,6 @@
 package com.roanis.tdd.junit4.rules;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,12 +33,12 @@ public class NucleusWithModules extends ExternalResource {
 	@Override
 	protected void before() throws Throwable {
 		if(! NucleusContext.isNucleusRunning()){
-			mNucleus = TddNucleusTestUtils.startNucleus(Arrays.asList(mModules), mUseTestConfigLayer, mTestClass);
+			List<String> modules=new ArrayList<String>(Arrays.asList(mModules));
+			mNucleus = TddNucleusTestUtils.startNucleus(modules, mUseTestConfigLayer, mTestClass);
 			updateNucleusContext();
 		} else {
 			validateModules();	
-			TddNucleusTestUtils.enhanceManifestFiles(Arrays.asList(mModules));
-		}
+		}		
 	}
 
 	protected void updateNucleusContext() {
@@ -56,9 +57,8 @@ public class NucleusWithModules extends ExternalResource {
 	@Override
 	protected void after() {
 		// No longer shutdown Nucleus from here, as it could have been invoked from either a class or a suite.
-		// Don't want to restart after every individual test class. However, make sure the manifest is reset,
-		// so that it's always correct after every test class.
-		TddNucleusTestUtils.restoreAllManifestFiles(Arrays.asList(mModules));
+		// Don't want to restart after every individual test class.
+		// TODO - Ideally we'd shutdown Nucleus properly.
 	}
 
 }

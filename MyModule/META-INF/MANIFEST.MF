@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: My Module
-Implementation-Version: 1.3
+Implementation-Version: 1.4
 ATG-Config-Path: config
 ATG-Required: DCS
 ATG-Client-Class-Path: libs/mymodule-1.0.jar
