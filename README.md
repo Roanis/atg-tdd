@@ -81,8 +81,9 @@ public class CatalogToolsTest {
 	private CatalogTools mCatalogTools;
 	
 	@Test
-	public void letsStartTesting(){
-	  ....
+	public void letsStartTesting(){ 
+		mCatalogTools.findSku(...);
+	  	....
 	}
 
 }
